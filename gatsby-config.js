@@ -8,6 +8,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-transformer-json',
+    'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -20,6 +21,12 @@ module.exports = {
       options: {
         name: 'images',
         path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/lib/typography',
       },
     },
   ],

@@ -1,4 +1,8 @@
 import React from 'react';
+import { css } from 'emotion';
+
+import { rhythm } from '../lib/typography';
+
 import { sceneRoute } from '../lib/routes';
 import { Link, graphql } from 'gatsby';
 
@@ -8,9 +12,35 @@ const SceneThumbnail = ({ node }) => {
   const thumbnailSrc = fields.thumbnail.childImageSharp.small.src;
 
   return (
-    <Link to={sceneRoute(node)}>
-      <img src={thumbnailSrc} alt={timestamp} />
-    </Link>
+    <article
+      className={css`
+        margin: ${rhythm(2)};
+      `}
+    >
+      <Link
+        className={css`
+          display: block;
+          border: 1px solid transparent;
+          opacity: 0.8;
+          transition: opacity 0.3s ease;
+
+          &:hover {
+            opacity: 1;
+          }
+        `}
+        to={sceneRoute(node)}
+      >
+        <img
+          className={css`
+            margin: 0;
+            display: block;
+            width: 100%;
+          `}
+          src={thumbnailSrc}
+          alt={timestamp}
+        />
+      </Link>
+    </article>
   );
 };
 

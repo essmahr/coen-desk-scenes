@@ -1,16 +1,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/layout';
+import Page from '../components/Page';
 
 import ScenesList from '../components/ScenesList';
 
 const IndexPage = ({ data }) => {
   return (
-    <Layout>
-      <h1>Welcome</h1>
-      <h2>Films</h2>
+    <Page>
       <ScenesList scenes={data.allScenesJson.edges} />
-    </Layout>
+    </Page>
   );
 };
 

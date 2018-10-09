@@ -1,27 +1,42 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import styled, { css } from 'react-emotion';
 
-import Header from './header';
+import { gutter } from '../lib/styles';
 
-const Layout = ({ children }) => (
-  <>
-    <Helmet
-      title="Title"
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
+const GridItem = ({ children }) => {
+  return (
+    <div
+      className={css`
+        flex: 0 0 33%;
+      `}
     >
-      <html lang="en" />
-    </Helmet>
-    <Header />
-    <div>{children}</div>
-  </>
-);
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+      {children}
+    </div>
+  );
 };
 
-export default Layout;
+export const Grid = ({ children }) => {
+  return (
+    <div
+      className={css`
+        margin: 0 ${gutter(-2)};
+        display: flex;
+        flex-wrap: wrap;
+      `}
+    >
+      {children.map(child => (
+        <GridItem>{child}</GridItem>
+      ))}
+    </div>
+  );
+};
+
+export const Container = ({ component = 'div', ...props }) => {
+  const Component = styled(component)`
+    max-width: 1200px;
+    padding: 0 ${gutter()};
+    margin: auto;
+  `;
+
+  return <Component {...props} />;
+};
