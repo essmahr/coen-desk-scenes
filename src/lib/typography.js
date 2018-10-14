@@ -15,6 +15,14 @@ const typography = new Typography({
       name: 'IBM Plex Sans',
       styles: ['400', '300'],
     },
+    {
+      name: 'IBM Plex Mono',
+      styles: ['400', '300'],
+    },
+    {
+      name: 'IBM Plex Serif',
+      styles: ['400', '500'],
+    },
   ],
   overrideStyles: () => {
     return {

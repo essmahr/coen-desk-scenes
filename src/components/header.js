@@ -1,6 +1,5 @@
 import React from 'react';
 import { css } from 'emotion';
-import { scale, rhythm } from '../lib/typography';
 
 import { Container } from './layout';
 
@@ -10,24 +9,19 @@ const Header = () => {
       className={css`
         position: sticky;
         top: 0;
-        margin-bottom: ${rhythm(1)};
+        margin: 3rem 0;
         z-index: 1;
         background: #000;
-        border-bottom: 1px solid #888;
-        padding-bottom: ${rhythm(1)};
+        padding: 1rem 0;
       `}
     >
-      <Container
-        className={css`
-          padding-top: ${rhythm(1)};
-        `}
-      >
+      <Container>
         <h1
           className={css`
             margin: 0;
-            font-size: 16px;
-            line-height: 1.5;
-            text-transform: uppercase;
+            font-size: 14px;
+            line-height: 1.66;
+            // text-transform: uppercase;
             letter-spacing: 0.1em;
           `}
         >

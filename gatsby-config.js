@@ -30,4 +30,7 @@ module.exports = {
       },
     },
   ],
+  mapping: {
+    'FilmsJson.scenes': 'ScenesJson.film',
+  },
 };
