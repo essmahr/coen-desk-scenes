@@ -5,7 +5,7 @@ const typography = new Typography({
   baseLineHeight: 1.666,
   headerFontFamily: ['IBM Plex Sans', 'sans-serif'],
   headerWeight: 400,
-  bodyFontFamily: ['Georgia', 'serif'],
+  bodyFontFamily: ['IBM Plex Sans Condensed', 'serif'],
   googleFonts: [
     {
       name: 'IBM Plex Sans Condensed',
@@ -28,7 +28,7 @@ const typography = new Typography({
     return {
       body: {
         backgroundColor: '#000',
-        color: '#fff',
+        color: '#eee',
       },
     };
   },

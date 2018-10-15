@@ -4,7 +4,10 @@ function filmRoute(film) {
 
 function sceneRoute(scene) {
   const { film, timestamp } = scene;
-  return `/film/${film}/at/${timestamp}`;
+
+  const slug = typeof film === 'object' ? film.slug : film;
+
+  return `/film/${slug}/at/${timestamp}`;
 }
 
 module.exports = {

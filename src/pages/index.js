@@ -1,13 +1,17 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Page from '../components/Page';
 
+import gatherScenes from '../lib/gatherScenes';
+
+import Page from '../components/Page';
 import ScenesList from '../components/ScenesList';
 
 const IndexPage = ({ data }) => {
+  const scenes = gatherScenes(data);
+
   return (
     <Page>
-      <ScenesList scenes={data.allScenesJson.edges} />
+      <ScenesList scenes={scenes} />
     </Page>
   );
 };
@@ -16,7 +20,7 @@ export default IndexPage;
 
 export const query = graphql`
   {
-    allFilmsJson {
+    allFilmsJson(sort: { fields: [year], order: ASC }) {
       edges {
         node {
           slug
@@ -25,10 +29,13 @@ export const query = graphql`
         }
       }
     }
-    allScenesJson {
-      edges {
-        node {
-          ...Scene_thumbnail
+    allScenesJson(sort: { fields: [timestamp], order: ASC }) {
+      group(field: film) {
+        fieldValue
+        edges {
+          node {
+            ...Scene_thumbnail
+          }
         }
       }
     }

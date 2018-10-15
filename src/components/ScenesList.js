@@ -7,8 +7,8 @@ const ScenesList = ({ scenes }) => {
   return (
     <Container component="main">
       <Grid>
-        {scenes.map(({ node }) => (
-          <SceneThumbnail key={node.id} node={node} />
+        {scenes.map(scene => (
+          <SceneThumbnail key={scene.id} scene={scene} />
         ))}
       </Grid>
     </Container>

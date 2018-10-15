@@ -2,26 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const { sceneRoute, filmRoute } = require('./src/lib/routes');
 
-const query = `
-  {
-    allFilmsJson {
-      edges {
-        node {
-          slug
-        }
-      }
-    },
-    allScenesJson {
-      edges {
-        node {
-          timestamp
-          film
-        }
-      }
-    }
-  }
-`;
-
 exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type !== 'ScenesJson') {
     return;
@@ -41,6 +21,26 @@ exports.onCreateNode = ({ node, actions }) => {
     console.error(`\nimage not found at ${imagePath}`);
   }
 };
+
+const query = `
+  {
+    allFilmsJson {
+      edges {
+        node {
+          slug
+        }
+      }
+    },
+    allScenesJson {
+      edges {
+        node {
+          timestamp
+          film
+        }
+      }
+    }
+  }
+`;
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
