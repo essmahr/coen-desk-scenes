@@ -11,15 +11,18 @@ function getScenesForFilm(allScenes, film) {
     : [];
 }
 
-export default function gatherScenes({ allFilmsJson, allScenesJson }) {
+export default function assembleData({ allFilmsJson, allScenesJson }) {
   const films = allFilmsJson.edges.map(({ node }) => node);
   const allScenes = allScenesJson.group;
 
-  return films.reduce(
-    (scenesArray, film) => [
-      ...scenesArray,
-      ...getScenesForFilm(allScenes, film),
-    ],
-    []
-  );
+  return {
+    films,
+    scenes: films.reduce(
+      (scenesArray, film) => [
+        ...scenesArray,
+        ...getScenesForFilm(allScenes, film),
+      ],
+      []
+    ),
+  };
 }

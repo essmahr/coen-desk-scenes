@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { css } from 'emotion';
 
+import { Container } from './layout';
 import Header from './header';
 
 const Layout = ({ children }) => (
@@ -16,7 +18,15 @@ const Layout = ({ children }) => (
       <html lang="en" />
     </Helmet>
     <Header />
-    {children}
+    <Container>
+      <div
+        className={css`
+          position: relative;
+        `}
+      >
+        {children}
+      </div>
+    </Container>
   </>
 );
 

@@ -1,9 +1,17 @@
 import React from 'react';
-import { css } from 'emotion';
+import styled, { css } from 'react-emotion';
 
 import { Container } from './layout';
 
-const Header = () => {
+const Button = styled('button')`
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+`;
+
+const Header = ({ onClick }) => {
   return (
     <header
       className={css`
@@ -21,11 +29,22 @@ const Header = () => {
             margin: 0;
             font-size: 14px;
             line-height: 1.66;
-            // text-transform: uppercase;
             letter-spacing: 0.1em;
           `}
         >
-          Every Character Actor Behind a Desk <br /> In A Coen Brothers Film
+          Every Character Actor Behind a Desk <br /> In A{' '}
+          <Button
+            className={css`
+              border-bottom: 1px solid #333;
+
+              &:hover {
+                border-bottom-color: #444;
+              }
+            `}
+            onClick={onClick}
+          >
+            Coen Brothers Film
+          </Button>
         </h1>
       </Container>
     </header>

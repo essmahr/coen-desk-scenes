@@ -1,17 +1,20 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import gatherScenes from '../lib/gatherScenes';
+import assembleData from '../lib/assembleData';
 
 import Page from '../components/Page';
 import ScenesList from '../components/ScenesList';
-
+import FilmsList from '../components/FilmsList';
 const IndexPage = ({ data }) => {
-  const scenes = gatherScenes(data);
+  const { films, scenes } = assembleData(data);
 
   return (
     <Page>
-      <ScenesList scenes={scenes} />
+      <FilmsList films={films} />
+      <div style={{ marginLeft: '200px' }}>
+        <ScenesList scenes={scenes} />
+      </div>
     </Page>
   );
 };
