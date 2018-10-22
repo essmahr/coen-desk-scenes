@@ -4,17 +4,19 @@ import { graphql } from 'gatsby';
 import assembleData from '../lib/assembleData';
 
 import Page from '../components/Page';
+import ColumnDelegator from '../components/ColumnDelegator';
 import ScenesList from '../components/ScenesList';
-import FilmsList from '../components/FilmsList';
-const IndexPage = ({ data }) => {
+import FilmsListContainer from '../components/FilmsListContainer';
+const IndexPage = ({ data, pathContext }) => {
+  const { film: currentFilm } = pathContext;
   const { films, scenes } = assembleData(data);
 
   return (
     <Page>
-      <FilmsList films={films} />
-      <div style={{ marginLeft: '200px' }}>
-        <ScenesList scenes={scenes} />
-      </div>
+      <ColumnDelegator
+        main={<ScenesList scenes={scenes} currentFilm={currentFilm} />}
+        sidebar={<FilmsListContainer films={films} currentFilm={currentFilm} />}
+      />
     </Page>
   );
 };

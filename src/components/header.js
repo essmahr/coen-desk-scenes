@@ -1,5 +1,7 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
+import { Subscribe } from 'unstated';
+import { sidebarState } from '../stores';
 
 import { Container } from './layout';
 
@@ -33,18 +35,22 @@ const Header = ({ onClick }) => {
           `}
         >
           Every Character Actor Behind a Desk <br /> In A{' '}
-          <Button
-            className={css`
-              border-bottom: 1px solid #333;
+          <Subscribe to={[sidebarState]}>
+            {({ toggleSidebar }) => (
+              <Button
+                className={css`
+                  border-bottom: 1px solid #333;
 
-              &:hover {
-                border-bottom-color: #444;
-              }
-            `}
-            onClick={onClick}
-          >
-            Coen Brothers Film
-          </Button>
+                  &:hover {
+                    border-bottom-color: #444;
+                  }
+                `}
+                onClick={toggleSidebar}
+              >
+                Coen Brothers Film
+              </Button>
+            )}
+          </Subscribe>
         </h1>
       </Container>
     </header>

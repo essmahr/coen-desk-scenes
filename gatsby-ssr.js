@@ -1,7 +1,8 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+import React from 'react';
+import { Provider } from 'unstated';
+import { renderToString } from 'react-dom/server';
 
-// You can delete this file if you're not using it
+export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
+  const ConnectedBody = () => <Provider>{bodyComponent}</Provider>;
+  replaceBodyHTMLString(renderToString(<ConnectedBody />));
+};

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled, { css } from 'react-emotion';
+import { css } from 'react-emotion';
 
 import { filmRoute } from '../lib/routes';
 
-function FilmListItem({ film }) {
+function FilmListItem({ film, current, hovered, onHover, onHoverEnd }) {
   return (
     <li
       className={css`
@@ -14,27 +14,39 @@ function FilmListItem({ film }) {
       `}
     >
       <Link
+        onMouseEnter={onHover}
+        onMouseLeave={onHoverEnd}
         className={css`
-          color: #fff;
+          display: block;
+          color: #ccc;
           font-size: 12px;
           text-decoration: none;
+          padding: 0.5em 0;
         `}
         to={filmRoute(film)}
       >
         {film.title}
+        {current && '?'}
+        {hovered && '!'}
       </Link>
     </li>
   );
 }
 
-export default function FilmsList({ films }) {
+export default function FilmsList({
+  films,
+  currentFilm,
+  hovered,
+  onHover,
+  onHoverEnd,
+}) {
   return (
     <nav
       className={css`
         position: absolute;
         top: 0;
         left: 0;
-        width: 100px;
+        width: 200px;
       `}
     >
       <ul
@@ -43,7 +55,16 @@ export default function FilmsList({ films }) {
         `}
       >
         {films.map(film => (
-          <FilmListItem key={film.id} film={film} />
+          <FilmListItem
+            key={film.slug}
+            film={film}
+            current={film.slug === currentFilm}
+            hovered={film.slug === hovered}
+            onHover={() => {
+              onHover(film.slug);
+            }}
+            onHoverEnd={onHoverEnd}
+          />
         ))}
       </ul>
     </nav>
