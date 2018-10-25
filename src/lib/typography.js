@@ -28,7 +28,7 @@ const typography = new Typography({
     return {
       body: {
         backgroundColor: '#000',
-        color: '#eee',
+        color: '#ddd',
       },
     };
   },

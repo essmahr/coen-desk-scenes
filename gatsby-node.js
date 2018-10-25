@@ -63,7 +63,7 @@ exports.createPages = ({ graphql, actions }) => {
           path: sceneRoute(node),
           component: path.resolve(`./src/pages/index.js`),
           context: {
-            timestamp: node.timestamp,
+            scene: node,
           },
         });
       });

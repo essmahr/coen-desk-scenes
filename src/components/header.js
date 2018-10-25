@@ -19,8 +19,7 @@ const Header = ({ onClick }) => {
       className={css`
         position: sticky;
         top: 0;
-        margin: 3rem 0;
-        z-index: 1;
+        margin: 3% 0 3rem;
         background: #000;
         padding: 1rem 0;
       `}
@@ -28,6 +27,8 @@ const Header = ({ onClick }) => {
       <Container>
         <h1
           className={css`
+            position: relative;
+            z-index: 20;
             margin: 0;
             font-size: 14px;
             line-height: 1.66;

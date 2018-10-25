@@ -22,9 +22,9 @@ const GridItem = ({ children }) => {
   return (
     <div
       className={css({
-        [mqs[0]]: flexGridItem(2, 5, 6),
-        [mqs[1]]: flexGridItem(3, 5, 6),
-        [mqs[2]]: flexGridItem(3, 7, 6),
+        [mqs[0]]: flexGridItem(3, 5, 6),
+        [mqs[1]]: flexGridItem(4, 5, 6),
+        [mqs[2]]: flexGridItem(4, 7, 6),
       })}
     >
       {children}
