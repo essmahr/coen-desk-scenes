@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Flipper, Flipped } from 'react-flip-toolkit';
+import { Flipper } from 'react-flip-toolkit';
+
+import SceneThumbnail from './SceneThumbnail';
 
 const ScenesList = props => {
   const scenes = props.films.reduce(
@@ -11,14 +13,7 @@ const ScenesList = props => {
     <ul>
       {scenes.map(scene => (
         <li key={scene.id}>
-          <Flipped flipId={scene.id}>
-            <div>
-              <img
-                src={scene.fields.thumbnail.childImageSharp.small.src}
-                alt={scene.timestamp}
-              />
-            </div>
-          </Flipped>
+          <SceneThumbnail scene={scene} />
         </li>
       ))}
     </ul>
@@ -34,15 +29,9 @@ const FilmsList = props => {
             <h1>{film.title}</h1>
             <ul>
               {film.scenes.map(scene => (
-                <Flipped flipId={scene.id}>
-                  <div>
-                    <img
-                      key={scene.id}
-                      src={scene.fields.thumbnail.childImageSharp.small.src}
-                      alt={scene.timestamp}
-                    />
-                  </div>
-                </Flipped>
+                <li>
+                  <SceneThumbnail scene={scene} />
+                </li>
               ))}
             </ul>
           </li>

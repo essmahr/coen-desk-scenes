@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import assembleData from '../lib/assembleData';
 
 import Page from '../components/Page';
-import ScenesPanel from '../components/ScenesPanel';
+import ScenesPanel from '../components/scenes-panel/ScenesPanel';
 
 const IndexPage = ({ data, pathContext }) => {
   const { scene } = pathContext;
