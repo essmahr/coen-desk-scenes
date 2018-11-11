@@ -1,19 +1,7 @@
 import React from 'react';
-import styled, { css } from 'react-emotion';
-import { Subscribe } from 'unstated';
-import { sidebarState } from '../stores';
+import { css } from 'react-emotion';
 
-import { Container } from './layout';
-
-const Button = styled('button')`
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-`;
-
-const Header = ({ onClick }) => {
+const Header = () => {
   return (
     <header
       className={css`
@@ -24,36 +12,18 @@ const Header = ({ onClick }) => {
         padding: 1rem 0;
       `}
     >
-      <Container>
-        <h1
-          className={css`
-            position: relative;
-            z-index: 20;
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.66;
-            letter-spacing: 0.1em;
-          `}
-        >
-          Every Character Actor Behind a Desk <br /> In A{' '}
-          <Subscribe to={[sidebarState]}>
-            {({ toggleSidebar }) => (
-              <Button
-                className={css`
-                  border-bottom: 1px solid #333;
-
-                  &:hover {
-                    border-bottom-color: #444;
-                  }
-                `}
-                onClick={toggleSidebar}
-              >
-                Coen Brothers Film
-              </Button>
-            )}
-          </Subscribe>
-        </h1>
-      </Container>
+      <h1
+        className={css`
+          position: relative;
+          z-index: 20;
+          margin: 0;
+          font-size: 14px;
+          line-height: 1.66;
+          letter-spacing: 0.1em;
+        `}
+      >
+        Every Character Actor Behind a Desk In A Coen Brothers Film
+      </h1>
     </header>
   );
 };

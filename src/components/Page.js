@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
-import { Container } from './layout';
-import Header from './header';
-
 const Layout = ({ children }) => (
   <>
     <Helmet
@@ -16,8 +13,7 @@ const Layout = ({ children }) => (
     >
       <html lang="en" />
     </Helmet>
-    <Header />
-    <Container>{children}</Container>
+    {children}
   </>
 );
 

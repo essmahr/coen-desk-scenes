@@ -4,27 +4,15 @@ import { graphql } from 'gatsby';
 import assembleData from '../lib/assembleData';
 
 import Page from '../components/Page';
-import ColumnDelegator from '../components/ColumnDelegator';
-import ScenesList from '../components/ScenesList';
-import SceneModal from '../components/SceneModal';
-import FilmsListContainer from '../components/FilmsListContainer';
-import KeyboardCapture from '../components/KeyboardCapture';
+import ScenesPanel from '../components/ScenesPanel';
 
 const IndexPage = ({ data, pathContext }) => {
-  const { film: currentFilm, scene } = pathContext;
-  const { films, scenes, currentSceneIndex } = assembleData(data, scene);
+  const { scene } = pathContext;
+  const { films } = assembleData(data, scene);
 
   return (
     <Page>
-      <ColumnDelegator
-        main={<ScenesList scenes={scenes} currentFilm={currentFilm} />}
-        sidebar={<FilmsListContainer films={films} currentFilm={currentFilm} />}
-      />
-      {currentSceneIndex !== null && (
-        <KeyboardCapture currentIndex={currentSceneIndex} scenes={scenes}>
-          <SceneModal scene={scenes[currentSceneIndex]} />
-        </KeyboardCapture>
-      )}
+      <ScenesPanel films={films} />
     </Page>
   );
 };

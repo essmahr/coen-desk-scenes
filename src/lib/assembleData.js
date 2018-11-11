@@ -11,6 +11,7 @@ function getScenesForFilm(allScenes, film) {
     : [];
 }
 
+// eslint-disable-next-line
 function getIndexForScene(scenes, scene) {
   if (!scene) return null;
 
@@ -28,19 +29,20 @@ function getIndexForScene(scenes, scene) {
 }
 
 export default function assembleData({ allFilmsJson, allScenesJson }, scene) {
-  const films = allFilmsJson.edges.map(({ node }) => node);
   const allScenes = allScenesJson.group;
-  const scenes = films.reduce(
-    (scenesArray, film) => [
-      ...scenesArray,
-      ...getScenesForFilm(allScenes, film),
-    ],
-    []
-  );
+  const films = allFilmsJson.edges
+    .map(({ node }) => node)
+    .reduce((scenesArray, film) => {
+      scenesArray.push({
+        ...film,
+        scenes: getScenesForFilm(allScenes, film),
+      });
+
+      return scenesArray;
+    }, []);
 
   return {
     films,
-    scenes,
-    currentSceneIndex: getIndexForScene(scenes, scene),
+    // currentSceneIndex: getIndexForScene(films, scene),
   };
 }
