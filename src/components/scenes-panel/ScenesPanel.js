@@ -1,9 +1,12 @@
+// @flow
 import React, { Component } from 'react';
 import { Flipper } from 'react-flip-toolkit';
 
+import { type Film } from '../../types';
+
 import SceneThumbnail from './SceneThumbnail';
 
-const ScenesList = props => {
+const ScenesList = (props: { films: Array<Film> }) => {
   const scenes = props.films.reduce(
     (scenes, film) => [...scenes, ...film.scenes],
     []
@@ -20,7 +23,7 @@ const ScenesList = props => {
   );
 };
 
-const FilmsList = props => {
+const FilmsList = (props: { films: Array<Film> }) => {
   return (
     <ul>
       {props.films.map(film => {
@@ -29,7 +32,7 @@ const FilmsList = props => {
             <h1>{film.title}</h1>
             <ul>
               {film.scenes.map(scene => (
-                <li>
+                <li key={scene.id}>
                   <SceneThumbnail scene={scene} />
                 </li>
               ))}
@@ -41,12 +44,17 @@ const FilmsList = props => {
   );
 };
 
-class ScenesPanel extends Component {
+class ScenesPanel extends Component<
+  {
+    films: Array<Film>,
+  },
+  { filmsMode: boolean }
+> {
   state = {
     filmsMode: false,
   };
 
-  toggleMode = () => {
+  toggleMode = (): void => {
     this.setState({
       filmsMode: !this.state.filmsMode,
     });

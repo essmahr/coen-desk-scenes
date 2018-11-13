@@ -18,6 +18,7 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-emotion": "^9.2.12",
+    "react-flip-toolkit": "^6.1.0",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.13",
     "typography": "^0.16.17",
@@ -35,6 +36,9 @@
     "scenes:build": "node build-scenes.js"
   },
   "devDependencies": {
+    "flow-bin": "^0.86.0",
+    "flow-typed": "^2.5.1",
+    "gatsby-plugin-flow": "^1.0.2",
     "prettier": "^1.14.2"
   },
   "repository": {

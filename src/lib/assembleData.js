@@ -1,4 +1,16 @@
-function getScenesForFilm(allScenes, film) {
+// @flow
+import {
+  type Film,
+  type Scene,
+  type SceneGroup,
+  type ScenesJson,
+  type FilmsJson,
+} from '../types';
+
+function getScenesForFilm(
+  allScenes: Array<SceneGroup>,
+  film: Film
+): Array<Scene> {
   const filmScenes = allScenes.find(scene => {
     return scene.fieldValue === film.slug;
   });
@@ -12,7 +24,7 @@ function getScenesForFilm(allScenes, film) {
 }
 
 // eslint-disable-next-line
-function getIndexForScene(scenes, scene) {
+function getIndexForScene(scenes: Array<Scene>, scene: Scene) {
   if (!scene) return null;
 
   for (let index = 0; index < scenes.length; index++) {
@@ -28,8 +40,18 @@ function getIndexForScene(scenes, scene) {
   return null;
 }
 
-export default function assembleData({ allFilmsJson, allScenesJson }, scene) {
+export default function assembleData(
+  {
+    allFilmsJson,
+    allScenesJson,
+  }: {
+    allFilmsJson: FilmsJson,
+    allScenesJson: ScenesJson,
+  },
+  scene: Scene
+): { films: Array<Film> } {
   const allScenes = allScenesJson.group;
+
   const films = allFilmsJson.edges
     .map(({ node }) => node)
     .reduce((scenesArray, film) => {

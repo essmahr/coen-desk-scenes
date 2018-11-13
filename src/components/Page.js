@@ -1,8 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import Helmet from 'react-helmet';
 
-const Layout = ({ children }) => (
+type Props = {
+  children: React.ChildrenArray<React.Node>,
+};
+
+const Layout = ({ children }: Props) => (
   <>
     <Helmet
       title="Title"
@@ -16,9 +20,5 @@ const Layout = ({ children }) => (
     {children}
   </>
 );
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Layout;

@@ -1,13 +1,26 @@
+// @flow
 import React from 'react';
 import { graphql } from 'gatsby';
+
+import { type ScenesJson, type FilmsJson, type Scene } from '../types';
 
 import assembleData from '../lib/assembleData';
 
 import Page from '../components/Page';
 import ScenesPanel from '../components/scenes-panel/ScenesPanel';
 
-const IndexPage = ({ data, pathContext }) => {
-  const { scene } = pathContext;
+type Props = {
+  data: {
+    allFilmsJson: FilmsJson,
+    allScenesJson: ScenesJson,
+  },
+  pageContext: {
+    scene: Scene,
+  },
+};
+
+const IndexPage = ({ data, pageContext }: Props) => {
+  const { scene } = pageContext;
   const { films } = assembleData(data, scene);
 
   return (
