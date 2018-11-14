@@ -9,9 +9,9 @@ export type Thumbnail = {
 };
 
 export type Film = {
-  id: string,
   title: string,
   slug: string,
+  year: number,
   scenes: Array<Scene>,
 };
 

@@ -1,0 +1,29 @@
+body {
+  font-family: 'IBM Plex Sans Condensed';
+  background-color: #000;
+  color: #ddd;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: normal;
+}

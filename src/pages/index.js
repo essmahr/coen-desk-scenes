@@ -7,7 +7,7 @@ import { type ScenesJson, type FilmsJson, type Scene } from '../types';
 import assembleData from '../lib/assembleData';
 
 import Page from '../components/Page';
-import ScenesPanel from '../components/scenes-panel/ScenesPanel';
+import ScenesPanelContainer from '../components/scenes-panel/ScenesPanelContainer';
 
 type Props = {
   data: {
@@ -25,7 +25,7 @@ const IndexPage = ({ data, pageContext }: Props) => {
 
   return (
     <Page>
-      <ScenesPanel films={films} />
+      <ScenesPanelContainer films={films} />
     </Page>
   );
 };
