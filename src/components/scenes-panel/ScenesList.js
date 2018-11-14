@@ -15,7 +15,7 @@ const ScenesWithoutFilms = (props: { films: Array<Film> }) => {
   return (
     <ul>
       {scenes.map(scene => (
-        <li key={scene.id}>
+        <li key={scene.id} style={{ display: 'inline' }}>
           <SceneThumbnail scene={scene} />
         </li>
       ))}
@@ -32,7 +32,7 @@ const ScenesWithFilms = (props: { films: Array<Film> }) => {
             <H2>{film.title}</H2>
             <ul>
               {film.scenes.map(scene => (
-                <li key={scene.id}>
+                <li key={scene.id} style={{ display: 'inline' }}>
                   <SceneThumbnail scene={scene} />
                 </li>
               ))}
