@@ -7,7 +7,9 @@ import { type ScenesJson, type FilmsJson, type Scene } from '../types';
 import assembleData from '../lib/assembleData';
 
 import Page from '../components/Page';
-import ScenesPanelContainer from '../components/scenes-panel/ScenesPanelContainer';
+import Lander from '../components/main/Lander';
+import Main from '../components/main/Main';
+import SidebarContainer from '../components/sidebar/SidebarContainer';
 
 type Props = {
   data: {
@@ -25,7 +27,10 @@ const IndexPage = ({ data, pageContext }: Props) => {
 
   return (
     <Page>
-      <ScenesPanelContainer films={films} />
+      <Main>
+        <Lander />
+      </Main>
+      <SidebarContainer films={films} />
     </Page>
   );
 };

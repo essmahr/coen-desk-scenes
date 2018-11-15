@@ -4,7 +4,7 @@ import { Flipper } from 'react-flip-toolkit';
 
 import { type Film } from '../../types';
 
-import ScenesPanel from './ScenesPanel';
+import Sidebar from './Sidebar';
 
 type Props = {
   films: Array<Film>,
@@ -14,9 +14,9 @@ type State = {
   filmsMode: boolean,
 };
 
-class ScenesPanelContainer extends Component<Props, State> {
+class SidebarContainer extends Component<Props, State> {
   state = {
-    filmsMode: true,
+    filmsMode: false,
   };
 
   toggleMode = (): void => {
@@ -28,7 +28,7 @@ class ScenesPanelContainer extends Component<Props, State> {
   render() {
     return (
       <Flipper flipKey={this.state.filmsMode}>
-        <ScenesPanel
+        <Sidebar
           onModeToggle={this.toggleMode}
           filmsMode={this.state.filmsMode}
           films={this.props.films}
@@ -38,4 +38,4 @@ class ScenesPanelContainer extends Component<Props, State> {
   }
 }
 
-export default ScenesPanelContainer;
+export default SidebarContainer;

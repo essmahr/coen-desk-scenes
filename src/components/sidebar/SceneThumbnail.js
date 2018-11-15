@@ -1,29 +1,35 @@
 // @flow
 import * as React from 'react';
 import { Flipped } from 'react-flip-toolkit';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { css } from 'react-emotion';
 
 import { type Scene } from '../../types';
+
+import { sceneRoute } from '../../lib/routes';
 
 type Props = {
   scene: Scene,
 };
 
-export default function SceneThumbnail({ scene }: Props) {
+export default function SceneThumbnail({ scene, ...rest }: Props) {
   return (
     <Flipped flipId={scene.id}>
       <div
         className={css`
-          display: inline-block;
-          width: 60px;
-          margin: 0 8px 8px 0;
+          opacity: 0.8;
+
+          &:hover {
+            opacity: 1;
+          }
         `}
       >
-        <img
-          src={scene.fields.thumbnail.childImageSharp.small.src}
-          alt={scene.timestamp}
-        />
+        <Link to={sceneRoute(scene)}>
+          <img
+            src={scene.fields.thumbnail.childImageSharp.small.src}
+            alt={scene.timestamp}
+          />
+        </Link>
       </div>
     </Flipped>
   );

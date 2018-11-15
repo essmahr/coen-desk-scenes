@@ -1,7 +1,13 @@
 body {
-  font-family: 'IBM Plex Sans Condensed';
+  font-family: 'IBM Plex Sans';
   background-color: #000;
   color: #ddd;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 ul {
@@ -10,8 +16,7 @@ ul {
 }
 
 li {
-  margin: 0;
-  padding: 0;
+  list-style: none;
 }
 
 img {

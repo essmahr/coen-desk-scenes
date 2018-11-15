@@ -12,7 +12,7 @@ type Props = {
   onModeToggle: Function,
 };
 
-export default function ScenesPanel(props: Props) {
+function Sidebar(props: Props) {
   const { films, filmsMode, onModeToggle } = props;
 
   return (
@@ -24,6 +24,8 @@ export default function ScenesPanel(props: Props) {
         bottom: 0;
         width: 300px;
         overflow: auto;
+        border-left: 1px solid #333;
+        padding: 2rem;
       `}
     >
       <button onClick={onModeToggle}>toggle</button>
@@ -31,3 +33,5 @@ export default function ScenesPanel(props: Props) {
     </div>
   );
 }
+
+export default Sidebar;
