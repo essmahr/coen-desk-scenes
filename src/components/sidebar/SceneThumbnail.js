@@ -14,10 +14,11 @@ type Props = {
 
 export default function SceneThumbnail({ scene, ...rest }: Props) {
   return (
-    <Flipped flipId={scene.id}>
+    <Flipped flipId={scene.id} spring="stiff">
       <div
         className={css`
           opacity: 0.8;
+          outline: 2px solid #000;
 
           &:hover {
             opacity: 1;

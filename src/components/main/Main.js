@@ -9,7 +9,7 @@ function Main({ children }: React.ChildrenArray<React.Node>) {
         top: 0;
         left: 0;
         bottom: 0;
-        width: calc(100% - 300px);
+        width: calc(100% - 400px);
       `}
     >
       {children}

@@ -11,6 +11,12 @@ module.exports = {
     'gatsby-transformer-json',
     'gatsby-plugin-emotion',
     {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve('./src/layout'),
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'data',

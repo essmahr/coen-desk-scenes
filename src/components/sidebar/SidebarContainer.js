@@ -16,8 +16,12 @@ type State = {
 
 class SidebarContainer extends Component<Props, State> {
   state = {
-    filmsMode: false,
+    filmsMode: true,
   };
+
+  shouldComponentUpdate() {
+    return false;
+  }
 
   toggleMode = (): void => {
     this.setState({

@@ -2,37 +2,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import { type ScenesJson, type FilmsJson, type Scene } from '../types';
-
-import assembleData from '../lib/assembleData';
-
-import Page from '../components/Page';
 import Lander from '../components/main/Lander';
-import Main from '../components/main/Main';
-import SidebarContainer from '../components/sidebar/SidebarContainer';
 
-type Props = {
-  data: {
-    allFilmsJson: FilmsJson,
-    allScenesJson: ScenesJson,
-  },
-  pageContext: {
-    scene: Scene,
-  },
-};
-
-const IndexPage = ({ data, pageContext }: Props) => {
-  const { scene } = pageContext;
-  const { films } = assembleData(data, scene);
-
-  return (
-    <Page>
-      <Main>
-        <Lander />
-      </Main>
-      <SidebarContainer films={films} />
-    </Page>
-  );
+const IndexPage = () => {
+  return <Lander />;
 };
 
 export default IndexPage;

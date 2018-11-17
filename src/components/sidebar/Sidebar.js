@@ -13,7 +13,7 @@ type Props = {
 };
 
 function Sidebar(props: Props) {
-  const { films, filmsMode, onModeToggle } = props;
+  const { films, onModeToggle } = props;
 
   return (
     <div
@@ -22,14 +22,14 @@ function Sidebar(props: Props) {
         top: 0;
         right: 0;
         bottom: 0;
-        width: 300px;
+        width: 400px;
         overflow: auto;
-        border-left: 1px solid #333;
+        border-left: 1px solid #211d1a;
         padding: 2rem;
       `}
     >
       <button onClick={onModeToggle}>toggle</button>
-      <ScenesList films={films} filmsMode={filmsMode} />
+      <ScenesList films={films} />
     </div>
   );
 }
