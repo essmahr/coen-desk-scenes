@@ -19,11 +19,9 @@ class SidebarContainer extends Component<Props, State> {
     filmsMode: true,
   };
 
-  shouldComponentUpdate() {
-    return false;
-  }
-
   toggleMode = (): void => {
+    console.log(this.state.filmsMode);
+
     this.setState({
       filmsMode: !this.state.filmsMode,
     });

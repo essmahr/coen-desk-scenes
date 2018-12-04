@@ -12,8 +12,22 @@ type Props = {
   onModeToggle: Function,
 };
 
+function ToggleButton({
+  onClick,
+  filmsMode,
+}: {
+  onClick: Function,
+  filmsMode: boolean,
+}) {
+  return (
+    <button onClick={onClick}>
+      {filmsMode ? 'Hide films' : 'Show films '}
+    </button>
+  );
+}
+
 function Sidebar(props: Props) {
-  const { films, onModeToggle } = props;
+  const { films, onModeToggle, filmsMode } = props;
 
   return (
     <div
@@ -28,8 +42,8 @@ function Sidebar(props: Props) {
         padding: 2rem;
       `}
     >
-      <button onClick={onModeToggle}>toggle</button>
-      <ScenesList films={films} />
+      <ToggleButton onClick={onModeToggle} filmsMode={filmsMode} />
+      <ScenesList films={films} filmsMode={filmsMode} />
     </div>
   );
 }
