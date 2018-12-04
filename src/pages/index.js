@@ -2,9 +2,22 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import Lander from '../components/main/Lander';
+import type { Scene } from '../types';
 
-const IndexPage = () => {
+import Lander from '../components/main/Lander';
+import ScenePanel from '../components/main/ScenePanel';
+
+type Props = {
+  pageContext: {
+    scene?: Scene,
+  },
+};
+
+const IndexPage = (props: Props) => {
+  const { scene } = props.pageContext;
+
+  if (scene) return <ScenePanel scene={scene} />;
+
   return <Lander />;
 };
 
