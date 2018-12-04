@@ -3,9 +3,11 @@ const fs = require('fs');
 
 const IMAGE_EXT = '.jpeg';
 const DEFAULT_FIELD_KEYS = ['quote'];
+const DUMMY_QUOTE =
+  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus';
 
 const defaultFields = DEFAULT_FIELD_KEYS.reduce((o, k) => {
-  o[k] = '';
+  o[k] = DUMMY_QUOTE;
   return o;
 }, {});
 
@@ -33,7 +35,7 @@ const imageJson = fs
 
     if (found) {
       DEFAULT_FIELD_KEYS.forEach(field => {
-        if (!found[field] || found[field] === '') {
+        if (!found[field] || found[field] === DUMMY_QUOTE) {
           console.log(`${film} / ${timestamp} is missing ${field}!`);
         }
       });
