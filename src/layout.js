@@ -2,30 +2,16 @@
 import * as React from 'react';
 import Helmet from 'react-helmet';
 
-import assembleData from './lib/assembleData';
-
-import { type ScenesJson, type FilmsJson, type Scene } from '../types';
-
 import Main from './components/main/Main';
-import SidebarContainer from './components/sidebar/SidebarContainer';
+import SidebarQuery from './components/sidebar/SidebarQuery';
 
 import './app.css';
 
 type Props = {
-  data: {
-    allFilmsJson: FilmsJson,
-    allScenesJson: ScenesJson,
-  },
-  pageContext: {
-    scene: Scene,
-  },
   children: React.ChildrenArray<React.Node>,
 };
 
-const Layout = ({ data, pageContext, children }: Props) => {
-  // const { scene } = pageContext;
-  const { films } = assembleData(data);
-
+const Layout = ({ children }: Props) => {
   return (
     <>
       <Helmet
@@ -48,7 +34,7 @@ const Layout = ({ data, pageContext, children }: Props) => {
         <html lang="en" />
       </Helmet>
       <Main>{children}</Main>
-      <SidebarContainer films={films} />
+      <SidebarQuery />
     </>
   );
 };

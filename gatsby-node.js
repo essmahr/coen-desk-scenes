@@ -2,6 +2,19 @@ const path = require('path');
 const fs = require('fs');
 const { sceneRoute, filmRoute } = require('./src/lib/routes');
 
+function getScenesForFilm(allScenesJson, film) {
+  const filmScenes = allScenesJson.edges.filter(({ node: scene }) => {
+    return scene.film === film.slug;
+  });
+
+  return filmScenes
+    ? filmScenes.map(({ node: scene }) => ({
+        ...scene,
+        film,
+      }))
+    : [];
+}
+
 exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type !== 'ScenesJson') {
     return;
@@ -24,10 +37,12 @@ exports.onCreateNode = ({ node, actions }) => {
 
 const query = `
   {
-    allFilmsJson {
+    allFilmsJson(sort: { fields: [year], order: ASC }) {
       edges {
         node {
           slug
+          title
+          year
         }
       }
     },
@@ -58,25 +73,27 @@ exports.createPages = ({ graphql, actions }) => {
     .then(pages => {
       const { allFilmsJson, allScenesJson } = pages.data;
 
-      allFilmsJson.edges.forEach(({ node }) => {
+      allFilmsJson.edges.forEach(({ node: film }) => {
         createPage({
-          path: filmRoute(node),
+          path: filmRoute(film),
           component: path.resolve(`./src/pages/index.js`),
           context: {
-            film: node.slug,
+            film: film.slug,
           },
         });
-      });
 
-      allScenesJson.edges.forEach(({ node }) => {
-        createPage({
-          path: sceneRoute(node),
-          component: path.resolve(`./src/pages/index.js`),
-          context: {
-            scene: node,
-          },
+        const filmScenes = getScenesForFilm(allScenesJson, film);
+
+        filmScenes.forEach(scene => {
+          createPage({
+            path: sceneRoute(scene),
+            component: path.resolve(`./src/pages/index.js`),
+            context: {
+              scene,
+            },
+          });
         });
       });
     })
-    .catch(console.log);
+    .catch(console.error);
 };

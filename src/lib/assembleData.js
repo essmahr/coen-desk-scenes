@@ -7,7 +7,7 @@ import {
   type FilmsJson,
 } from '../types';
 
-function getScenesForFilm(
+export function getScenesForFilm(
   allScenes: Array<SceneGroup>,
   film: Film
 ): Array<Scene> {
@@ -40,16 +40,13 @@ function getIndexForScene(scenes: Array<Scene>, scene: Scene) {
   return null;
 }
 
-export default function assembleData(
-  {
-    allFilmsJson,
-    allScenesJson,
-  }: {
-    allFilmsJson: FilmsJson,
-    allScenesJson: ScenesJson,
-  },
-  scene: Scene
-): { films: Array<Film> } {
+export default function assembleData({
+  allFilmsJson,
+  allScenesJson,
+}: {
+  allFilmsJson: FilmsJson,
+  allScenesJson: ScenesJson,
+}): { films: Array<Film> } {
   const allScenes = allScenesJson.group;
 
   const films = allFilmsJson.edges
@@ -65,6 +62,5 @@ export default function assembleData(
 
   return {
     films,
-    // currentSceneIndex: getIndexForScene(films, scene),
   };
 }
