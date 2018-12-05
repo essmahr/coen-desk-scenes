@@ -38,11 +38,9 @@ export type ScenesJson = {
 
 export type Scene = {
   id: string,
-
   timestamp: string,
-
   film: Film,
-
+  quote: string,
   fields: {
     thumbnail: Thumbnail,
   },

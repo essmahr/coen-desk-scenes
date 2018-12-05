@@ -2,7 +2,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import type { Scene } from '../types';
+import { type Scene } from '../types';
 
 import Lander from '../components/main/Lander';
 import ScenePanel from '../components/main/ScenePanel';
@@ -15,6 +15,8 @@ type Props = {
 
 const IndexPage = (props: Props) => {
   const { scene } = props.pageContext;
+
+  console.log(scene);
 
   if (scene) return <ScenePanel scene={scene} />;
 

@@ -36,6 +36,16 @@ const query = `
         node {
           timestamp
           film
+          quote
+          fields {
+            thumbnail: image {
+              childImageSharp {
+                small: fixed(width: 300, quality: 100) {
+                  src
+                }
+              }
+            }
+          }
         }
       }
     }

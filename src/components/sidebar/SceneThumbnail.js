@@ -41,6 +41,7 @@ export const sceneThumbnailFragment = graphql`
     id
     timestamp
     film
+    quote
     fields {
       thumbnail: image {
         childImageSharp {
