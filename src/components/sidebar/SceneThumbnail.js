@@ -40,8 +40,6 @@ export const sceneThumbnailFragment = graphql`
   fragment Scene_thumbnail on ScenesJson {
     id
     timestamp
-    film
-    quote
     fields {
       thumbnail: image {
         childImageSharp {

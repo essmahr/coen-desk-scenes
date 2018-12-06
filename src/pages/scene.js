@@ -10,9 +10,12 @@ type Props = {
 };
 
 const ScenePage = (props: Props) => {
-  const scene = props.data.scenesJson;
+  console.log(props);
 
-  return <ScenePanel scene={scene} />;
+  const scene = props.data.scenesJson;
+  const film = props.data.filmsJson;
+
+  return <ScenePanel scene={scene} film={film} />;
 };
 
 export default ScenePage;
@@ -21,6 +24,10 @@ export const query = graphql`
   query($film: String!, $timestamp: String!) {
     scenesJson(film: { eq: $film }, timestamp: { eq: $timestamp }) {
       ...SceneMain
+    }
+    filmsJson(slug: { eq: $film }) {
+      title
+      year
     }
   }
 `;

@@ -35,14 +35,20 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 };
 
+exports.onCreatePage = ({ page, actions }) => {
+  if (page.path === '/scene/') {
+    actions.deletePage(page);
+  }
+};
+
 const query = `
   {
     allScenesJson {
       edges {
         node {
           timestamp
-          film
           quote
+          film
         }
       }
     }

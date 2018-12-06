@@ -2,9 +2,9 @@
 import React from 'react';
 import { css } from 'emotion';
 import { graphql } from 'gatsby';
-import { type Scene } from '../../types';
+import { type Scene, type Film } from '../../types';
 
-const ScenePanel = function({ scene }: { scene: Scene }) {
+const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
   const imgSrc = scene.fields.image.childImageSharp.fixed.src;
   return (
     <div
@@ -18,7 +18,7 @@ const ScenePanel = function({ scene }: { scene: Scene }) {
       `}
     >
       <img src={imgSrc} alt="alt" />
-      <div>{scene.film.title}</div>
+      <div>{film.title}</div>
       <blockquote
         className={css`
           font-family: 'IBM Plex Serif';
