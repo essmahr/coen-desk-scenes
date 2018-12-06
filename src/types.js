@@ -42,6 +42,7 @@ export type Scene = {
   film: Film,
   quote: string,
   fields: {
+    image: Object,
     thumbnail: Thumbnail,
   },
 };

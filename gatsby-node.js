@@ -37,30 +37,12 @@ exports.onCreateNode = ({ node, actions }) => {
 
 const query = `
   {
-    allFilmsJson(sort: { fields: [year], order: ASC }) {
-      edges {
-        node {
-          slug
-          title
-          year
-        }
-      }
-    },
     allScenesJson {
       edges {
         node {
           timestamp
           film
           quote
-          fields {
-            thumbnail: image {
-              childImageSharp {
-                small: fixed(width: 300, quality: 100) {
-                  src
-                }
-              }
-            }
-          }
         }
       }
     }
@@ -69,29 +51,26 @@ const query = `
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
+
+  createPage({
+    path: '/',
+    component: path.resolve(`./src/pages/index.js`),
+  });
+
   return graphql(query)
     .then(pages => {
-      const { allFilmsJson, allScenesJson } = pages.data;
+      const { allScenesJson } = pages.data;
 
-      allFilmsJson.edges.forEach(({ node: film }) => {
+      allScenesJson.edges.forEach(({ node: scene }) => {
+        const { timestamp, film } = scene;
+
         createPage({
-          path: filmRoute(film),
-          component: path.resolve(`./src/pages/index.js`),
+          path: sceneRoute(scene),
+          component: path.resolve(`./src/pages/scene.js`),
           context: {
-            film: film.slug,
+            timestamp,
+            film,
           },
-        });
-
-        const filmScenes = getScenesForFilm(allScenesJson, film);
-
-        filmScenes.forEach(scene => {
-          createPage({
-            path: sceneRoute(scene),
-            component: path.resolve(`./src/pages/index.js`),
-            context: {
-              scene,
-            },
-          });
         });
       });
     })

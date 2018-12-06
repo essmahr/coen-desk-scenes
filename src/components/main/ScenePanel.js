@@ -1,11 +1,11 @@
 // @flow
 import React from 'react';
 import { css } from 'emotion';
-
+import { graphql } from 'gatsby';
 import { type Scene } from '../../types';
 
 const ScenePanel = function({ scene }: { scene: Scene }) {
-  const imgSrc = scene.fields.thumbnail.childImageSharp.small.src;
+  const imgSrc = scene.fields.image.childImageSharp.fixed.src;
   return (
     <div
       className={css`
@@ -38,3 +38,24 @@ const ScenePanel = function({ scene }: { scene: Scene }) {
 };
 
 export default ScenePanel;
+
+export const query = graphql`
+  fragment SceneImageMain on fields_2 {
+    image {
+      childImageSharp {
+        fixed(width: 600) {
+          src
+        }
+      }
+    }
+  }
+
+  fragment SceneMain on ScenesJson {
+    timestamp
+    film
+    quote
+    fields {
+      ...SceneImageMain
+    }
+  }
+`;
