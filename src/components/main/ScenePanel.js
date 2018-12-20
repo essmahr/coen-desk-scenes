@@ -4,7 +4,7 @@ import { css } from 'emotion';
 import { graphql } from 'gatsby';
 import { type Scene, type Film } from '../../types';
 
-import { MainContainer, headerHeight } from '../structure';
+import { mainContainer } from '../../lib/styles';
 
 const DetailsSection = ({ film }: { film: Film }) => {
   const { title, year } = film;
@@ -61,7 +61,7 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
           justify-content: center;
         `}
       >
-        <MainContainer>
+        <div className={mainContainer}>
           <img src={imgSrc} alt="alt" />
           <div
             className={css`
@@ -77,7 +77,7 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
             </div>
             <DetailsSection film={film} />
           </div>
-        </MainContainer>
+        </div>
       </div>
     </div>
   );

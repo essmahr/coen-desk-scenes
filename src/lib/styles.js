@@ -1,24 +1,23 @@
-import { rhythm } from './typography';
+import { css } from 'react-emotion';
 
-export const gutter = (mult = 1) => rhythm(mult * 1);
+const goldenRatio = 1.618;
 
-export const BREAKPOINTS = [600, 1200];
+export const breakpoints = [576, 768, 992, 1200];
 
-export const mqs = BREAKPOINTS.reduce(
-  (queries, breakpoint, index, breakpoints) => {
-    if (index === 0) {
-      queries.push(`@media (max-width: ${breakpoint - 1}px)`);
-    }
-
-    const rule = [`@media (min-width: ${breakpoint}px)`];
-
-    if (index !== breakpoints.length - 1) {
-      rule.push(`(max-width: ${breakpoints[index + 1] - 1}px)`);
-    }
-
-    queries.push(rule.join(' and '));
-
-    return queries;
-  },
-  []
+export const mediaQueries = breakpoints.map(
+  bp => `@media (min-width: ${bp}px)`
 );
+
+export const headerHeight = '2rem';
+
+export const mainContainer = css`
+  padding-left: 4vw;
+  padding-right: 4vw;
+`;
+
+export const sidebarWidths = [
+  '100%',
+  `${50 / goldenRatio}vw`,
+  null,
+  `${40 / goldenRatio}vw`,
+];

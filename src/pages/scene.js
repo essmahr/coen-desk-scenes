@@ -10,8 +10,6 @@ type Props = {
 };
 
 const ScenePage = (props: Props) => {
-  console.log(props);
-
   const scene = props.data.scenesJson;
   const film = props.data.filmsJson;
 

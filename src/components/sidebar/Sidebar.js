@@ -2,6 +2,8 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
 
+import { mediaQueries, sidebarWidths } from '../../lib/styles';
+
 import { type Film } from '../../types';
 
 import ScenesList from './ScenesList';
@@ -40,27 +42,56 @@ function ToggleButton({
   );
 }
 
+const responsiveWidths = mediaQueries.reduce((style, query, index) => {
+  if (sidebarWidths[index]) {
+    style[query] = {
+      width: sidebarWidths[index],
+    };
+  }
+
+  return style;
+}, {});
+
 function Sidebar(props: Props) {
   const { films, onModeToggle, filmsMode } = props;
 
+  console.log(`
+  height: calc(100% - 2rem);
+  overflow: auto;
+  padding: 1rem;
+  margin-top: 2rem;
+  ${mediaQueries[1]}: {
+    padding: 2rem;
+  };
+`);
+
   return (
     <div
-      className={css`
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 400px;
-        border-left: 1px solid #211d1a;
-      `}
+      css={[
+        css`
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          border-left: 1px solid #211d1a;
+        `,
+        css(responsiveWidths),
+      ]}
     >
       <div
-        className={css`
+        css={[
+          `
           height: calc(100% - 2rem);
           overflow: auto;
-          padding: 2rem;
-          margin-top: 2rem;
-        `}
+          padding: 1rem;
+          margin-top: 2rem;`,
+
+          css({
+            [mediaQueries[2]]: {
+              padding: '2rem',
+            },
+          }),
+        ]}
       >
         <ScenesList films={films} filmsMode={filmsMode} />
       </div>

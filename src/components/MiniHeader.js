@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'react-emotion';
 
-import { MainContainer, headerHeight } from './structure';
+import { mainContainer, headerHeight } from '../lib/styles';
 
 const Header = styled.header`
   position: absolute;
@@ -25,11 +25,11 @@ const Header = styled.header`
 export default function MiniHeader() {
   return (
     <Header>
-      <MainContainer>
+      <div className={mainContainer}>
         <Link to="/">
           Every character actor behind a desk in a coen brothers film
         </Link>
-      </MainContainer>
+      </div>
     </Header>
   );
 }
