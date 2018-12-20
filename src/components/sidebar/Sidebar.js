@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { css } from 'emotion';
+import styled, { css } from 'react-emotion';
 
 import { type Film } from '../../types';
 
@@ -12,6 +12,20 @@ type Props = {
   onModeToggle: Function,
 };
 
+const Button = styled.button`
+  display: block;
+  background-color: #080605;
+  color: #dbdbd3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: 0;
+  height: 2rem;
+  padding: 0;
+  border-bottom: 1px solid #211d1a;
+`;
+
 function ToggleButton({
   onClick,
   filmsMode,
@@ -20,9 +34,9 @@ function ToggleButton({
   filmsMode: boolean,
 }) {
   return (
-    <button onClick={onClick}>
+    <Button onClick={onClick}>
       {filmsMode ? 'Hide films' : 'Show films '}
-    </button>
+    </Button>
   );
 }
 
@@ -37,13 +51,20 @@ function Sidebar(props: Props) {
         right: 0;
         bottom: 0;
         width: 400px;
-        overflow: auto;
         border-left: 1px solid #211d1a;
-        padding: 2rem;
       `}
     >
+      <div
+        className={css`
+          height: calc(100% - 2rem);
+          overflow: auto;
+          padding: 2rem;
+          margin-top: 2rem;
+        `}
+      >
+        <ScenesList films={films} filmsMode={filmsMode} />
+      </div>
       <ToggleButton onClick={onModeToggle} filmsMode={filmsMode} />
-      <ScenesList films={films} filmsMode={filmsMode} />
     </div>
   );
 }

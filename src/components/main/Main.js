@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { css } from 'emotion';
 
+import MiniHeader from '../MiniHeader';
+import { headerHeight } from '../structure';
+
 function Main({ children }: React.ChildrenArray<React.Node>) {
   return (
     <div
@@ -12,6 +15,7 @@ function Main({ children }: React.ChildrenArray<React.Node>) {
         width: calc(100% - 400px);
       `}
     >
+      <MiniHeader />
       {children}
     </div>
   );

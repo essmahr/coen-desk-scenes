@@ -4,35 +4,81 @@ import { css } from 'emotion';
 import { graphql } from 'gatsby';
 import { type Scene, type Film } from '../../types';
 
+import { MainContainer, headerHeight } from '../structure';
+
+const DetailsSection = ({ film }: { film: Film }) => {
+  const { title, year } = film;
+
+  return (
+    <div
+      className={css`
+        font-size: 12px;
+        font-family: 'IBM Plex Sans Condensed';
+        font-weight: 500;
+      `}
+    >
+      {title} &mdash; {year}
+    </div>
+  );
+};
+
+const QuoteSection = ({ quote }: { quote: string }) => {
+  return (
+    <blockquote
+      className={css`
+        font-family: 'IBM Plex Serif';
+        font-style: italic;
+        font-size: 1.5rem;
+        font-weight: 500;
+        text-indent: -0.5em;
+      `}
+    >
+      &ldquo;
+      {quote}
+      &rdquo;
+    </blockquote>
+  );
+};
+
 const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
   const imgSrc = scene.fields.image.childImageSharp.fixed.src;
   return (
     <div
       className={css`
-        height: 100%;
-        width: 100%;
         display: flex;
         flex-direction: column;
-        padding: 4rem 6rem;
+        height: calc(100% - 2rem);
+        overflow-y: auto;
         justify-content: center;
+        margin-top: 2rem;
       `}
     >
-      <img src={imgSrc} alt="alt" />
-      <div>{film.title}</div>
-      <blockquote
+      <div
         className={css`
-          font-family: 'IBM Plex Serif';
-          font-style: italic;
-          font-size: 1.25rem;
-          margin-top: 2rem;
-          font-weight: 500;
-          text-indent: -0.5em;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         `}
       >
-        &ldquo;
-        {scene.quote}
-        &rdquo;
-      </blockquote>
+        <MainContainer>
+          <img src={imgSrc} alt="alt" />
+          <div
+            className={css`
+              margin-top: 2rem;
+            `}
+          >
+            <div
+              className={css`
+                padding-bottom: 1rem;
+              `}
+            >
+              <QuoteSection quote={scene.quote} />
+            </div>
+            <DetailsSection film={film} />
+          </div>
+        </MainContainer>
+      </div>
     </div>
   );
 };
