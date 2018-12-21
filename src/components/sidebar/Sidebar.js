@@ -55,16 +55,6 @@ const responsiveWidths = mediaQueries.reduce((style, query, index) => {
 function Sidebar(props: Props) {
   const { films, onModeToggle, filmsMode } = props;
 
-  console.log(`
-  height: calc(100% - 2rem);
-  overflow: auto;
-  padding: 1rem;
-  margin-top: 2rem;
-  ${mediaQueries[1]}: {
-    padding: 2rem;
-  };
-`);
-
   return (
     <div
       css={[

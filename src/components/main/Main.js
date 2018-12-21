@@ -14,7 +14,12 @@ const responsiveWidths = mediaQueries.reduce((style, query, index) => {
   return style;
 }, {});
 
-function Main({ children }: React.ChildrenArray<React.Node>) {
+type MainProps = {
+  children: React.ChildrenArray<React.Node>,
+  isRoot: boolean,
+};
+
+function Main({ children, isRoot }: MainProps) {
   return (
     <div
       css={[
@@ -27,7 +32,7 @@ function Main({ children }: React.ChildrenArray<React.Node>) {
         css(responsiveWidths),
       ]}
     >
-      <MiniHeader />
+      <MiniHeader visible={!isRoot} />
       {children}
     </div>
   );

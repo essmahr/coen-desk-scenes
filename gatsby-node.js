@@ -60,7 +60,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   createPage({
     path: '/',
-    component: path.resolve(`./src/pages/index.js`),
+    component: path.resolve(`./src/pages/home.js`),
   });
 
   return graphql(query)
