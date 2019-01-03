@@ -23,7 +23,7 @@ const Header = styled.header`
   justify-content: center;
   border-bottom: 1px solid #211d1a;
   text-transform: uppercase;
-  transition: transform ${duration}ms cubic-bezier(0.81, 0.115, 0.325, 0.91);
+  transition: transform ${duration}ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 `;
 
 const transitionStyles = {

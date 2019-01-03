@@ -9,14 +9,12 @@ import './app.css';
 
 type Props = {
   children: React.ChildrenArray<React.Node>,
-  pageContext: {
-    timestamp?: string,
+  location: {
+    pathname: string,
   },
 };
 
 const Layout = ({ children, ...props }: Props) => {
-  const isRoot = props.pageContext.timestamp === undefined;
-
   return (
     <>
       <Helmet
@@ -33,7 +31,7 @@ const Layout = ({ children, ...props }: Props) => {
 
         <html lang="en" />
       </Helmet>
-      <Main isRoot={isRoot}>{children}</Main>
+      <Main location={props.location.pathname}>{children}</Main>
       <SidebarQuery />
     </>
   );

@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { css } from 'emotion';
+import styled, { css } from 'react-emotion';
 
 import MiniHeader from '../MiniHeader';
+import TransitionContainer from './TransitionContainer';
 import { mediaQueries, sidebarWidths } from '../../lib/styles';
 
 const responsiveWidths = mediaQueries.reduce((style, query, index) => {
@@ -16,10 +17,10 @@ const responsiveWidths = mediaQueries.reduce((style, query, index) => {
 
 type MainProps = {
   children: React.ChildrenArray<React.Node>,
-  isRoot: boolean,
+  location: string,
 };
 
-function Main({ children, isRoot }: MainProps) {
+function Main({ children, isRoot, location }: MainProps) {
   return (
     <div
       css={[
@@ -32,8 +33,8 @@ function Main({ children, isRoot }: MainProps) {
         css(responsiveWidths),
       ]}
     >
-      <MiniHeader visible={!isRoot} />
-      {children}
+      <MiniHeader visible={location !== '/'} />
+      <TransitionContainer location={location}>{children}</TransitionContainer>
     </div>
   );
 }
