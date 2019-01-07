@@ -1,5 +1,6 @@
+// @flow
 import * as React from 'react';
-import styled, { css } from 'react-emotion';
+import { css } from 'react-emotion';
 
 import MiniHeader from '../MiniHeader';
 import TransitionContainer from './TransitionContainer';
@@ -15,12 +16,15 @@ const responsiveWidths = mediaQueries.reduce((style, query, index) => {
   return style;
 }, {});
 
-type MainProps = {
+function Main({
+  children,
+  location,
+  sceneIndex,
+}: {
   children: React.ChildrenArray<React.Node>,
   location: string,
-};
-
-function Main({ children, isRoot, location }: MainProps) {
+  sceneIndex: number,
+}) {
   return (
     <div
       css={[
@@ -34,7 +38,9 @@ function Main({ children, isRoot, location }: MainProps) {
       ]}
     >
       <MiniHeader visible={location !== '/'} />
-      <TransitionContainer location={location}>{children}</TransitionContainer>
+      <TransitionContainer location={location} sceneIndex={sceneIndex}>
+        {children}
+      </TransitionContainer>
     </div>
   );
 }

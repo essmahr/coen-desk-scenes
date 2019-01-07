@@ -2,19 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const { sceneRoute, filmRoute } = require('./src/lib/routes');
 
-function getScenesForFilm(allScenesJson, film) {
-  const filmScenes = allScenesJson.edges.filter(({ node: scene }) => {
-    return scene.film === film.slug;
-  });
-
-  return filmScenes
-    ? filmScenes.map(({ node: scene }) => ({
-        ...scene,
-        film,
-      }))
-    : [];
-}
-
 exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type !== 'ScenesJson') {
     return;
@@ -43,12 +30,21 @@ exports.onCreatePage = ({ page, actions }) => {
 
 const query = `
   {
-    allScenesJson {
+    allFilmsJson(sort: { fields: year }) {
       edges {
         node {
-          timestamp
-          quote
-          film
+          slug
+        }
+      }
+    }
+    allScenesJson(sort:{ fields: timestamp, order: ASC }) {
+      group(field: film) {
+        fieldValue
+        edges {
+          node {
+            timestamp
+            quote
+          }
         }
       }
     }
@@ -65,10 +61,35 @@ exports.createPages = ({ graphql, actions }) => {
 
   return graphql(query)
     .then(pages => {
-      const { allScenesJson } = pages.data;
+      const { allScenesJson, allFilmsJson } = pages.data;
+      let counter = 0;
 
-      allScenesJson.edges.forEach(({ node: scene }) => {
-        const { timestamp, film } = scene;
+      const orderedScenes = allFilmsJson.edges.reduce(
+        (scenes, { node: film }) => {
+          const { slug } = film;
+
+          const filmSceneGroup = allScenesJson.group.find(
+            sceneGroup => sceneGroup.fieldValue === slug
+          );
+
+          const scenesArray = filmSceneGroup
+            ? filmSceneGroup.edges.map(({ node: scene }) => {
+                counter++;
+
+                return {
+                  ...scene,
+                  film: slug,
+                  index: counter,
+                };
+              })
+            : [];
+          return [...scenes, ...scenesArray];
+        },
+        []
+      );
+
+      orderedScenes.forEach(scene => {
+        const { timestamp, film, index } = scene;
 
         createPage({
           path: sceneRoute(scene),
@@ -76,6 +97,7 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             timestamp,
             film,
+            index,
           },
         });
       });

@@ -12,9 +12,12 @@ type Props = {
   location: {
     pathname: string,
   },
+  pageContext: {
+    index: number,
+  },
 };
 
-const Layout = ({ children, ...props }: Props) => {
+const Layout = ({ children, location, pageContext }: Props) => {
   return (
     <>
       <Helmet
@@ -31,7 +34,9 @@ const Layout = ({ children, ...props }: Props) => {
 
         <html lang="en" />
       </Helmet>
-      <Main location={props.location.pathname}>{children}</Main>
+      <Main location={location.pathname} sceneIndex={pageContext.index}>
+        {children}
+      </Main>
       <SidebarQuery />
     </>
   );

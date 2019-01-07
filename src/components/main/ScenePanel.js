@@ -47,7 +47,6 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
       className={css`
         display: flex;
         flex-direction: column;
-        height: calc(100% - 2rem);
         overflow-y: auto;
         justify-content: center;
         margin-top: 2rem;
