@@ -4,7 +4,85 @@ import { css } from 'emotion';
 import { graphql } from 'gatsby';
 import { type Scene, type Film } from '../../types';
 
+import * as eases from '../../lib/easings';
 import { mainContainer } from '../../lib/styles';
+
+import { TRANSITIONS } from '../../lib/transition-helpers';
+const { ROOT_SCENE, SCENE_ROOT, INCREMENT, DECREMENT } = TRANSITIONS;
+const ease = `cubic-bezier(0.645, 0.045, 0.355, 1.000)`;
+const duration = 900;
+const interval = 400;
+
+export const sceneTransitions = `
+.${INCREMENT} & {
+  &.panel-enter {
+    transform: translateY(50%);
+    opacity: 0;
+    &.panel-enter-active {
+      transition: all 400ms ${eases.easeInOutCubic};
+      transform: translateY(0.01%);
+      opacity: 1;
+    }
+  }
+
+
+  &.panel-exit {
+    transform: translateY(-0.01%);
+    opacity: 1;
+
+    &.panel-exit-active {
+      transition: all 400ms ${eases.easeInOutCubic};
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+  }
+}
+
+.${DECREMENT} & {
+  &.panel-enter {
+    transform: translateY(-50%);
+    opacity: 0;
+    &.panel-enter-active {
+      transition: all 400ms ${eases.easeInOutCubic};
+      transform: translateY(-0.01%);
+      opacity: 1;
+    }
+  }
+
+  &.panel-exit {
+    transform: translateY(0.01%);
+    opacity: 1;
+
+    &.panel-exit-active {
+      transition: all 400ms ${eases.easeInOutCubic};
+      transform: translateY(50%);
+      opacity: 0;
+    }
+  }
+}
+
+  &.${ROOT_SCENE}-exit {
+    transform: scale(0.999);
+    opacity: 1;
+
+    &.${ROOT_SCENE}-exit-active {
+      transition: all ${duration / 2}ms ${ease};
+      transform: scale(0.97);
+      opacity: 0;
+    }
+  }
+
+  &.${ROOT_SCENE}-enter {
+    transform: translateX(3%);
+    opacity: 0;
+
+    &.${ROOT_SCENE}-enter-active {
+      transition: all 650ms ${eases.easeOutSine} 300ms;
+      transform: translateX(0.01%);
+      opacity: 1;
+    }
+  }
+`;
 
 const DetailsSection = ({ film }: { film: Film }) => {
   const { title, year } = film;
@@ -83,24 +161,3 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
 };
 
 export default ScenePanel;
-
-export const query = graphql`
-  fragment SceneImageMain on fields_2 {
-    image {
-      childImageSharp {
-        fixed(width: 600) {
-          src
-        }
-      }
-    }
-  }
-
-  fragment SceneMain on ScenesJson {
-    timestamp
-    film
-    quote
-    fields {
-      ...SceneImageMain
-    }
-  }
-`;

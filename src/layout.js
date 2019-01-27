@@ -34,7 +34,7 @@ const Layout = ({ children, location, pageContext }: Props) => {
 
         <html lang="en" />
       </Helmet>
-      <Main location={location.pathname} sceneIndex={pageContext.index}>
+      <Main location={location.pathname} sceneIndex={pageContext.index || null}>
         {children}
       </Main>
       <SidebarQuery />

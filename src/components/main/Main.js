@@ -23,7 +23,7 @@ function Main({
 }: {
   children: React.ChildrenArray<React.Node>,
   location: string,
-  sceneIndex: number,
+  sceneIndex: number | null,
 }) {
   return (
     <div

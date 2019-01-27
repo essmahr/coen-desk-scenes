@@ -1,44 +1,47 @@
 // @flow
 
+export const TRANSITIONS = {
+  ROOT_ROOT: 'root-to-root',
+  ROOT_SCENE: 'root-to-scene',
+  SCENE_ROOT: 'scene-to-root',
+  INCREMENT: 'scene-increment',
+  DECREMENT: 'scene-decrement',
+};
+
 export function getTransitionTypeForRender(
   props: Object,
   state: Object
 ): null | {} {
-  const prevPanel = state.panelKey;
+  const currentPanel = state.currentSceneIndex;
   const nextPanel = props.sceneIndex;
 
   const navigatingToRoot = nextPanel === null;
-  const navigatingFromRoot = prevPanel === null;
-
-  const newState = {
-    panelKey: nextPanel,
-  };
-
+  const navigatingFromRoot = currentPanel === null;
   let transitionType = null;
 
   if (navigatingToRoot && navigatingFromRoot) {
-    transitionType = 'root-to-root';
+    transitionType = TRANSITIONS.ROOT_ROOT;
   }
 
   if (navigatingToRoot && !navigatingFromRoot) {
-    transitionType = 'scene-to-root';
+    transitionType = TRANSITIONS.SCENE_ROOT;
   }
 
   if (!navigatingToRoot && navigatingFromRoot) {
-    transitionType = 'root-to-scene';
+    transitionType = TRANSITIONS.ROOT_SCENE;
   }
 
-  if (!transitionType && nextPanel < prevPanel) {
-    transitionType = 'scene-decrement';
+  if (!transitionType && nextPanel < currentPanel) {
+    transitionType = TRANSITIONS.DECREMENT;
   }
 
-  if (!transitionType && nextPanel > prevPanel) {
-    transitionType = 'scene-increment';
+  if (!transitionType && nextPanel > currentPanel) {
+    transitionType = TRANSITIONS.INCREMENT;
   }
 
   return transitionType
     ? {
-        panelKey: nextPanel,
+        currentSceneIndex: nextPanel,
         transitionType,
       }
     : null;

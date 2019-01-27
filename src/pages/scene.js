@@ -19,6 +19,25 @@ const ScenePage = (props: Props) => {
 export default ScenePage;
 
 export const query = graphql`
+  fragment SceneImageMain on fields_2 {
+    image {
+      childImageSharp {
+        fixed(width: 600) {
+          src
+        }
+      }
+    }
+  }
+
+  fragment SceneMain on ScenesJson {
+    timestamp
+    film
+    quote
+    fields {
+      ...SceneImageMain
+    }
+  }
+
   query($film: String!, $timestamp: String!) {
     scenesJson(film: { eq: $film }, timestamp: { eq: $timestamp }) {
       ...SceneMain

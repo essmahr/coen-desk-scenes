@@ -64,6 +64,8 @@ function Sidebar(props: Props) {
           right: 0;
           bottom: 0;
           border-left: 1px solid #211d1a;
+          background-color: #080605;
+          z-index: 1;
         `,
         css(responsiveWidths),
       ]}

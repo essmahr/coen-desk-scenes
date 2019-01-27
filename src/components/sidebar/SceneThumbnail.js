@@ -18,7 +18,7 @@ export default function SceneThumbnail({ scene, ...rest }: Props) {
       <div
         className={css`
           opacity: 0.8;
-          outline: 2px solid #000;
+          // outline: 2px solid #000;
 
           &:hover {
             opacity: 1;
