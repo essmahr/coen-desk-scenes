@@ -35,7 +35,13 @@ const emptyFilm = (
   </Box>
 );
 
-const FilmListItem = ({ film }: { film: Film }) => {
+const FilmListItem = ({
+  film,
+  currentScene,
+}: {
+  film: Film,
+  currentScene: ?string,
+}) => {
   const scenes =
     film.scenes.length > 0
       ? film.scenes.map(scene => (
@@ -47,7 +53,10 @@ const FilmListItem = ({ film }: { film: Film }) => {
             pb={2}
             key={scene.id}
           >
-            <SceneThumbnail scene={scene} />
+            <SceneThumbnail
+              scene={scene}
+              isCurrent={scene.id === currentScene}
+            />
           </Box>
         ))
       : emptyFilm;

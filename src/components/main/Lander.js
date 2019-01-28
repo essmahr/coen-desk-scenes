@@ -21,12 +21,12 @@ export const landerTransitions = `
 
 .${ROOT_SCENE} & {
   &.panel-exit {
-    transform: scale(1) translateX(0.01%);
+    transform: translateX(0.01%);
     opacity: 1;
 
     &.panel-exit-active {
       transition: all 400ms ${eases.easeInSine};
-      transform: scale(0.95) translateX(-3%);
+      transform: translateX(-3%);
       opacity: 0;
     }
   }
@@ -36,7 +36,7 @@ export const landerTransitions = `
     opacity: 0;
     &.panel-enter-active {
       transition: all 700ms ${eases.easeOutCubic} 300ms;
-      transform: scale(1) translateX(0.01%);
+      transform: translateX(0.01%);
       opacity: 1;
     }
   }
@@ -44,7 +44,7 @@ export const landerTransitions = `
 
 .${SCENE_ROOT} & {
   &.panel-enter {
-    transform: scale(0.95) translateX(-3%);
+    transform: translateX(-3%);
     opacity: 0;
     &.panel-enter-active {
       transition: all 400ms ${eases.easeOutSine} 300ms;

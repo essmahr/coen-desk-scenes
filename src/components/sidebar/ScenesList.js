@@ -7,7 +7,10 @@ import { type Film } from '../../types';
 import FilmListItem from './FilmListItem';
 import SceneThumbnail from './SceneThumbnail';
 
-const ScenesWithoutFilms = (props: { films: Array<Film> }) => {
+const ScenesWithoutFilms = (props: {
+  films: Array<Film>,
+  currentScene: ?string,
+}) => {
   const scenes = props.films.reduce(
     (scenes, film) => [...scenes, ...film.scenes],
     []
@@ -24,18 +27,28 @@ const ScenesWithoutFilms = (props: { films: Array<Film> }) => {
           pb={4}
           key={scene.id}
         >
-          <SceneThumbnail scene={scene} />
+          <SceneThumbnail
+            scene={scene}
+            isCurrent={props.currentScene === scene.id}
+          />
         </Box>
       ))}
     </Flex>
   );
 };
 
-const ScenesWithFilms = (props: { films: Array<Film> }) => {
+const ScenesWithFilms = (props: {
+  films: Array<Film>,
+  currentScene: ?string,
+}) => {
   return (
     <ul>
       {props.films.map(film => (
-        <FilmListItem key={film.slug} film={film} />
+        <FilmListItem
+          key={film.slug}
+          film={film}
+          currentScene={props.currentScene}
+        />
       ))}
     </ul>
   );
@@ -44,13 +57,15 @@ const ScenesWithFilms = (props: { films: Array<Film> }) => {
 export default function ScenesList({
   filmsMode,
   films,
+  currentScene,
 }: {
   filmsMode: boolean,
   films: Array<Film>,
+  currentScene: ?string,
 }) {
   return filmsMode ? (
-    <ScenesWithFilms films={films} />
+    <ScenesWithFilms films={films} currentScene={currentScene} />
   ) : (
-    <ScenesWithoutFilms films={films} />
+    <ScenesWithoutFilms films={films} currentScene={currentScene} />
   );
 }
