@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
-import styled, { css } from 'react-emotion';
-
+import { css } from 'react-emotion';
+import ToggleButton from './ToggleButton';
 import { mediaQueries, sidebarWidths } from '../../lib/styles';
 
 import { type Film } from '../../types';
@@ -12,35 +12,8 @@ type Props = {
   films: Array<Film>,
   filmsMode: boolean,
   onModeToggle: Function,
+  currentScene: ?string,
 };
-
-const Button = styled.button`
-  display: block;
-  background-color: #080605;
-  color: #dbdbd3;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  border: 0;
-  height: 2rem;
-  padding: 0;
-  border-bottom: 1px solid #211d1a;
-`;
-
-function ToggleButton({
-  onClick,
-  filmsMode,
-}: {
-  onClick: Function,
-  filmsMode: boolean,
-}) {
-  return (
-    <Button onClick={onClick}>
-      {filmsMode ? 'Hide films' : 'Show films '}
-    </Button>
-  );
-}
 
 const responsiveWidths = mediaQueries.reduce((style, query, index) => {
   if (sidebarWidths[index]) {
@@ -53,7 +26,7 @@ const responsiveWidths = mediaQueries.reduce((style, query, index) => {
 }, {});
 
 function Sidebar(props: Props) {
-  const { films, onModeToggle, filmsMode } = props;
+  const { films, onModeToggle, filmsMode, currentScene } = props;
 
   return (
     <div
@@ -85,7 +58,11 @@ function Sidebar(props: Props) {
           }),
         ]}
       >
-        <ScenesList films={films} filmsMode={filmsMode} />
+        <ScenesList
+          films={films}
+          filmsMode={filmsMode}
+          currentScene={currentScene}
+        />
       </div>
       <ToggleButton onClick={onModeToggle} filmsMode={filmsMode} />
     </div>

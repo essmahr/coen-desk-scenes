@@ -28,7 +28,7 @@ const Header = styled.header`
 
 const transitionStyles = {
   entering: { transform: `translate(0, -100%)` },
-  entered: { transform: `translate(0, 0)` },
+  entered: { transform: `translate(0, 0)`, transitionDelay: '300ms' },
   exiting: { transform: `translate(0, 0)` },
   exited: { transform: `translate(0, -100%)` },
 };

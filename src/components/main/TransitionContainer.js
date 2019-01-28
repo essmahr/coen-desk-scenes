@@ -60,7 +60,7 @@ class TransitionContainer extends React.Component<Props, State> {
 
     return (
       <TransitionGroup className={transitionType} component={TransitionParent}>
-        <CSSTransition timeout={1000} key={location} classNames="panel">
+        <CSSTransition timeout={1200} key={location} classNames="panel">
           <TransitionPanel>{children}</TransitionPanel>
         </CSSTransition>
       </TransitionGroup>

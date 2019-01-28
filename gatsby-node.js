@@ -42,6 +42,7 @@ const query = `
         fieldValue
         edges {
           node {
+            id
             timestamp
             quote
           }
@@ -89,12 +90,13 @@ exports.createPages = ({ graphql, actions }) => {
       );
 
       orderedScenes.forEach(scene => {
-        const { timestamp, film, index } = scene;
+        const { timestamp, film, index, id } = scene;
 
         createPage({
           path: sceneRoute(scene),
           component: path.resolve(`./src/pages/scene.js`),
           context: {
+            id,
             timestamp,
             film,
             index,

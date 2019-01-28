@@ -8,6 +8,7 @@ import Sidebar from './Sidebar';
 
 type Props = {
   films: Array<Film>,
+  sceneId: ?string,
 };
 
 type State = {
@@ -16,12 +17,10 @@ type State = {
 
 class SidebarContainer extends Component<Props, State> {
   state = {
-    filmsMode: true,
+    filmsMode: false,
   };
 
   toggleMode = (): void => {
-    console.log(this.state.filmsMode);
-
     this.setState({
       filmsMode: !this.state.filmsMode,
     });
@@ -34,6 +33,7 @@ class SidebarContainer extends Component<Props, State> {
           onModeToggle={this.toggleMode}
           filmsMode={this.state.filmsMode}
           films={this.props.films}
+          currentScene={this.props.sceneId}
         />
       </Flipper>
     );

@@ -1,8 +1,10 @@
 // @flow
-import React from 'react';
+import React, { type Node } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import SidebarContainer from './SidebarContainer';
 import assembleData from '../../lib/assembleData';
+import dumbMemoize from '../../lib/dumbMemoize';
+
+import type { Film } from '../../types';
 
 const query = graphql`
   {
@@ -20,6 +22,7 @@ const query = graphql`
         fieldValue
         edges {
           node {
+            id
             ...Scene_thumbnail
           }
         }
@@ -28,13 +31,18 @@ const query = graphql`
   }
 `;
 
-export default () => (
+type Props = {
+  render: (films: Array<Film>) => Node,
+};
+
+const assembleDataOnce = dumbMemoize(assembleData);
+
+export default (props: Props) => (
   <StaticQuery
     query={query}
     render={data => {
-      const { films } = assembleData(data);
-
-      return <SidebarContainer films={films} />;
+      const { films } = assembleDataOnce(data);
+      return props.render(films);
     }}
   />
 );

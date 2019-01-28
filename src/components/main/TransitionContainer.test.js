@@ -7,9 +7,6 @@ it.each(Object.keys(TRANSITIONS))(
   'has all the transitions for %s',
   transitionKey => {
     const transitionName = TRANSITIONS[transitionKey];
-
-    transitionStates.forEach(state => {
-      expect(transitions).toContain(`.${transitionName}-${state}`);
-    });
+    expect(transitions).toContain(`.${transitionName} & {`);
   }
 );

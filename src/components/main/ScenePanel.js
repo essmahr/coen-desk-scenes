@@ -1,17 +1,13 @@
 // @flow
 import React from 'react';
 import { css } from 'emotion';
-import { graphql } from 'gatsby';
 import { type Scene, type Film } from '../../types';
 
 import * as eases from '../../lib/easings';
 import { mainContainer } from '../../lib/styles';
 
 import { TRANSITIONS } from '../../lib/transition-helpers';
-const { ROOT_SCENE, SCENE_ROOT, INCREMENT, DECREMENT } = TRANSITIONS;
-const ease = `cubic-bezier(0.645, 0.045, 0.355, 1.000)`;
-const duration = 900;
-const interval = 400;
+const { INCREMENT, DECREMENT } = TRANSITIONS;
 
 export const sceneTransitions = `
 .${INCREMENT} & {
@@ -60,28 +56,6 @@ export const sceneTransitions = `
     }
   }
 }
-
-  &.${ROOT_SCENE}-exit {
-    transform: scale(0.999);
-    opacity: 1;
-
-    &.${ROOT_SCENE}-exit-active {
-      transition: all ${duration / 2}ms ${ease};
-      transform: scale(0.97);
-      opacity: 0;
-    }
-  }
-
-  &.${ROOT_SCENE}-enter {
-    transform: translateX(3%);
-    opacity: 0;
-
-    &.${ROOT_SCENE}-enter-active {
-      transition: all 650ms ${eases.easeOutSine} 300ms;
-      transform: translateX(0.01%);
-      opacity: 1;
-    }
-  }
 `;
 
 const DetailsSection = ({ film }: { film: Film }) => {
@@ -127,7 +101,8 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
         flex-direction: column;
         overflow-y: auto;
         justify-content: center;
-        margin-top: 2rem;
+        margin-top: 1rem;
+        height: calc(100% - 1rem);
       `}
     >
       <div

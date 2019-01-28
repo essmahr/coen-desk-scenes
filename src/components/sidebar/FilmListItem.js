@@ -22,7 +22,36 @@ const Year = styled.h3`
   letter-spacing: 0.05em;
 `;
 
+const emptyFilm = (
+  <Box as="li" flex="0 1 auto" width={1} px={1} pb={2}>
+    <div
+      css={`
+        font-size: 10px;
+        opacity: 0.8;
+      `}
+    >
+      No people at desks in this film.
+    </div>
+  </Box>
+);
+
 const FilmListItem = ({ film }: { film: Film }) => {
+  const scenes =
+    film.scenes.length > 0
+      ? film.scenes.map(scene => (
+          <Box
+            as="li"
+            flex="0 1 auto"
+            width={[1 / 3]}
+            px={1}
+            pb={2}
+            key={scene.id}
+          >
+            <SceneThumbnail scene={scene} />
+          </Box>
+        ))
+      : emptyFilm;
+
   return (
     <li
       key={film.slug}
@@ -39,18 +68,7 @@ const FilmListItem = ({ film }: { film: Film }) => {
         <Title>{film.title}</Title>
       </div>
       <Flex as="ul" mx={-1} flexWrap="wrap">
-        {film.scenes.map(scene => (
-          <Box
-            as="li"
-            flex="0 1 auto"
-            width={[1 / 3]}
-            px={1}
-            pb={2}
-            key={scene.id}
-          >
-            <SceneThumbnail scene={scene} />
-          </Box>
-        ))}
+        {scenes}
       </Flex>
     </li>
   );

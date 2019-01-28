@@ -4,50 +4,66 @@ import { css } from 'emotion';
 import * as eases from '../../lib/easings';
 import { TRANSITIONS } from '../../lib/transition-helpers';
 const { SCENE_ROOT, ROOT_ROOT, ROOT_SCENE } = TRANSITIONS;
-const ease = `cubic-bezier(0.645, 0.045, 0.355, 1.000)`;
-const duration = 900;
-const interval = 400;
 
 export const landerTransitions = `
-  &.${ROOT_ROOT}-enter {
-    opacity: 0.01;
+.${ROOT_ROOT} & {
+  &.panel-enter {
+    &.panel-enter-active {
+    }
+  }
 
-    &.${ROOT_ROOT}-enter-active {
-      transition: all ${duration / 2}ms ${ease};
+  &.panel-exit {
+    &.panel-exit-active {
+    }
+  }
+}
+
+
+.${ROOT_SCENE} & {
+  &.panel-exit {
+    transform: scale(1) translateX(0.01%);
+    opacity: 1;
+
+    &.panel-exit-active {
+      transition: all 400ms ${eases.easeInSine};
+      transform: scale(0.95) translateX(-3%);
+      opacity: 0;
+    }
+  }
+
+  &.panel-enter {
+    transform: translateX(7%);
+    opacity: 0;
+    &.panel-enter-active {
+      transition: all 700ms ${eases.easeOutCubic} 300ms;
+      transform: scale(1) translateX(0.01%);
       opacity: 1;
     }
   }
+}
 
-  &.${ROOT_ROOT}-exit {
-    opacity: 1;
-
-    &.${ROOT_ROOT}-exit-active {
-      transition: all ${duration / 2}ms ${ease};
-      opacity: 0.01;
-    }
-  }
-
-  &.${SCENE_ROOT}-enter {
-    transform: translateX(-3%);
-    opacity: 0.01;
-
-    &.${SCENE_ROOT}-enter-active {
-      transition: all 750ms ${eases.easeOutSine} 200ms;
+.${SCENE_ROOT} & {
+  &.panel-enter {
+    transform: scale(0.95) translateX(-3%);
+    opacity: 0;
+    &.panel-enter-active {
+      transition: all 400ms ${eases.easeOutSine} 300ms;
       transform: translateX(-0.01%);
       opacity: 1;
     }
   }
 
-  &.${SCENE_ROOT}-exit {
-    transform: translateX(-0.01%);
+  &.panel-exit {
+    transform: translateX(0.01%);
     opacity: 1;
 
-    &.${SCENE_ROOT}-exit-active {
-      transition: all ${duration / 2}ms ${ease};
-      transform: translateX(-3%);
-      opacity: 0.01;
+    &.panel-exit-active {
+      transition: all 400ms ${eases.easeInOutCubic};
+      transform: translateX(7%);
+      opacity: 0;
     }
   }
+}
 `;
 
 const Lander = () => (

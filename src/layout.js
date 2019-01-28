@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 
 import Main from './components/main/Main';
 import SidebarQuery from './components/sidebar/SidebarQuery';
+import SidebarContainer from './components/sidebar/SidebarContainer';
 
 import './app.css';
 
@@ -13,11 +14,14 @@ type Props = {
     pathname: string,
   },
   pageContext: {
-    index: number,
+    index?: number,
+    id?: string,
   },
 };
 
 const Layout = ({ children, location, pageContext }: Props) => {
+  const { index = null, id = null } = pageContext;
+
   return (
     <>
       <Helmet
@@ -34,10 +38,12 @@ const Layout = ({ children, location, pageContext }: Props) => {
 
         <html lang="en" />
       </Helmet>
-      <Main location={location.pathname} sceneIndex={pageContext.index || null}>
+      <Main location={location.pathname} sceneIndex={index}>
         {children}
       </Main>
-      <SidebarQuery />
+      <SidebarQuery
+        render={films => <SidebarContainer films={films} sceneId={id} />}
+      />
     </>
   );
 };
