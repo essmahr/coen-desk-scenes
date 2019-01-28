@@ -200,19 +200,25 @@
     "timestamp": "00:51:35"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "[oblivious pointing]",
     "film": "raising-arizona",
-    "timestamp": "00:08:24"
+    "timestamp": "00:08:24",
+    "actor": "Ralph Norton",
+    "imdbId": "nm0636277"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "[skepticism]",
     "film": "raising-arizona",
-    "timestamp": "00:08:26"
+    "timestamp": "00:08:26",
+    "actor": "Bill Dobbins",
+    "imdbId": "nm0229612"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Listen Leonard, if you want some furniture or a shitbox, they're out on the sales floor.",
     "film": "raising-arizona",
-    "timestamp": "00:59:02"
+    "timestamp": "00:59:02",
+    "actor": "Trey Wilson",
+    "imdbId": "nm0934254"
   },
   {
     "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
@@ -260,23 +266,31 @@
     "timestamp": "01:31:35"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Yeah, I paid up. As you well know. And then I went and found the pansy.",
     "film": "the-man-who-wasnt-there",
-    "timestamp": "00:38:00"
+    "timestamp": "00:38:00",
+    "actor": "James Gandolfini",
+    "imdbId": "nm0001254"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Ladies and gentlemen of the jury, your service is no longer needed.",
     "film": "the-man-who-wasnt-there",
-    "timestamp": "01:19:27"
+    "timestamp": "01:19:27",
+    "actor": "Tom Dahlgren",
+    "imdbId": "nm0197080"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Now on the arraignment calendar, The People versus Edward Crane.",
     "film": "the-man-who-wasnt-there",
-    "timestamp": "01:42:12"
+    "timestamp": "01:42:12",
+    "actor": "Booth Colman",
+    "imdbId": "nm0172884"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "The ponies are yours, take them. Your father's horse was stolen by a murderous criminal. I had provided reasonable protection for the creature as per our implicit agreement. My watchman had his teeth knocked out and can take only soup. We must each bear his own misfortunes.",
     "film": "true-grit",
-    "timestamp": "00:09:23"
+    "timestamp": "00:09:23",
+    "actor": "Dakin Matthews",
+    "imdbId": "nm0559977"
   }
 ]
