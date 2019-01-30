@@ -221,49 +221,80 @@
     "imdbId": "nm0934254"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Okay sir, you're a Lebowski, I'm a  Lebowski, that's terrific, I'm very busy so what can I do for you?",
     "film": "the-big-lebowski",
-    "timestamp": "00:12:25"
+    "timestamp": "00:12:25",
+    "actor": "David Huddleston",
+    "imdbId": "nm0399663"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "What are you, some kind of sad-assed refugee from the fucking sixties?",
     "film": "the-big-lebowski",
-    "timestamp": "01:24:27"
+    "timestamp": "01:24:27",
+    "actor": "Leon Russom",
+    "imdbId": "nm0751762"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "That is our most modestly priced receptacle.",
     "film": "the-big-lebowski",
-    "timestamp": "01:45:08"
+    "timestamp": "01:45:08",
+    "actor": "Warren Keith"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "I don't know about you, but I take comfort in that. It's good knowin' he's out there, the Dude, takin' her easy for all us sinners.",
+    "film": "the-big-lebowski",
+    "timestamp": "01:51:06",
+    "actor": "Sam Elliott",
+    "imdbId": "nm0000385"
+  },
+  {
+    "quote": "Don't talk to me about sub-franchising; we're making so much money in sub-franchising it isn't even funny.",
     "film": "the-hudsucker-proxy",
-    "timestamp": "00:06:36"
+    "timestamp": "00:06:36",
+    "actor": "Charles Durning",
+    "imdbId": "nm0001164"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "If we had an appointment we'd be in the booook...",
     "film": "the-hudsucker-proxy",
-    "timestamp": "00:20:28"
+    "timestamp": "00:20:28",
+    "actor": "Mary Lou Rosato",
+    "imdbId": "nm0741142"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Look, chump, either you find me a grade A ding-dong or you can tender your key to the executive washroom.",
     "film": "the-hudsucker-proxy",
-    "timestamp": "00:30:10"
+    "timestamp": "00:21:35",
+    "actor": "Paul Newman",
+    "imdbId": "nm0000056"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
-    "film": "the-ladykillers",
-    "timestamp": "00:03:11"
+    "quote": "I read this morning's edition of the Argus and let me tell you something: I'd wrap a fish in it! I'd use it as kindling! Hell, I'd even train my poodle with it if he wasn't a French poodle and more partial to the pages of Paris Soir!",
+    "film": "the-hudsucker-proxy",
+    "timestamp": "00:30:10",
+    "actor": "John Mahoney",
+    "imdbId": "nm0001498"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Well, we're here to help...",
     "film": "the-ladykillers",
-    "timestamp": "00:33:20"
+    "timestamp": "00:03:11",
+    "actor": "John McConnell ",
+    "imdbId": "nm0566279"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "I don't care how big her ass was, MacSam. You're fired.",
     "film": "the-ladykillers",
-    "timestamp": "01:31:35"
+    "timestamp": "00:33:20",
+    "actor": "Stephen Root",
+    "imdbId": "nm0740535"
+  },
+  {
+    "quote": "Why don't you just keep it, Miz Munson.",
+    "film": "the-ladykillers",
+    "timestamp": "01:31:35",
+    "actor": "George Wallace",
+    "imdbId": "nm0908648"
   },
   {
     "quote": "Yeah, I paid up. As you well know. And then I went and found the pansy.",
