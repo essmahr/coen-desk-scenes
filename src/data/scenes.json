@@ -1,188 +1,304 @@
 [
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Well, mazel tov. They grow up fast, don't they?",
     "film": "a-serious-man",
-    "timestamp": "00:12:06"
+    "timestamp": "00:12:06",
+    "actor": "Raye Burk",
+    "imdbId": "nm0083541"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Hmmm...",
     "film": "a-serious-man",
-    "timestamp": "00:12:44"
+    "timestamp": "00:12:44",
+    "actor": "Charles Brin",
+    "imdbId": "nm0109431"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "No, of course not. I am the junior rabbi. And it's true, the point-of-view of somebody who's older and perhaps had similar problems might be more valid. And you should see the senior rabbi as well, by all means. Or even Marshak if you can get in... he's quite busy.",
     "film": "a-serious-man",
-    "timestamp": "00:44:3"
+    "timestamp": "00:44:33",
+    "actor": "Simon Helberg",
+    "imdbId": "nm0374865"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "On the other thing, the neighbor's property line, I've asked Solomon Schlutz to take a look. There's very little having to do with real estate that'll get by Sol.",
     "film": "a-serious-man",
-    "timestamp": "00:44:33"
+    "timestamp": "00:49:23",
+    "actor": "Adam Arkin",
+    "imdbId": "nm0035060"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "These questions that are bothering you, Larry–maybe they're like a toothache. We feel them for a while, then they go away.",
     "film": "a-serious-man",
-    "timestamp": "00:49:23"
+    "timestamp": "00:56:00",
+    "actor": "George Wyner",
+    "imdbId": "nm0943927"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "[Laboured breathing]",
     "film": "a-serious-man",
-    "timestamp": "00:56:00"
+    "timestamp": "01:17:49",
+    "actor": "Michael Lerner",
+    "imdbId": "nm0503627"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "The rabbi is busy. ",
     "film": "a-serious-man",
-    "timestamp": "01:33:00"
+    "timestamp": "01:21:08",
+    "actor": "Claudia Wilkens",
+    "imdbId": "nm0929078"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Grace Slick. Marty Balin. Paul Kanta. Jorma... something. These are the members of... the AIRPLANE.",
+    "film": "a-serious-man",
+    "timestamp": "01:32:59",
+    "actor": "Alan Mandell",
+    "imdbId": "nm0541715"
+  },
+  {
+    "quote": "Though we provide privacy for the residential guest, we are also a full service hotel including complimentary shoe shine. My name is Chet.",
     "film": "barton-fink",
-    "timestamp": "00:09:15"
+    "timestamp": "00:09:15",
+    "actor": "Steve Buscemi",
+    "imdbId": "nm0000114"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "You probably just walked in here thinking that was going to be a handicap, thinking we wanted people who knew something about the medium, maybe even thinking there was all kind of technical mumbo-jumbo to learn. You were dead wrong. We're only interested in one thing: Can you tell a story, Bart?  Can you make us laugh, can you make us cry, can you make us wanna break out in joyous song? Is that more than one thing? Okay.",
     "film": "barton-fink",
-    "timestamp": "00:17:28"
+    "timestamp": "00:17:28",
+    "actor": "Michael Lerner",
+    "imdbId": "nm0503627"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "What do you think this is? HAMLET? GONE WITH THE WIND? RUGGLES OF RED GAP? It's a goddamn B picture! Big men in tights! You know the drill!",
     "film": "barton-fink",
-    "timestamp": "00:57:43"
+    "timestamp": "00:57:43",
+    "actor": "Tony Shalhoub",
+    "imdbId": "nm0001724"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Oz, look... There's no easy way to say this. We're taking you off the Balkans desk.",
     "film": "burn-after-reading",
-    "timestamp": "00:03:07"
+    "timestamp": "00:03:07",
+    "actor": "David Rasche",
+    "imdbId": "nm0711058"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Because here's a man, here's a man, practiced in deceit, this is almost, you could say it's his job, practiced at hiding things, and there is no reason, it is not improper, there is no reason for you not to get a picture of the household finances.",
     "film": "burn-after-reading",
-    "timestamp": "00:10:08"
+    "timestamp": "00:10:08",
+    "actor": "J.R. Horne",
+    "imdbId": "nm0395020"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "And lastly, the breast augmentation. Now we can also do something about the vaccine scar–I don't know if you wear sleeveless dresses much...",
     "film": "burn-after-reading",
-    "timestamp": "00:17:38"
+    "timestamp": "00:17:38",
+    "actor": "Jeffrey DeMunn",
+    "imdbId": "nm0218810"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "I am assistant cultural attaché. The organs of state security are not allowed to function within the borders of your country.",
     "film": "burn-after-reading",
-    "timestamp": "00:46:49"
+    "timestamp": "00:46:49",
+    "actor": "Olek Krupa",
+    "imdbId": "nm0472762"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "So... I call Hardbodies, I ask for... Chad?",
     "film": "burn-after-reading",
-    "timestamp": "00:48:55"
+    "timestamp": "00:48:55",
+    "actor": "Yury Tsykun",
+    "imdbId": "nm1541751"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Burn the body. Get rid of it. And keep an eye on everyone, see what they do. Report back when, um, I don't know. When it makes sense.",
     "film": "burn-after-reading",
-    "timestamp": "01:06:02"
+    "timestamp": "01:06:02",
+    "actor": "J.K. Simmons",
+    "imdbId": "nm0799777"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Well, look, I don't want to cut you out of the loop, but his here's a good deal. I assume, if you're not interested, you won't mind if we move on it independently.",
     "film": "fargo",
-    "timestamp": "00:22:30"
+    "timestamp": "00:22:30",
+    "actor": "Harve Presnell",
+    "imdbId": "nm0696193"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "It’s the emotional climax of the entire picture! We have to see that Autolochus has absorbed the message of the Christ!",
     "film": "hail-caesar",
-    "timestamp": "00:30:32"
+    "timestamp": "00:30:32",
+    "actor": "Robert Trebor",
+    "imdbId": "nm0871636"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Joe Silverman, exactly. He’s the foster father for a few days. She hands the kid to Joe, he hands it back... I’ll do some research. This is exciting.",
     "film": "hail-caesar",
-    "timestamp": "01:01:22"
+    "timestamp": "01:01:22",
+    "actor": "Geoffrey Cantor",
+    "imdbId": "nm0134666"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "I’m bonded, miss.",
     "film": "hail-caesar",
-    "timestamp": "01:15:13"
+    "timestamp": "01:15:13",
+    "actor": "Jonah Hill",
+    "imdbId": "nm1706767"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "How ya doin' kid?",
     "film": "inside-llewyn-davis",
-    "timestamp": "00:12:04"
+    "timestamp": "00:12:04",
+    "actor": "Jerry Grayson",
+    "imdbId": "nm0337106"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Have a seat. I'll let him know you're here.",
     "film": "inside-llewyn-davis",
-    "timestamp": "00:29:05"
+    "timestamp": "00:29:05",
+    "actor": "Diane Findlay",
+    "imdbId": "nm2146578"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "You don't have any mail.",
     "film": "inside-llewyn-davis",
-    "timestamp": "00:35:06"
+    "timestamp": "00:35:06",
+    "actor": "Sylvia Kauders",
+    "imdbId": "nm0441988"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "I'm sorry. I didn't know how to get the money back to you. I never see you at the hoots anymore.",
     "film": "inside-llewyn-davis",
-    "timestamp": "00:40:10"
+    "timestamp": "00:40:10",
+    "actor": "Steve Routman",
+    "imdbId": "nm0746156"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Okay. Let's hear something.",
     "film": "inside-llewyn-davis",
-    "timestamp": "01:07:00"
+    "timestamp": "01:07:00",
+    "actor": "F. Murray Abraham",
+    "imdbId": "nm0000719"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "You ain't current on your dues. pay your dues, you go back on the roster, I can ship you out.",
     "film": "inside-llewyn-davis",
-    "timestamp": "01:17:00"
+    "timestamp": "01:17:00",
+    "actor": "Frank Ridley",
+    "imdbId": "nm0725975"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "We don't pay your dues back. What are you, nuts?",
     "film": "inside-llewyn-davis",
-    "timestamp": "01:26:00"
+    "timestamp": "01:26:00",
+    "actor": "John Ahlin",
+    "imdbId": "nm1604903"
+  },
+  {
+    "quote": "He would invite these girls home from the staple factory to our condominium in Palm Springs. He had a device he called the Intruder.",
+    "film": "intolerable-cruelty",
+    "timestamp": "00:12:29",
+    "actor": "Judith Drake",
+    "imdbId": "nm0236946"
   },
   {
     "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
     "film": "intolerable-cruelty",
-    "timestamp": "00:13:10"
+    "timestamp": "00:13:10",
+    "actor": ["Paul Adelstein", "Royce D. Applegate"],
+    "imdbId": ["nm0011882", "nm0032403"]
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "You want tact, call a tactician. You want an ass nailed, you call Gus Petch.",
     "film": "intolerable-cruelty",
-    "timestamp": "00:36:46"
+    "timestamp": "00:17:52",
+    "actor": "Cedric the Entertainer",
+    "imdbId": "nm0147825"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Well... My wife has be between a rock and a hard place.",
     "film": "intolerable-cruelty",
-    "timestamp": "00:41:02"
+    "timestamp": "00:20:16",
+    "actor": "Edward Herrmann",
+    "imdbId": "nm0001346"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "She \"specificated\" a man with a wandering pee-pee.",
+    "film": "intolerable-cruelty",
+    "timestamp": "00:41:02",
+    "actor": "Jonathan Hadary",
+    "imdbId": "nm0352625"
+  },
+  {
+    "quote": "She said that she required a husband, oh, do you want some bones, has anyone any bones, hard, crunchy bones...",
+    "film": "intolerable-cruelty",
+    "timestamp": "00:39:17",
+    "actor": "Mary Gillis",
+    "imdbId": "nm0319304"
+  },
+  {
+    "quote": "I'm going to allow it.",
+    "film": "intolerable-cruelty",
+    "timestamp": "00:36:46",
+    "actor": "Isabell O'Connor",
+    "imdbId": "nm0598222"
+  },
+  {
+    "quote": "This firm cannot prosper, nor long endure, if it is perceived to be dancing to the music of a hurdy-gurdy!",
+    "film": "intolerable-cruelty",
+    "timestamp": "01:21:07",
+    "actor": "Tom Aldredge",
+    "imdbId": "nm0017651"
+  },
+  {
+    "quote": "You haven't bought any license to kill bookies and today I ain't selling any. Now take your flunky and dangle.",
     "film": "millers-crossing",
-    "timestamp": "00:02:30"
+    "timestamp": "00:02:30",
+    "actor": "Albert Finney ",
+    "imdbId": "nm0001215"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "C'mon, Eddy. Friends is a mental state. Whaddya say, kid?",
     "film": "millers-crossing",
-    "timestamp": "00:30:00"
+    "timestamp": "00:30:00",
+    "actor": "Jon Polito",
+    "imdbId": "nm0689237"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Johnny, needless to say, this office will do anything in its power to assist you and your cousins.  We did it for Leo, of course, on countless occasions...",
     "film": "millers-crossing",
-    "timestamp": "01:26:08"
+    "timestamp": "01:26:08",
+    "actor": "Richard Woods",
+    "imdbId": "nm0939951"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Sheriff, he had some sort of a thing on him like one of them oxygen tanks for emphysema or somethin'. And a hose from it run down his sleeve...",
     "film": "no-country-for-old-men",
-    "timestamp": "00:02:45"
+    "timestamp": "00:02:45",
+    "actor": "Zach Hopkins",
+    "imdbId": "nm0394308"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Well sir I apologize. If you don't wanna accept that I don't know what else I can do for you.",
     "film": "no-country-for-old-men",
-    "timestamp": "00:21:50"
+    "timestamp": "00:21:50",
+    "actor": "Gene Jones",
+    "imdbId": "nm0428122"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Sir, I ain't at liberty to give out no information about our residents.",
     "film": "no-country-for-old-men",
-    "timestamp": "00:34:08"
+    "timestamp": "00:34:08",
+    "actor": "Kathy Lamkin",
+    "imdbId": "nm0483541"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "He killed three men in a motel in Del Rio yesterday. And two others at that colossal goatfuck out in the desert.",
     "film": "no-country-for-old-men",
-    "timestamp": "00:53:46"
+    "timestamp": "00:53:46",
+    "actor": "Stephen Root",
+    "imdbId": "nm0740535"
   },
   {
     "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
