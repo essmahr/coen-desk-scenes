@@ -301,19 +301,25 @@
     "imdbId": "nm0740535"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "I don't carry Dapper Dan. I carry  Fop.",
     "film": "o-brother-where-art-thou",
-    "timestamp": "00:15:37"
+    "timestamp": "00:15:37",
+    "actor": "Millford Fortenberry",
+    "imdbId": "nm0287200"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "Boys, that was some mighty fine pickin' and singin'. You just sign these papers and I'll give you ten dollars apiece.",
     "film": "o-brother-where-art-thou",
-    "timestamp": "00:24:24"
+    "timestamp": "00:24:24",
+    "actor": "Stephen Root",
+    "imdbId": "nm0740535"
   },
   {
-    "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
+    "quote": "I'll reform you, you soft-headed sonofabitch! How we gonna run reform when we're the damn incumbent!",
     "film": "o-brother-where-art-thou",
-    "timestamp": "00:51:35"
+    "timestamp": "00:51:35",
+    "actor": "Charles Durning",
+    "imdbId": "nm0001164"
   },
   {
     "quote": "[oblivious pointing]",
