@@ -41,6 +41,8 @@ export type Scene = {
   timestamp: string,
   film: Film,
   quote: string,
+  actor: string,
+  imdbId: string,
   fields: {
     image: Object,
     thumbnail: Thumbnail,

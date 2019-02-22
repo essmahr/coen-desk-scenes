@@ -10,8 +10,7 @@ import SceneThumbnail from './SceneThumbnail';
 const Title = styled.h2`
   font-family: 'IBM Plex Serif';
   font-size: 16px;
-  font-family: 'IBM Plex Serif';
-  font-weight: 500;
+  font-weight: 400;
 `;
 
 const Year = styled.h3`

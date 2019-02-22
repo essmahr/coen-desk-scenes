@@ -3,7 +3,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 // import { type Scene, type Film } from '../types';
 
-import ScenePanel from '../components/main/ScenePanel';
+import ScenePanel from '../components/main/ScenePanel/ScenePanel';
 
 type Props = {
   data: Object,
@@ -33,6 +33,9 @@ export const query = graphql`
     timestamp
     film
     quote
+    actor
+    imdbId
+    multiple
     fields {
       ...SceneImageMain
     }

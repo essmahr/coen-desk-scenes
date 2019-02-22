@@ -45,6 +45,9 @@ const query = `
             id
             timestamp
             quote
+            actor
+            imdbId
+            multiple
           }
         }
       }

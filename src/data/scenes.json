@@ -206,8 +206,9 @@
     "quote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione libero architecto eos ipsam repudiandae minus",
     "film": "intolerable-cruelty",
     "timestamp": "00:13:10",
-    "actor": ["Paul Adelstein", "Royce D. Applegate"],
-    "imdbId": ["nm0011882", "nm0032403"]
+    "actor": "Paul Adelstein, Royce D. Applegate",
+    "imdbId": "nm0011882, nm0032403",
+    "multiple": true
   },
   {
     "quote": "You want tact, call a tactician. You want an ass nailed, you call Gus Petch.",
@@ -301,7 +302,7 @@
     "imdbId": "nm0740535"
   },
   {
-    "quote": "I don't carry Dapper Dan. I carry  Fop.",
+    "quote": "I don't carry Dapper Dan. I carry Fop.",
     "film": "o-brother-where-art-thou",
     "timestamp": "00:15:37",
     "actor": "Millford Fortenberry",

@@ -8,7 +8,7 @@ import {
   TRANSITIONS,
 } from '../../lib/transition-helpers';
 
-import { sceneTransitions } from './ScenePanel';
+import sceneTransitions from './ScenePanel/transitions';
 import { landerTransitions } from './Lander';
 
 export const transitions = `
