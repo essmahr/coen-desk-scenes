@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import { css } from 'emotion';
 import { type Scene, type Film } from '../../../types';
 
 import { mainContainer } from '../../../lib/styles';
@@ -10,7 +9,7 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
   const imgSrc = scene.fields.image.childImageSharp.fixed.src;
   return (
     <div
-      className={css`
+      css={`
         display: flex;
         flex-direction: column;
         overflow-y: auto;
@@ -20,7 +19,7 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
       `}
     >
       <div
-        className={css`
+        css={`
           width: 100%;
           display: flex;
           flex-direction: column;

@@ -1,12 +1,15 @@
 // @flow
 
 import React, { type Node } from 'react';
-import { css } from 'react-emotion';
 
 import { type Scene, type Film } from '../../../types';
 
 const imdbLink = (actor: string, imdbId: string) => (
-  <a href={`https://www.imdb.com/name/${imdbId}`} target="_blank">
+  <a
+    href={`https://www.imdb.com/name/${imdbId}`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
     {actor}
   </a>
 );
@@ -29,7 +32,7 @@ const detailItem = ({
     `}
   >
     <span
-      className={css`
+      css={`
         display: inline-block;
         margin-right: 0.4rem;
         opacity: 0.8;
@@ -38,7 +41,7 @@ const detailItem = ({
       {label}
     </span>
     <span
-      className={css`
+      css={`
         opacity: 0.9;
       `}
     >
@@ -68,7 +71,7 @@ const Details = ({ film, scene }: { film: Film, scene: Scene }) => {
 
   return (
     <div
-      className={css`
+      css={`
         a {
           display: inline-block;
           padding-bottom: 0.05em;
@@ -88,7 +91,7 @@ const Details = ({ film, scene }: { film: Film, scene: Scene }) => {
 const Quote = ({ quote }: { quote: string }) => {
   return (
     <blockquote
-      className={css`
+      css={`
         font-family: 'IBM Plex Serif';
         font-size: 18px;
         font-weight: 400;
@@ -106,7 +109,7 @@ const Quote = ({ quote }: { quote: string }) => {
 
 export default ({ scene, film }: { scene: Scene, film: Film }) => (
   <div
-    className={css`
+    css={`
       padding-top: 1.5rem;
     `}
   >

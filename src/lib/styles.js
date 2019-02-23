@@ -1,5 +1,3 @@
-import { css } from 'react-emotion';
-
 const goldenRatio = 1.618;
 
 export const breakpoints = [576, 768, 992, 1200];
@@ -10,7 +8,7 @@ export const mediaQueries = breakpoints.map(
 
 export const headerHeight = '2rem';
 
-export const mainContainer = css`
+export const mainContainer = `
   padding-left: 4vw;
   padding-right: 4vw;
 `;

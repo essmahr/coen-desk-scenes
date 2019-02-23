@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from 'emotion';
 
 import * as eases from '../../lib/easings';
 import { TRANSITIONS } from '../../lib/transition-helpers';
@@ -68,7 +67,7 @@ export const landerTransitions = `
 
 const Lander = () => (
   <header
-    className={css`
+    css={`
       height: 100%;
       width: 100%;
       display: flex;
@@ -78,7 +77,7 @@ const Lander = () => (
     `}
   >
     <h1
-      className={css`
+      css={`
         font-size: 32px;
         line-height: 1.3;
         font-weight: 600;

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
-import { Flex, Box } from '@rebass/grid/emotion';
-import styled, { css } from 'react-emotion';
+import { Flex, Box } from '@rebass/grid';
+import styled from 'styled-components';
 
 import { type Film } from '../../types';
 
@@ -63,12 +63,12 @@ const FilmListItem = ({
   return (
     <li
       key={film.slug}
-      className={css`
+      css={`
         margin-bottom: 2rem;
       `}
     >
       <div
-        className={css`
+        css={`
           margin-bottom: 0.6em;
         `}
       >

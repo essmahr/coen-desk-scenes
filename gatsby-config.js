@@ -9,7 +9,13 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-transformer-json',
-    'gatsby-plugin-emotion',
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: process.env.NODE_ENV !== `production`,
+        fileName: false,
+      },
+    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {

@@ -1,10 +1,16 @@
 // @flow
 import * as React from 'react';
-import { css } from 'react-emotion';
-
+import styled from 'styled-components';
 import MiniHeader from '../MiniHeader';
 import TransitionContainer from './TransitionContainer';
 import { mediaQueries, sidebarWidths } from '../../lib/styles';
+
+const Fixed = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+`;
 
 const responsiveWidths = mediaQueries.reduce((style, query, index) => {
   if (sidebarWidths[index]) {
@@ -26,22 +32,12 @@ function Main({
   sceneIndex: number | null,
 }) {
   return (
-    <div
-      css={[
-        css`
-          position: fixed;
-          top: 0;
-          left: 0;
-          bottom: 0;
-        `,
-        css(responsiveWidths),
-      ]}
-    >
+    <Fixed css={responsiveWidths}>
       <MiniHeader visible={location !== '/'} />
       <TransitionContainer location={location} sceneIndex={sceneIndex}>
         {children}
       </TransitionContainer>
-    </div>
+    </Fixed>
   );
 }
 

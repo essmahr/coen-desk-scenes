@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Flex, Box } from '@rebass/grid/emotion';
+import { Flex, Box } from '@rebass/grid';
 
 import { type Film } from '../../types';
 
@@ -17,7 +17,7 @@ const ScenesWithoutFilms = (props: {
   );
 
   return (
-    <Flex as="ul" mx={-3} flexWrap="wrap">
+    <Flex as="ul" flexWrap="wrap">
       {scenes.map(scene => (
         <Box
           as="li"

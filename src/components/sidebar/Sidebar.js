@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { css } from 'react-emotion';
+import { Box } from '@rebass/grid';
 import ToggleButton from './ToggleButton';
 import { mediaQueries, sidebarWidths } from '../../lib/styles';
 
@@ -31,7 +31,7 @@ function Sidebar(props: Props) {
   return (
     <div
       css={[
-        css`
+        `
           position: fixed;
           top: 0;
           right: 0;
@@ -40,30 +40,22 @@ function Sidebar(props: Props) {
           background-color: #080605;
           z-index: 1;
         `,
-        css(responsiveWidths),
+        responsiveWidths,
       ]}
     >
-      <div
-        css={[
-          `
+      <Box
+        mt={4}
+        css={`
           height: calc(100% - 2rem);
           overflow: auto;
-          padding: 1rem;
-          margin-top: 2rem;`,
-
-          css({
-            [mediaQueries[2]]: {
-              padding: '1rem 1.5rem',
-            },
-          }),
-        ]}
+        `}
       >
         <ScenesList
           films={films}
           filmsMode={filmsMode}
           currentScene={currentScene}
         />
-      </div>
+      </Box>
       <ToggleButton onClick={onModeToggle} filmsMode={filmsMode} />
     </div>
   );

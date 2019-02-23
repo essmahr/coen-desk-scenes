@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { graphql } from 'gatsby';
-// import { type Scene, type Film } from '../types';
 
 import ScenePanel from '../components/main/ScenePanel/ScenePanel';
 

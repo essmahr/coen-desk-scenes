@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Flipped } from 'react-flip-toolkit';
 import { graphql, Link } from 'gatsby';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import * as eases from '../../lib/easings';
 
 import { type Scene } from '../../types';
@@ -12,19 +12,6 @@ import { sceneRoute } from '../../lib/routes';
 type Props = {
   scene: Scene,
   isCurrent: boolean,
-};
-
-const borderElement = {
-  content: '""',
-  transition: `all 0.2s ${eases.easeInOutSine}`,
-  position: 'absolute',
-  display: 'block',
-  top: -4,
-  right: -4,
-  bottom: -4,
-  left: -4,
-  border: '1px solid #fff',
-  zIndex: -1,
 };
 
 const ImageContainer = styled.div(
