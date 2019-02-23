@@ -22,7 +22,7 @@ export const query = graphql`
   fragment SceneImageMain on fields_2 {
     image {
       childImageSharp {
-        fixed(width: 600) {
+        fixed(width: 1200, quality: 100) {
           src
         }
       }

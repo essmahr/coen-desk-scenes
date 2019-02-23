@@ -17,7 +17,7 @@ export const mainContainer = css`
 
 export const sidebarWidths = [
   '100%',
-  `${50 / goldenRatio}vw`,
-  null,
   `${45 / goldenRatio}vw`,
+  null,
+  `${40 / goldenRatio}vw`,
 ];

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Flipped } from 'react-flip-toolkit';
 import { graphql, Link } from 'gatsby';
 import styled from 'react-emotion';
+import * as eases from '../../lib/easings';
 
 import { type Scene } from '../../types';
 
@@ -15,7 +16,7 @@ type Props = {
 
 const borderElement = {
   content: '""',
-  transition: 'all 0.2s ease-in-out',
+  transition: `all 0.2s ${eases.easeInOutSine}`,
   position: 'absolute',
   display: 'block',
   top: -4,
@@ -30,20 +31,11 @@ const ImageContainer = styled.div(
   {
     position: 'relative',
     opacity: 0.7,
-    transition: 'opacity 200ms ease-in-out',
-
-    '&::before': {
-      ...borderElement,
-      opacity: 0,
-    },
+    transition: `all 400ms ${eases.easeInOutSine}`,
   },
   ({ isCurrent }) => {
     if (isCurrent) {
       return {
-        '&::before': {
-          opacity: 0.3,
-        },
-
         img: {
           opacity: 0.3,
         },

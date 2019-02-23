@@ -53,7 +53,7 @@ function Sidebar(props: Props) {
 
           css({
             [mediaQueries[2]]: {
-              padding: '2rem',
+              padding: '1rem 1.5rem',
             },
           }),
         ]}
