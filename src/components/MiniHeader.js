@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 import styled from 'styled-components';
 import Transition from 'react-transition-group/Transition';
 
-import { mainContainer, headerHeight } from '../lib/styles';
+import { headerHeight } from '../lib/styles';
 
 const duration = 700;
 

@@ -2,7 +2,6 @@
 import React from 'react';
 import { Flex, Box } from '@rebass/grid';
 
-import { mainContainer } from '../../../lib/styles';
 import SceneDetails from './SceneDetails';
 
 import { type Scene, type Film } from '../../../types';
