@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Link } from 'gatsby';
+import { Box } from '@rebass/grid';
 import styled from 'styled-components';
 import Transition from 'react-transition-group/Transition';
 
@@ -38,11 +39,11 @@ export default function MiniHeader({ visible }: { visible: boolean }) {
     <Transition in={visible} timeout={0}>
       {state => (
         <Header css={transitionStyles[state]}>
-          <div className={mainContainer}>
+          <Box px={4}>
             <Link to="/">
               Every character actor behind a desk in a coen brothers film
             </Link>
-          </div>
+          </Box>
         </Header>
       )}
     </Transition>

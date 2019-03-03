@@ -17,14 +17,14 @@ const ScenesWithoutFilms = (props: {
   );
 
   return (
-    <Flex as="ul" flexWrap="wrap">
+    <Flex as="ul" flexWrap="wrap" mx={-2} mb={2}>
       {scenes.map(scene => (
         <Box
           as="li"
           flex="0 1 auto"
           width={[1 / 2]}
-          px={3}
-          pb={4}
+          px={2}
+          pb={3}
           key={scene.id}
         >
           <SceneThumbnail

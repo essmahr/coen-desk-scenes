@@ -21,8 +21,8 @@ const Year = styled.h3`
   letter-spacing: 0.05em;
 `;
 
-const emptyFilm = (
-  <Box as="li" flex="0 1 auto" width={1} px={1} pb={2}>
+const EmptyFilm = () => (
+  <Box flex="0 1 auto" width={1} px={1} pb={2}>
     <div
       css={`
         font-size: 10px;
@@ -42,23 +42,22 @@ const FilmListItem = ({
   currentScene: ?string,
 }) => {
   const scenes =
-    film.scenes.length > 0
-      ? film.scenes.map(scene => (
-          <Box
-            as="li"
-            flex="0 1 auto"
-            width={[1 / 3]}
-            px={1}
-            pb={2}
-            key={scene.id}
-          >
-            <SceneThumbnail
-              scene={scene}
-              isCurrent={scene.id === currentScene}
-            />
-          </Box>
-        ))
-      : emptyFilm;
+    film.scenes.length > 0 ? (
+      film.scenes.map(scene => (
+        <Box
+          as="li"
+          flex="0 1 auto"
+          width={[1 / 3]}
+          px={1}
+          pb={2}
+          key={scene.id}
+        >
+          <SceneThumbnail scene={scene} isCurrent={scene.id === currentScene} />
+        </Box>
+      ))
+    ) : (
+      <EmptyFilm />
+    );
 
   return (
     <li

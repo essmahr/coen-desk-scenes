@@ -18,7 +18,7 @@ const ImageContainer = styled.div(
   {
     position: 'relative',
     opacity: 0.7,
-    transition: `all 400ms ${eases.easeInOutSine}`,
+    transition: `opacity 400ms ${eases.easeInOutSine}`,
   },
   ({ isCurrent }) => {
     if (isCurrent) {
@@ -39,7 +39,7 @@ const ImageContainer = styled.div(
 
 export default function SceneThumbnail({ scene, isCurrent }: Props) {
   return (
-    <Flipped flipId={scene.id} spring="stiff">
+    <Flipped flipId={scene.id}>
       <ImageContainer isCurrent={isCurrent}>
         <Link to={sceneRoute(scene)}>
           <img

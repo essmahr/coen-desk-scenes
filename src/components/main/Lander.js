@@ -1,4 +1,7 @@
+// @flow
+
 import React from 'react';
+import { Flex } from '@rebass/grid';
 
 import * as eases from '../../lib/easings';
 import { TRANSITIONS } from '../../lib/transition-helpers';
@@ -66,15 +69,12 @@ export const landerTransitions = `
 `;
 
 const Lander = () => (
-  <header
-    css={`
-      height: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      padding: 4rem;
-      justify-content: center;
-    `}
+  <Flex
+    as="header"
+    flexDirection="column"
+    justifyContent="center"
+    p={4}
+    css={'height: 100%'}
   >
     <h1
       css={`
@@ -87,7 +87,7 @@ const Lander = () => (
       Every character actor behind a desk
       <br /> In a Coen Brothers film
     </h1>
-  </header>
+  </Flex>
 );
 
 export default Lander;
