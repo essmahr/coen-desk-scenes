@@ -101,7 +101,7 @@ const Quote = ({ quote }: { quote: string }) => {
       `}
     >
       &ldquo;
-      {quote}
+      <span dangerouslySetInnerHTML={{ __html: quote }} />
       &rdquo;
     </blockquote>
   );
@@ -113,7 +113,7 @@ export default ({ scene, film }: { scene: Scene, film: Film }) => (
       padding-top: 1.5rem;
     `}
   >
-    <Quote quote={scene.quote} />
+    <Quote quote={scene.fields.formattedQuote} />
     <Details film={film} scene={scene} />
   </div>
 );

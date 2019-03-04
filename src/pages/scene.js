@@ -31,12 +31,12 @@ export const query = graphql`
   fragment SceneMain on ScenesJson {
     timestamp
     film
-    quote
     actor
     imdbId
     multiple
     fields {
       ...SceneImageMain
+      formattedQuote
     }
   }
 

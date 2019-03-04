@@ -1,5 +1,7 @@
 const path = require('path');
 const fs = require('fs');
+const smartypants = require('smartypants').smartypants;
+
 const { sceneRoute, filmRoute } = require('./src/lib/routes');
 
 exports.onCreateNode = ({ node, actions }) => {
@@ -7,12 +9,21 @@ exports.onCreateNode = ({ node, actions }) => {
     return;
   }
 
-  const timestamp = node.timestamp.split(':').join('.');
-  const imagePath = `/images/${node.film}_${timestamp}.jpeg`;
+  const { film, timestamp, quote } = node;
+  const { createNodeField } = actions;
+
+  createNodeField({
+    node,
+    name: 'formattedQuote',
+    value: smartypants(quote, 1),
+  });
+
+  const timestampKey = timestamp.split(':').join('.');
+  const imagePath = `/images/${film}_${timestampKey}.jpeg`;
   const imageExists = fs.existsSync(path.join(__dirname, 'src', imagePath));
 
   if (imageExists) {
-    actions.createNodeField({
+    createNodeField({
       node,
       name: 'image',
       value: path.join('..', imagePath),

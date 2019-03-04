@@ -26,6 +26,7 @@
     "react-flip-toolkit": "^6.1.0",
     "react-helmet": "^5.2.0",
     "react-transition-group": "^2.5.2",
+    "smartypants": "^0.1.1",
     "styled-components": "^4.1.3",
     "styled-system": "^3.2.1"
   },

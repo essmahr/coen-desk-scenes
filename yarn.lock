@@ -10525,6 +10525,11 @@ slice-ansi@^2.1.0:
     astral-regex "^1.0.0"
     is-fullwidth-code-point "^2.0.0"
 
+smartypants@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/smartypants/-/smartypants-0.1.1.tgz#7994094a6633b04e102a987aaa86816484791d2b"
+  integrity sha512-cmRfqgUdTIYHW2ljYxrsfb636T/okoGbRLfidSr3VQqXzXwWz+UeI3I5fCxk5eXW+H6QRMsn1sA/I7igXLB7lA==
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
