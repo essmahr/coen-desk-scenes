@@ -14,6 +14,7 @@ const Button = styled.button`
   height: 2rem;
   padding: 0;
   border-bottom: 1px solid #211d1a;
+  border-left: 1px solid #211d1a;
   cursor: pointer;
 `;
 

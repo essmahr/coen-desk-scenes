@@ -36,7 +36,7 @@ function Sidebar(props: Props) {
           top: 0;
           right: 0;
           bottom: 0;
-          border-left: 1px solid #211d1a;
+          // border-left: 1px solid #211d1a;
           background-color: #080605;
           z-index: 1;
         `,
