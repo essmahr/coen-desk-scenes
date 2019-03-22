@@ -17,20 +17,22 @@ type Props = {
 const ImageContainer = styled.div(
   {
     position: 'relative',
-    opacity: 0.7,
-    transition: `opacity 400ms ${eases.easeInOutSine}`,
+    opacity: 0.5,
+    transition: `opacity 300ms ${eases.easeInOutSine}`,
+
+    img: {
+      borderRadius: 3,
+    },
   },
   ({ isCurrent }) => {
     if (isCurrent) {
       return {
-        img: {
-          opacity: 0.3,
-        },
+        opacity: 0.7,
       };
     } else {
       return {
         '&:hover': {
-          opacity: 1,
+          opacity: 0.7,
         },
       };
     }
@@ -60,7 +62,7 @@ export const sceneThumbnailFragment = graphql`
     fields {
       thumbnail: image {
         childImageSharp {
-          small: fixed(width: 300, quality: 100) {
+          small: fixed(width: 300, height: 160, quality: 80) {
             src
           }
         }

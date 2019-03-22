@@ -17,8 +17,14 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
         height: calc(100% - 1rem);
       `}
     >
-      <Box px={4}>
-        <img src={imgSrc} alt="alt" />
+      <Box px={6}>
+        <img
+          src={imgSrc}
+          alt="alt"
+          css={{
+            borderRadius: 3,
+          }}
+        />
         <SceneDetails scene={scene} film={film} />
       </Box>
     </Flex>

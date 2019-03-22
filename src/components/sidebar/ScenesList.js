@@ -23,8 +23,9 @@ const ScenesWithoutFilms = (props: {
           as="li"
           flex="0 1 auto"
           width={[1 / 2]}
-          px={2}
-          pb={3}
+          px={3}
+          pt={1}
+          pb={4}
           key={scene.id}
         >
           <SceneThumbnail
