@@ -48,8 +48,8 @@ const FilmListItem = ({
           as="li"
           flex="0 1 auto"
           width={[1 / 3]}
-          px={1}
-          pb={2}
+          px={2}
+          pb={3}
           key={scene.id}
         >
           <SceneThumbnail scene={scene} isCurrent={scene.id === currentScene} />
@@ -65,7 +65,7 @@ const FilmListItem = ({
         <Year>{film.year}</Year>
         <Title>{film.title}</Title>
       </Box>
-      <Flex as="ul" mx={-1} flexWrap="wrap">
+      <Flex as="ul" mx={-2} flexWrap="wrap">
         {scenes}
       </Flex>
     </Box>
