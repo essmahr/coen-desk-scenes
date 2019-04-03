@@ -74,6 +74,7 @@ const Lander = () => (
     flexDirection="column"
     justifyContent="center"
     p={4}
+    pl={5}
     css={'height: 100%'}
   >
     <h1
