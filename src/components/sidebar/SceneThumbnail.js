@@ -27,12 +27,12 @@ const ImageContainer = styled.div(
   ({ isCurrent }) => {
     if (isCurrent) {
       return {
-        opacity: 0.7,
+        opacity: 0.8,
       };
     } else {
       return {
         '&:hover': {
-          opacity: 0.7,
+          opacity: 0.6,
         },
       };
     }

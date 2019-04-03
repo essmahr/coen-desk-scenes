@@ -45,7 +45,8 @@ function Sidebar(props: Props) {
     >
       <Box
         mt={4}
-        p={4}
+        py={4}
+        pr={4}
         css={`
           height: calc(100% - 2rem);
           overflow: auto;
