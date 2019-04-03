@@ -36,7 +36,6 @@ function Sidebar(props: Props) {
           top: 0;
           right: 0;
           bottom: 0;
-          // border-left: 1px solid #211d1a;
           background-color: #080605;
           z-index: 1;
         `,
@@ -44,11 +43,10 @@ function Sidebar(props: Props) {
       ]}
     >
       <Box
-        mt={4}
         py={4}
         pr={4}
         css={`
-          height: calc(100% - 2rem);
+          height: 100%;
           overflow: auto;
         `}
       >

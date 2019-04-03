@@ -4,18 +4,40 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   display: block;
-  background-color: #080605;
+  background-color: transparent;
   color: #dbdbd3;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  border: 0;
+  bottom: 0;
   height: 2rem;
-  padding: 0;
-  border-bottom: 1px solid #211d1a;
-  border-left: 1px solid #211d1a;
+  width: calc(4rem + 2.5rem);
+  left: 0;
+  border: 0;
+  padding: 0 0 0 2.5rem;
   cursor: pointer;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  text-align: left;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: 'IBM Plex Sans';
+  opacity: 0.8;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: calc(50% - 0.5px);
+    width: 2rem;
+    height: 1px;
+    background: #dbdbd3;
+    opacity: 0.4;
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 export default function ToggleButton({

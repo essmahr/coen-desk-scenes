@@ -16,7 +16,6 @@ type Props = {
 
 const ImageContainer = styled.div(
   {
-    position: 'relative',
     opacity: 0.5,
     transition: `opacity 300ms ${eases.easeInOutSine}`,
 

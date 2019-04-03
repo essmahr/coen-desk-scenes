@@ -43,7 +43,7 @@ const ScenesWithFilms = (props: {
   currentScene: ?string,
 }) => {
   return (
-    <ul>
+    <Box as="ul" mx={-2}>
       {props.films.map(film => (
         <FilmListItem
           key={film.slug}
@@ -51,7 +51,7 @@ const ScenesWithFilms = (props: {
           currentScene={props.currentScene}
         />
       ))}
-    </ul>
+    </Box>
   );
 };
 

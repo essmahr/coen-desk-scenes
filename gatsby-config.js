@@ -12,8 +12,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
-        displayName: process.env.NODE_ENV !== `production`,
-        fileName: false,
+        displayName: true,
+        fileName: true,
       },
     },
     {

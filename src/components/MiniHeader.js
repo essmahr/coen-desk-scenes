@@ -22,7 +22,6 @@ const Header = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-bottom: 1px solid #211d1a;
   text-transform: uppercase;
   transition: transform ${duration}ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 `;
@@ -40,9 +39,7 @@ export default function MiniHeader({ visible }: { visible: boolean }) {
       {state => (
         <Header css={transitionStyles[state]}>
           <Box px={4}>
-            <Link to="/">
-              Every character actor behind a desk in a coen brothers film
-            </Link>
+            <Link to="/">E. C. A. B. a D. in a C. B. F.</Link>
           </Box>
         </Header>
       )}

@@ -60,24 +60,15 @@ const FilmListItem = ({
     );
 
   return (
-    <li
-      key={film.slug}
-      css={`
-        margin-bottom: 2rem;
-      `}
-    >
-      <div
-        css={`
-          margin-bottom: 0.6em;
-        `}
-      >
+    <Box as="li" mb={4} px={3} key={film.slug}>
+      <Box mb={3}>
         <Year>{film.year}</Year>
         <Title>{film.title}</Title>
-      </div>
+      </Box>
       <Flex as="ul" mx={-1} flexWrap="wrap">
         {scenes}
       </Flex>
-    </li>
+    </Box>
   );
 };
 
