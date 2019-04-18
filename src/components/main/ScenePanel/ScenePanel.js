@@ -14,10 +14,10 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
       justifyContent="center"
       css={`
         overflow-y: auto;
-        height: calc(100% - 1rem);
+        height: 100%;
       `}
     >
-      <Box px={6}>
+      <Box px={6} pt={4}>
         <img
           src={imgSrc}
           alt="alt"
