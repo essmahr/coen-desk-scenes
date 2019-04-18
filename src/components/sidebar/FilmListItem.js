@@ -61,7 +61,17 @@ const FilmListItem = ({
 
   return (
     <Box as="li" mb={4} px={3} key={film.slug}>
-      <Box mb={3}>
+      <Box
+        mb={3}
+        css={`
+          opacity: 0;
+          transition: opacity 0.3s ease;
+
+          .show-headings & {
+            opacity: 1;
+          }
+        `}
+      >
         <Year>{film.year}</Year>
         <Title>{film.title}</Title>
       </Box>

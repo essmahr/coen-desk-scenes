@@ -11,6 +11,7 @@ import ScenesList from './ScenesList';
 type Props = {
   films: Array<Film>,
   filmsMode: boolean,
+  headingsVisible: boolean,
   onModeToggle: Function,
   currentScene: ?string,
 };
@@ -26,10 +27,19 @@ const responsiveWidths = mediaQueries.reduce((style, query, index) => {
 }, {});
 
 function Sidebar(props: Props) {
-  const { films, onModeToggle, filmsMode, currentScene } = props;
+  const {
+    films,
+    onModeToggle,
+    filmsMode,
+    currentScene,
+    headingsVisible,
+  } = props;
+
+  const className = headingsVisible ? 'show-headings' : '';
 
   return (
     <div
+      className={className}
       css={[
         `
           position: fixed;
