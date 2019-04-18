@@ -18,16 +18,6 @@ const ScenePage = (props: Props) => {
 export default ScenePage;
 
 export const query = graphql`
-  fragment SceneImageMain on fields_2 {
-    image {
-      childImageSharp {
-        fixed(width: 1200, quality: 100) {
-          src
-        }
-      }
-    }
-  }
-
   fragment SceneMain on ScenesJson {
     timestamp
     film
@@ -35,7 +25,13 @@ export const query = graphql`
     imdbId
     multiple
     fields {
-      ...SceneImageMain
+      image {
+        childImageSharp {
+          fixed(width: 1200, quality: 100) {
+            src
+          }
+        }
+      }
       formattedQuote
     }
   }
