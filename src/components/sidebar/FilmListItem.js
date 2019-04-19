@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { Flipped } from 'react-flip-toolkit';
 import { Flex, Box } from '@rebass/grid';
 import styled from 'styled-components';
 
@@ -34,6 +35,21 @@ const EmptyFilm = () => (
   </Box>
 );
 
+const headerCss = {
+  opacity: 0,
+  transition: 'opacity 0.5s ease',
+};
+
+const handleAppear = element => {
+  setTimeout(() => {
+    element.style.opacity = 1;
+  }, 50);
+};
+
+const handleExit = (element, index, removeElement) => {
+  setTimeout(removeElement, 500);
+};
+
 const FilmListItem = ({
   film,
   currentScene,
@@ -61,20 +77,19 @@ const FilmListItem = ({
 
   return (
     <Box as="li" mb={4} px={3} key={film.slug}>
-      <Box
-        mb={3}
-        css={`
-          opacity: 0;
-          transition: opacity 0.3s ease;
-
-          .show-headings & {
-            opacity: 1;
-          }
-        `}
+      <Flipped
+        flipId={film.title}
+        key={film.title}
+        onAppear={handleAppear}
+        onExit={handleExit}
       >
-        <Year>{film.year}</Year>
-        <Title>{film.title}</Title>
-      </Box>
+        <div style={headerCss}>
+          <Box mb={3}>
+            <Year>{film.year}</Year>
+            <Title>{film.title}</Title>
+          </Box>
+        </div>
+      </Flipped>
       <Flex as="ul" mx={-2} flexWrap="wrap">
         {scenes}
       </Flex>

@@ -32,7 +32,7 @@ class SidebarContainer extends PureComponent<Props, State> {
           this.setState({
             filmHeadingsVisible: true,
           });
-        }, 300);
+        }, 50);
       }
     );
   };
@@ -47,13 +47,16 @@ class SidebarContainer extends PureComponent<Props, State> {
           this.setState({
             filmsMode: false,
           });
-        }, 300);
+        }, 200);
       }
     );
   };
 
   toggleMode = (): void => {
-    this.state.filmsMode ? this.disableFilmsMode() : this.enableFilmsMode();
+    this.setState({
+      filmsMode: !this.state.filmsMode,
+    });
+    // this.state.filmsMode ? this.disableFilmsMode() : this.enableFilmsMode();
   };
 
   render() {

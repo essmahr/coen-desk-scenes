@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Flex, Box } from '@rebass/grid';
+import { Flipped } from 'react-flip-toolkit';
 
 import { type Film } from '../../types';
 
@@ -18,6 +19,9 @@ const ScenesWithoutFilms = (props: {
 
   return (
     <Flex as="ul" flexWrap="wrap" mx={-2} mb={2}>
+      <Flipped>
+        <div />
+      </Flipped>
       {scenes.map(scene => (
         <Box
           as="li"
