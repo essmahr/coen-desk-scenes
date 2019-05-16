@@ -27,7 +27,7 @@ export const query = graphql`
     fields {
       image {
         childImageSharp {
-          fluid(maxWidth: 960, quality: 90) {
+          fluid(maxWidth: 540, quality: 90) {
             ...GatsbyImageSharpFluid_noBase64
           }
         }
