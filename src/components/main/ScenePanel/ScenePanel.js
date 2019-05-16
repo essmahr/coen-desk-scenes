@@ -1,13 +1,14 @@
 // @flow
 import React from 'react';
 import { Flex, Box } from '@rebass/grid';
+import Img from 'gatsby-image';
 
 import SceneDetails from './SceneDetails';
 
 import { type Scene, type Film } from '../../../types';
 
 const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
-  const imgSrc = scene.fields.image.childImageSharp.fixed.src;
+  const img = scene.fields.image.childImageSharp.fluid;
   return (
     <Flex
       flexDirection="column"
@@ -18,9 +19,10 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
       `}
     >
       <Box px={6} pt={4}>
-        <img
-          src={imgSrc}
+        <Img
+          fluid={img}
           alt="alt"
+          backgroundColor="#292727"
           css={{
             borderRadius: 3,
           }}

@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { Flipped } from 'react-flip-toolkit';
 import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from 'styled-components';
 import * as eases from '../../lib/easings';
 
@@ -43,9 +44,9 @@ export default function SceneThumbnail({ scene, isCurrent }: Props) {
     <Flipped flipId={scene.id}>
       <ImageContainer isCurrent={isCurrent}>
         <Link to={sceneRoute(scene)}>
-          <img
-            css={{ transition: 'opacity 400ms ease-in-out' }}
-            src={scene.fields.thumbnail.childImageSharp.small.src}
+          <Img
+            style={{ transition: 'opacity 400ms ease-in-out' }}
+            fluid={scene.fields.thumbnail.childImageSharp.small}
             alt={scene.timestamp}
           />
         </Link>
@@ -61,8 +62,8 @@ export const sceneThumbnailFragment = graphql`
     fields {
       thumbnail: image {
         childImageSharp {
-          small: fixed(width: 300, height: 160, quality: 80) {
-            src
+          small: fluid(maxWidth: 300, maxHeight: 160, quality: 80) {
+            ...GatsbyImageSharpFluid
           }
         }
       }

@@ -27,8 +27,8 @@ export const query = graphql`
     fields {
       image {
         childImageSharp {
-          fixed(width: 1200, quality: 100) {
-            src
+          fluid(maxWidth: 960, quality: 90) {
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
