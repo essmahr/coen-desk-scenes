@@ -22,7 +22,6 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
         <Img
           fluid={img}
           alt="alt"
-          backgroundColor="#292727"
           css={{
             borderRadius: 3,
           }}
