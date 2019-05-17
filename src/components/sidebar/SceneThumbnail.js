@@ -47,6 +47,7 @@ export default function SceneThumbnail({ scene, isCurrent }: Props) {
           <Img
             style={{ transition: 'opacity 400ms ease-in-out' }}
             fluid={scene.fields.thumbnail.childImageSharp.small}
+            critical
             alt={scene.timestamp}
           />
         </Link>
