@@ -2,10 +2,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { border, textPrimary } from '../../colors';
+
 const Button = styled.button`
   display: block;
   background-color: transparent;
-  color: #dbdbd3;
+  color: ${textPrimary};
   position: absolute;
   bottom: 0;
   height: 2rem;
@@ -21,7 +23,6 @@ const Button = styled.button`
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-family: 'IBM Plex Sans';
-  opacity: 0.8;
 
   &::before {
     content: '';
@@ -31,8 +32,7 @@ const Button = styled.button`
     top: calc(50% - 0.5px);
     width: 2rem;
     height: 1px;
-    background: #dbdbd3;
-    opacity: 0.4;
+    background: ${border};
   }
 
   &:hover {

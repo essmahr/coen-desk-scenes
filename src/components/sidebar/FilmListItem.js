@@ -18,7 +18,6 @@ const Year = styled.h3`
   font-size: 11px;
   font-family: 'IBM Plex Sans Condensed';
   font-weight: 500;
-  opacity: 0.8;
   letter-spacing: 0.05em;
 `;
 

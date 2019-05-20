@@ -56,7 +56,6 @@ class SidebarContainer extends PureComponent<Props, State> {
     this.setState({
       filmsMode: !this.state.filmsMode,
     });
-    // this.state.filmsMode ? this.disableFilmsMode() : this.enableFilmsMode();
   };
 
   render() {

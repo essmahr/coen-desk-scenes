@@ -3,6 +3,7 @@ import React from 'react';
 import { Box } from '@rebass/grid';
 import ToggleButton from './ToggleButton';
 import { mediaQueries, sidebarWidths } from '../../lib/styles';
+import { background } from '../../colors';
 
 import { type Film } from '../../types';
 
@@ -46,7 +47,7 @@ function Sidebar(props: Props) {
           top: 0;
           right: 0;
           bottom: 0;
-          background-color: #080605;
+          background-color: ${background};
           z-index: 1;
         `,
         responsiveWidths,
