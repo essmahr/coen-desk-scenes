@@ -27,18 +27,8 @@ export const query = graphql`
     fields {
       image {
         childImageSharp {
-          fluid(
-            maxWidth: 540
-            quality: 90
-            traceSVG: {
-              color: "#111111"
-              turdSize: 10
-              threshold: 120
-              turnPolicy: TURNPOLICY_MINORITY
-              blackOnWhite: false
-            }
-          ) {
-            ...GatsbyImageSharpFluid_tracedSVG
+          fluid(maxWidth: 540, quality: 90) {
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
