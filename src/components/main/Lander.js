@@ -9,17 +9,24 @@ const { SCENE_ROOT, ROOT_ROOT, ROOT_SCENE } = TRANSITIONS;
 
 export const landerTransitions = `
 .${ROOT_ROOT} & {
-  &.panel-enter {
-    &.panel-enter-active {
+  &.panel-exit {
+    opacity: 1;
+
+    &.panel-exit-active {
+      transition: opacity 400ms ${eases.easeInSine};
+      opacity: 0;
     }
   }
 
-  &.panel-exit {
-    &.panel-exit-active {
+  &.panel-enter {
+    opacity: 0;
+
+    &.panel-enter-active {
+      transition: opacity 500ms ${eases.easeOutSine} 300ms;
+      opacity: 1;
     }
   }
 }
-
 
 .${ROOT_SCENE} & {
   &.panel-exit {
@@ -36,6 +43,7 @@ export const landerTransitions = `
   &.panel-enter {
     transform: translateX(7%);
     opacity: 0;
+
     &.panel-enter-active {
       transition: all 700ms ${eases.easeOutCubic} 300ms;
       transform: translateX(0.01%);
@@ -48,6 +56,7 @@ export const landerTransitions = `
   &.panel-enter {
     transform: translateX(-3%);
     opacity: 0;
+
     &.panel-enter-active {
       transition: all 400ms ${eases.easeOutSine} 300ms;
       transform: translateX(-0.01%);

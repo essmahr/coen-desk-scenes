@@ -2,6 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import MiniHeader from '../MiniHeader';
+import AboutLink from '../AboutLink';
 import TransitionContainer from './TransitionContainer';
 import { mediaQueries, sidebarWidths } from '../../lib/styles';
 
@@ -37,6 +38,7 @@ function Main({
       <TransitionContainer location={location} sceneIndex={sceneIndex}>
         {children}
       </TransitionContainer>
+      <AboutLink />
     </Fixed>
   );
 }

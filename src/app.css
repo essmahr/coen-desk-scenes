@@ -41,5 +41,10 @@ blockquote {
 
 a {
   text-decoration: none;
+  border-bottom: 1px solid #dbdbd344;
   color: inherit;
+}
+
+small em {
+  font-style: normal;
 }
