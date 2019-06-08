@@ -77,13 +77,23 @@ export const landerTransitions = `
 }
 `;
 
+const DesktopBr = () => (
+  <br
+    css={`
+      @media (max-width: 980px) {
+        display: none;
+      }
+    `}
+  />
+);
+
 const Lander = () => (
   <Flex
     as="header"
     flexDirection="column"
     justifyContent="center"
     p={4}
-    pl={5}
+    pl={[4, 5]}
     css={'height: 100%'}
   >
     <h1
@@ -95,7 +105,7 @@ const Lander = () => (
       `}
     >
       Every character actor behind a desk
-      <br /> In a Coen Brothers film
+      <DesktopBr /> In a Coen Brothers film
     </h1>
   </Flex>
 );

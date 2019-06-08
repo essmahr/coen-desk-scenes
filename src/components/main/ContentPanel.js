@@ -6,14 +6,18 @@ const ContentPanel = ({ children }) => {
     <Flex
       flexDirection="column"
       justifyContent="center"
-      css={`
-        overflow-y: auto;
-        height: 100%;
-      `}
+      css={{ height: '100%' }}
     >
-      <Box px={[2, 4, 5, 6]} pt={4}>
-        {children}
-      </Box>
+      <div
+        className="hello"
+        css={`
+          overflow-y: auto;
+        `}
+      >
+        <Box px={[4, 4, 5, 6]} pt={4} pb={4}>
+          {children}
+        </Box>
+      </div>
     </Flex>
   );
 };

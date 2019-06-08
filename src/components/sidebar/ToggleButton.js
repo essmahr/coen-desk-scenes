@@ -12,7 +12,7 @@ const Button = styled.button`
   bottom: 0;
   height: 2rem;
   width: calc(4rem + 2.5rem);
-  left: 0;
+  left: -0.5rem;
   border: 0;
   padding: 0 0 0 2.5rem;
   cursor: pointer;

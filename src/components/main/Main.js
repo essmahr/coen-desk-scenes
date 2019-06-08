@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import { Box } from '@rebass/grid';
-import MiniHeader from '../MiniHeader';
 import AboutLink from '../AboutLink';
 import TransitionContainer from './TransitionContainer';
 import { widths } from '../../lib/styles';
@@ -25,7 +24,6 @@ function Main({
       `}
       width={widths.main}
     >
-      <MiniHeader visible={location !== '/'} />
       <TransitionContainer location={location} sceneIndex={sceneIndex}>
         {children}
       </TransitionContainer>

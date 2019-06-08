@@ -15,6 +15,7 @@ export default function<ResultFn: (...Array<any>) => mixed>(
 
     lastResult = resultFn.apply(this, newArgs);
     calledOnce = true;
+
     return lastResult;
   };
 
