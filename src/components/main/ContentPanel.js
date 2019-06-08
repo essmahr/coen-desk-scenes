@@ -11,7 +11,7 @@ const ContentPanel = ({ children }) => {
         height: 100%;
       `}
     >
-      <Box px={6} pt={4}>
+      <Box px={[2, 4, 5, 6]} pt={4}>
         {children}
       </Box>
     </Flex>

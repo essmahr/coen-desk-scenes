@@ -1,27 +1,10 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components';
+import { Box } from '@rebass/grid';
 import MiniHeader from '../MiniHeader';
 import AboutLink from '../AboutLink';
 import TransitionContainer from './TransitionContainer';
-import { mediaQueries, sidebarWidths } from '../../lib/styles';
-
-const Fixed = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-`;
-
-const responsiveWidths = mediaQueries.reduce((style, query, index) => {
-  if (sidebarWidths[index]) {
-    style[query] = {
-      width: `calc(100% - ${sidebarWidths[index]})`,
-    };
-  }
-
-  return style;
-}, {});
+import { widths } from '../../lib/styles';
 
 function Main({
   children,
@@ -33,13 +16,21 @@ function Main({
   sceneIndex: number | null,
 }) {
   return (
-    <Fixed css={responsiveWidths}>
+    <Box
+      css={`
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+      `}
+      width={widths.main}
+    >
       <MiniHeader visible={location !== '/'} />
       <TransitionContainer location={location} sceneIndex={sceneIndex}>
         {children}
       </TransitionContainer>
       <AboutLink />
-    </Fixed>
+    </Box>
   );
 }
 

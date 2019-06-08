@@ -2,7 +2,7 @@
 import React from 'react';
 import { Box } from '@rebass/grid';
 import ToggleButton from './ToggleButton';
-import { mediaQueries, sidebarWidths } from '../../lib/styles';
+import { widths } from '../../lib/styles';
 import { background } from '../../colors';
 
 import { type Film } from '../../types';
@@ -17,16 +17,6 @@ type Props = {
   currentScene: ?string,
 };
 
-const responsiveWidths = mediaQueries.reduce((style, query, index) => {
-  if (sidebarWidths[index]) {
-    style[query] = {
-      width: sidebarWidths[index],
-    };
-  }
-
-  return style;
-}, {});
-
 function Sidebar(props: Props) {
   const {
     films,
@@ -39,7 +29,7 @@ function Sidebar(props: Props) {
   const className = headingsVisible ? 'show-headings' : '';
 
   return (
-    <div
+    <Box
       className={className}
       css={[
         `
@@ -50,12 +40,13 @@ function Sidebar(props: Props) {
           background-color: ${background};
           z-index: 1;
         `,
-        responsiveWidths,
       ]}
+      width={widths.sidebar}
     >
       <Box
         py={4}
-        pr={4}
+        pr={[4, 2, 4, 4]}
+        pl={[4, 0, 0, 0]}
         css={`
           height: 100%;
           overflow: auto;
@@ -68,7 +59,7 @@ function Sidebar(props: Props) {
         />
       </Box>
       <ToggleButton onClick={onModeToggle} filmsMode={filmsMode} />
-    </div>
+    </Box>
   );
 }
 
