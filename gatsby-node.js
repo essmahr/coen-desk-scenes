@@ -3,6 +3,7 @@ const fs = require('fs');
 const smartypants = require('smartypants').smartypants;
 
 const { sceneRoute, filmRoute } = require('./src/lib/routes');
+const { getNextScene, getPreviousScene } = require('./src/lib/pagination');
 
 exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type !== 'ScenesJson') {
@@ -66,7 +67,7 @@ const query = `
   }
 `;
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   createPage({
@@ -74,49 +75,48 @@ exports.createPages = ({ graphql, actions }) => {
     component: path.resolve(`./src/pages/home.js`),
   });
 
-  return graphql(query)
-    .then(pages => {
-      const { allScenesJson, allFilmsJson } = pages.data;
-      let counter = 0;
+  const pages = await graphql(query);
 
-      const orderedScenes = allFilmsJson.edges.reduce(
-        (scenes, { node: film }) => {
-          const { slug } = film;
+  const { allScenesJson, allFilmsJson } = pages.data;
 
-          const filmSceneGroup = allScenesJson.group.find(
-            sceneGroup => sceneGroup.fieldValue === slug
-          );
+  const orderedScenes = allFilmsJson.edges.reduce((scenes, { node: film }) => {
+    const { slug } = film;
 
-          const scenesArray = filmSceneGroup
-            ? filmSceneGroup.edges.map(({ node: scene }) => {
-                counter++;
+    const filmSceneGroup = allScenesJson.group.find(
+      sceneGroup => sceneGroup.fieldValue === slug
+    );
 
-                return {
-                  ...scene,
-                  film: slug,
-                  index: counter,
-                };
-              })
-            : [];
-          return [...scenes, ...scenesArray];
+    const scenesArray = filmSceneGroup
+      ? filmSceneGroup.edges.map(({ node: scene }) => {
+          return {
+            ...scene,
+            film: slug,
+          };
+        })
+      : [];
+    return [...scenes, ...scenesArray];
+  }, []);
+
+  for (let index = 0; index < orderedScenes.length; index++) {
+    const currentScene = orderedScenes[index];
+    const nextScene = getNextScene(orderedScenes, index);
+    const previousScene = getPreviousScene(orderedScenes, index);
+
+    const { timestamp, film, id } = currentScene;
+
+    createPage({
+      path: sceneRoute(currentScene),
+      component: path.resolve(`./src/pages/scene.js`),
+      context: {
+        id,
+        timestamp,
+        film,
+        index,
+        pagination: {
+          previous: sceneRoute(previousScene),
+          next: sceneRoute(nextScene),
         },
-        []
-      );
-
-      orderedScenes.forEach(scene => {
-        const { timestamp, film, index, id } = scene;
-
-        createPage({
-          path: sceneRoute(scene),
-          component: path.resolve(`./src/pages/scene.js`),
-          context: {
-            id,
-            timestamp,
-            film,
-            index,
-          },
-        });
-      });
-    })
-    .catch(console.error);
+      },
+    });
+  }
 };

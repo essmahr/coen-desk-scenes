@@ -1,19 +1,54 @@
 // @flow
-import React from 'react';
+import React, { Component } from 'react';
 import { graphql } from 'gatsby';
+import { navigate } from 'gatsby-link';
 
 import ScenePanel from '../components/main/ScenePanel/ScenePanel';
 
 type Props = {
   data: Object,
+  pageContext: {
+    pagination: {
+      next: String,
+      previous: String,
+    },
+  },
 };
 
-const ScenePage = (props: Props) => {
-  const scene = props.data.scenesJson;
-  const film = props.data.filmsJson;
+class ScenePage extends Component<Props> {
+  componentDidMount = () => {
+    document.addEventListener('keydown', this.handleKeyDown);
+  };
 
-  return <ScenePanel scene={scene} film={film} />;
-};
+  componentWillUnmount = () => {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  };
+
+  handleKeyDown = (event: Object) => {
+    const { previous, next } = this.props.pageContext.pagination;
+    switch (event.keyCode) {
+      case 27:
+        navigate('/');
+        break;
+      case 37:
+      case 48:
+        navigate(previous);
+        break;
+      case 39:
+      case 40:
+        navigate(next);
+        break;
+      default:
+        return;
+    }
+  };
+
+  render() {
+    const { scenesJson, filmsJson } = this.props.data;
+
+    return <ScenePanel scene={scenesJson} film={filmsJson} />;
+  }
+}
 
 export default ScenePage;
 
