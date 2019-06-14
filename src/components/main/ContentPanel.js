@@ -14,7 +14,7 @@ const ContentPanel = ({ children }) => {
           -webkit-overflow-scrolling: touch;
         `}
       >
-        <Box px={[4, 4, 5, 6]} py={[5, 4]}>
+        <Box px={[3, 4, 5, 6]} py={[5, 4]}>
           {children}
         </Box>
       </div>

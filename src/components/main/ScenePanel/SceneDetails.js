@@ -1,6 +1,7 @@
 // @flow
 
 import React, { type Node } from 'react';
+import { Text } from 'rebass';
 
 import { type Scene, type Film } from '../../../types';
 
@@ -29,16 +30,21 @@ const detailItem = ({
       letter-spacing: 0.05em;
       text-transform: uppercase;
       font-family: 'IBM Plex Sans';
+
+      @media screen and (max-width: 40em) {
+        display: block;
+        margin-bottom: 1em;
+      }
     `}
   >
     <span
       css={`
         display: inline-block;
-        margin-right: 0.4rem;
+        margin-right: 0.33rem;
         opacity: 0.8;
       `}
     >
-      {label}
+      {label}:
     </span>
     <span
       css={`
@@ -81,6 +87,10 @@ const Details = ({ film, scene }: { film: Film, scene: Scene }) => {
             border-bottom-color: rgba(255, 255, 255, 0.5);
           }
         }
+
+        @media screen and (max-width: 40em) {
+          margin-top: 1em;
+        }
       `}
     >
       {details.map(detailItem)}
@@ -90,20 +100,21 @@ const Details = ({ film, scene }: { film: Film, scene: Scene }) => {
 
 const Quote = ({ quote }: { quote: string }) => {
   return (
-    <blockquote
+    <Text
+      as="blockquote"
+      fontFamily="IBM Plex Serif"
+      fontSize={2}
+      fontWeight={400}
+      mb={1}
       css={`
-        font-family: 'IBM Plex Serif';
-        font-size: 18px;
-        font-weight: 400;
         font-style: italic;
         text-indent: -0.5em;
-        margin-bottom: 0.5rem;
       `}
     >
       &ldquo;
       <span dangerouslySetInnerHTML={{ __html: quote }} />
       &rdquo;
-    </blockquote>
+    </Text>
   );
 };
 

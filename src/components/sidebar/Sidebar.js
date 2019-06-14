@@ -34,7 +34,6 @@ function Sidebar(props: Props) {
       css={[
         `
           position: fixed;
-          // outline: 1px solid red;
           background-color: ${background};
 
           @media screen and (max-width: calc(40em - 1px)) {

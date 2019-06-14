@@ -77,16 +77,6 @@ export const landerTransitions = `
 }
 `;
 
-const DesktopBr = () => (
-  <br
-    css={`
-      @media (max-width: 40em) {
-        display: none;
-      }
-    `}
-  />
-);
-
 const Lander = () => (
   <Flex
     as="header"
