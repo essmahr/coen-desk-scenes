@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Flex } from '@rebass/grid';
-
+import { Heading } from 'rebass';
 import * as eases from '../../lib/easings';
 import { TRANSITIONS } from '../../lib/transition-helpers';
 const { SCENE_ROOT, ROOT_ROOT, ROOT_SCENE } = TRANSITIONS;
@@ -80,7 +80,7 @@ export const landerTransitions = `
 const DesktopBr = () => (
   <br
     css={`
-      @media (max-width: 980px) {
+      @media (max-width: 40em) {
         display: none;
       }
     `}
@@ -96,17 +96,15 @@ const Lander = () => (
     pl={[4, 5]}
     css={'height: 100%'}
   >
-    <h1
-      css={`
-        font-size: 32px;
-        line-height: 1.3;
-        font-weight: 600;
-        font-family: 'IBM Plex Serif';
-      `}
+    <Heading
+      fontSize={[4, 5]}
+      lineHeight="1.3"
+      fontWeight={600}
+      fontFamily="IBM Plex Serif"
+      css={{ maxWidth: '18em' }}
     >
-      Every character actor behind a desk
-      <DesktopBr /> In a Coen Brothers film
-    </h1>
+      Every character actor behind a desk In a Coen Brothers film
+    </Heading>
   </Flex>
 );
 

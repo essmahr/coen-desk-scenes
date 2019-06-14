@@ -5,7 +5,7 @@ export const widths = {
 
 const imageWidth = 300;
 const imageHeight = 160;
-const imagesVisible = 3.4;
+const imagesVisible = 2.75;
 
 export const mobileSidebarImageWidth = `${(10 / imagesVisible) * 10}vw`;
 export const mobileSidebarHeight = `calc(${(imageHeight /

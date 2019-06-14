@@ -11,7 +11,7 @@ const andersonLink = 'https://vimeo.com/89302848';
 const AboutPage = () => (
   <ContentPanel>
     <Text
-      fontSize={1}
+      fontSize={[2, 1]}
       lineHeight={1.6}
       css={{ maxWidth: '600px', margin: 'auto' }}
     >

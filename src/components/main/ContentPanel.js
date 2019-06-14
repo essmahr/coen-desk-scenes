@@ -9,12 +9,12 @@ const ContentPanel = ({ children }) => {
       css={{ height: '100%' }}
     >
       <div
-        className="hello"
         css={`
           overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
         `}
       >
-        <Box px={[4, 4, 5, 6]} pt={4} pb={4}>
+        <Box px={[4, 4, 5, 6]} py={[5, 4]}>
           {children}
         </Box>
       </div>
