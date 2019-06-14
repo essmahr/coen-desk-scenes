@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Box } from '@rebass/grid';
 import AboutLink from '../AboutLink';
 import TransitionContainer from './TransitionContainer';
-import { widths } from '../../lib/styles';
+import { widths, mobileSidebarHeight } from '../../lib/styles';
 
 function Main({
   children,
@@ -19,8 +19,12 @@ function Main({
       css={`
         position: fixed;
         top: 0;
-        bottom: 0;
+        bottom: ${mobileSidebarHeight};
         left: 0;
+
+        @media screen and (min-width: 40em) {
+          bottom: 0;
+        }
       `}
       width={widths.main}
     >

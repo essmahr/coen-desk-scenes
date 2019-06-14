@@ -17,6 +17,7 @@ type Props = {
 
 class ScenePage extends Component<Props> {
   componentDidMount = () => {
+    // TODO: throttle
     document.addEventListener('keydown', this.handleKeyDown);
   };
 

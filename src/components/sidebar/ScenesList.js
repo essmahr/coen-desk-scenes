@@ -2,6 +2,7 @@
 import React from 'react';
 import { Flex, Box } from '@rebass/grid';
 import { Flipped } from 'react-flip-toolkit';
+import { mobileSidebarImageWidth } from '../../lib/styles';
 
 import { type Film } from '../../types';
 
@@ -17,19 +18,24 @@ const ScenesWithoutFilms = (props: {
     []
   );
 
+  // images 300 / 160
+  // ratio 1.875
+  // fit three in view
+  // - 33.33vw
+
   return (
-    <Flex as="ul" flexWrap="wrap" mx={-2} mb={2}>
+    <Flex as="ul" flexWrap={['nowrap', 'wrap']} mx={[0, -2]} mb={[0, 2]}>
       <Flipped>
         <div />
       </Flipped>
       {scenes.map(scene => (
         <Box
           as="li"
-          flex="0 1 auto"
-          width={[1 / 2]}
-          px={2}
-          pt={1}
-          pb={4}
+          flex={['0 0 auto', '0 1 auto']}
+          width={[mobileSidebarImageWidth, 1 / 2]}
+          px={[1, 2]}
+          pt={[0, 1]}
+          pb={[0, 4]}
           key={scene.id}
         >
           <SceneThumbnail
