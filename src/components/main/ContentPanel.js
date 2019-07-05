@@ -16,7 +16,15 @@ const ContentPanel = ({ children }) => {
         `}
       >
         <Box px={[4, 4, 5, 6]} py={[5, 4]}>
-          <div css={{ marginBottom: mobileSidebarHeight }}>{children}</div>
+          <div
+            css={{
+              '@media screen and (max-width: calc(40em - 1px))': {
+                marginBottom: mobileSidebarHeight,
+              },
+            }}
+          >
+            {children}
+          </div>
         </Box>
       </div>
     </Flex>

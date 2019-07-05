@@ -5,7 +5,7 @@ import { linearGradient } from 'polished';
 
 import ToggleButton from './ToggleButton';
 import { widths, mobileSidebarHeight } from '../../lib/styles';
-import { background, backgroundFaded } from '../../colors';
+import { background } from '../../colors';
 import { type Film } from '../../types';
 
 import ScenesList from './ScenesList';
