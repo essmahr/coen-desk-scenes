@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-
 import { border, textSecondary } from '../colors';
+import { mobileSidebarVW } from '../lib/styles';
 
 const AboutIcon = styled.div`
   position: absolute;
@@ -17,7 +17,7 @@ const AboutIcon = styled.div`
   align-items: center;
 
   @media screen and (max-width: 40em) {
-    bottom: calc(1rem - 8px);
+    bottom: calc(${mobileSidebarVW} + 1rem);
     right: 1rem;
     width: 36px;
     height: 36px;

@@ -24,7 +24,13 @@ const ScenesWithoutFilms = (props: {
   // - 33.33vw
 
   return (
-    <Flex as="ul" flexWrap={['nowrap', 'wrap']} mx={[0, -2]} mb={[0, 2]}>
+    <Flex
+      as="ul"
+      flexWrap={['nowrap', 'wrap']}
+      mx={[0, -2]}
+      mb={[0, 2]}
+      pr={[2, 0]}
+    >
       <Flipped>
         <div />
       </Flipped>
@@ -33,7 +39,7 @@ const ScenesWithoutFilms = (props: {
           as="li"
           flex={['0 0 auto', '0 1 auto']}
           width={[mobileSidebarImageWidth, 1 / 2]}
-          px={[1, 2]}
+          px={[2, 2]}
           pt={[0, 1]}
           pb={[0, 4]}
           key={scene.id}

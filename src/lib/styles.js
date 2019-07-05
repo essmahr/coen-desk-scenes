@@ -8,6 +8,8 @@ const imageHeight = 160;
 const imagesVisible = 2.75;
 
 export const mobileSidebarImageWidth = `${(10 / imagesVisible) * 10}vw`;
-export const mobileSidebarHeight = `calc(${(imageHeight /
-  (imageWidth * imagesVisible)) *
-  100}vw + 14px)`;
+
+export const mobileSidebarVW = `${(imageHeight / (imageWidth * imagesVisible)) *
+  100}vw`;
+
+export const mobileSidebarHeight = `calc(${mobileSidebarVW} + 24px)`;

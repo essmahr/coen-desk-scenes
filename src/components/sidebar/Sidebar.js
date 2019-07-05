@@ -1,10 +1,11 @@
 // @flow
 import React from 'react';
 import { Box } from '@rebass/grid';
+import { linearGradient } from 'polished';
+
 import ToggleButton from './ToggleButton';
 import { widths, mobileSidebarHeight } from '../../lib/styles';
-import { background } from '../../colors';
-
+import { background, backgroundFaded } from '../../colors';
 import { type Film } from '../../types';
 
 import ScenesList from './ScenesList';
@@ -16,6 +17,14 @@ type Props = {
   onModeToggle: Function,
   currentScene: ?string,
 };
+
+const gradient = linearGradient({
+  colorStops: [`${background} 70%`, 'rgba(0,0,0,0) 99%'],
+  toDirection: 'to top',
+  fallback: 'transparent',
+});
+
+console.log(gradient);
 
 function Sidebar(props: Props) {
   const {
@@ -31,32 +40,32 @@ function Sidebar(props: Props) {
   return (
     <Box
       className={className}
-      css={[
-        `
-          position: fixed;
-          background-color: ${background};
+      css={{
+        position: 'fixed',
+        zIndex: 1,
 
-          @media screen and (max-width: calc(40em - 1px)) {
-            height: ${mobileSidebarHeight};
-            right: 0;
-            bottom: 0;
-            left: 0;
-          }
+        '@media screen and (max-width: calc(40em - 1px))': {
+          ...gradient,
+          height: mobileSidebarHeight,
+          right: 0,
+          bottom: 0,
+          left: 0,
+        },
 
-          @media screen and (min-width: 40em) {
-            height: 100%;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-          }
-        `,
-      ]}
+        '@media screen and (min-width: 40em)': {
+          height: '100%',
+          right: 0,
+          bottom: 0,
+          zIndex: 1,
+          backgroundColor: background,
+        },
+      }}
       width={widths.sidebar}
     >
       <Box
-        py={[2, 4]}
-        pr={[1, 2, 4, 4]}
-        pl={[1, 0, 0, 0]}
+        py={[3, 4]}
+        pr={[0, 2, 4, 4]}
+        pl={[2, 0, 0, 0]}
         css={`
           height: 100%;
           overflow: auto;

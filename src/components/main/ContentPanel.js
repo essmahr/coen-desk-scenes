@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex, Box } from '@rebass/grid';
+import { mobileSidebarHeight } from '../../lib/styles';
 
 const ContentPanel = ({ children }) => {
   return (
@@ -14,8 +15,8 @@ const ContentPanel = ({ children }) => {
           -webkit-overflow-scrolling: touch;
         `}
       >
-        <Box px={[3, 4, 5, 6]} py={[5, 4]}>
-          {children}
+        <Box px={[4, 4, 5, 6]} py={[5, 4]}>
+          <div css={{ marginBottom: mobileSidebarHeight }}>{children}</div>
         </Box>
       </div>
     </Flex>
