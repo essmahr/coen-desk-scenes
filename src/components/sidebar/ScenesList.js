@@ -38,10 +38,9 @@ const ScenesWithoutFilms = (props: {
         <Box
           as="li"
           flex={['0 0 auto', '0 1 auto']}
-          width={[mobileSidebarImageWidth, 1 / 2]}
+          width={[mobileSidebarImageWidth, 1, 1 / 2]}
           px={[2, 2]}
-          pt={[0, 1]}
-          pb={[0, 4]}
+          py={[0, 2]}
           key={scene.id}
         >
           <SceneThumbnail
