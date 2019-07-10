@@ -24,8 +24,6 @@ const gradient = linearGradient({
   fallback: 'transparent',
 });
 
-console.log(gradient);
-
 function Sidebar(props: Props) {
   const {
     films,

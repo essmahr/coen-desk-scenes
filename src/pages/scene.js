@@ -32,7 +32,7 @@ class ScenePage extends Component<Props> {
         navigate('/');
         break;
       case 37:
-      case 48:
+      case 38:
         navigate(previous);
         break;
       case 39:

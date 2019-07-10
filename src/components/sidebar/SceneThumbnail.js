@@ -25,7 +25,6 @@ export default function SceneThumbnail({ scene, isCurrent }: Props) {
           <Img
             style={{ transition: `opacity 200ms ${eases.easeInOutSine}` }}
             fluid={src}
-            fadeIn={false}
             critical
             alt={scene.timestamp}
           />
