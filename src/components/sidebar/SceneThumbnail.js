@@ -6,6 +6,7 @@ import Img from 'gatsby-image';
 
 import { type Scene } from '../../types';
 
+import * as eases from '../../lib/easings';
 import { sceneRoute } from '../../lib/routes';
 import ImageContainer from './ImageContainer';
 
@@ -15,13 +16,16 @@ type Props = {
 };
 
 export default function SceneThumbnail({ scene, isCurrent }: Props) {
+  const src = scene.fields.thumbnail.childImageSharp.color;
+
   return (
     <Flipped flipId={scene.id}>
       <ImageContainer isCurrent={isCurrent}>
         <Link to={sceneRoute(scene)}>
           <Img
-            style={{ transition: 'opacity 400ms ease-in-out' }}
-            fluid={scene.fields.thumbnail.childImageSharp.small}
+            style={{ transition: `opacity 200ms ${eases.easeInOutSine}` }}
+            fluid={src}
+            fadeIn={false}
             critical
             alt={scene.timestamp}
           />
@@ -38,7 +42,7 @@ export const sceneThumbnailFragment = graphql`
     fields {
       thumbnail: image {
         childImageSharp {
-          small: fluid(maxWidth: 300, maxHeight: 160, quality: 80) {
+          color: fluid(maxWidth: 300, maxHeight: 160, quality: 80) {
             ...GatsbyImageSharpFluid
           }
         }
