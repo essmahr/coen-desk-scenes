@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 
 import Main from './components/main/Main';
 import MiniHeader from './components/MiniHeader';
+import KeyboardNav from './components/KeyboardNav';
 import SidebarQuery from './components/sidebar/SidebarQuery';
 import SidebarContainer from './components/sidebar/SidebarContainer';
 
@@ -39,6 +40,7 @@ const Layout = ({ children, location, pageContext }: Props) => {
 
         <html lang="en" />
       </Helmet>
+      <KeyboardNav pagination={pageContext.pagination} />
       <MiniHeader visible={location.pathname !== '/'} />
       <Main location={location.pathname} sceneIndex={index}>
         {children}
