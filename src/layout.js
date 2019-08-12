@@ -27,7 +27,7 @@ const Layout = ({ children, location, pageContext }: Props) => {
   return (
     <>
       <Helmet
-        title="Coens"
+        title="Every character actor behind a desk in a Coen Brothers film"
         meta={[
           { name: 'description', content: '' },
           { name: 'keywords', content: '' },

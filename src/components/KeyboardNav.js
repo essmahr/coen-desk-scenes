@@ -28,6 +28,8 @@ class KeyboardNav extends Component<Props> {
   };
 
   handleKeyDown = (event: Object) => {
+    if (!this.props.pagination) return;
+
     const { previous, next } = this.props.pagination;
     switch (event.keyCode) {
       case 27:
