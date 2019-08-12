@@ -93,7 +93,7 @@ const Lander = () => (
       fontFamily="IBM Plex Serif"
       css={{ maxWidth: '18em' }}
     >
-      Every character actor behind a desk In a Coen Brothers film
+      Every character actor behind a desk in a Coen Brothers film
     </Heading>
   </Flex>
 );
