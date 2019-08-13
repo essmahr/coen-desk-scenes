@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import { Flipped } from 'react-flip-toolkit';
+import styled from 'styled-components';
 import { graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
 
 import { type Scene } from '../../types';
 
@@ -15,20 +15,24 @@ type Props = {
   isCurrent: boolean,
 };
 
+const SceneLink = styled(Link)`
+  border: 0;
+  display: inline-block;
+`;
+
 export default function SceneThumbnail({ scene, isCurrent }: Props) {
-  const src = scene.fields.thumbnail.childImageSharp.color;
+  const { src } = scene.fields.thumbnail.childImageSharp.color;
 
   return (
     <Flipped flipId={scene.id}>
       <ImageContainer isCurrent={isCurrent}>
-        <Link to={sceneRoute(scene)}>
-          <Img
+        <SceneLink to={sceneRoute(scene)}>
+          <img
             style={{ transition: `opacity 200ms ${eases.easeInOutSine}` }}
-            fluid={src}
-            loading="eager"
+            src={src}
             alt={scene.timestamp}
           />
-        </Link>
+        </SceneLink>
       </ImageContainer>
     </Flipped>
   );
@@ -42,7 +46,7 @@ export const sceneThumbnailFragment = graphql`
       thumbnail: image {
         childImageSharp {
           color: fluid(maxWidth: 300, maxHeight: 160, quality: 80) {
-            ...GatsbyImageSharpFluid_noBase64
+            src
           }
         }
       }
