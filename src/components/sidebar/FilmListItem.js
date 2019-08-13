@@ -82,12 +82,12 @@ const FilmListItem = ({
         onAppear={handleAppear}
         onExit={handleExit}
       >
-        <div style={headerCss}>
+        <Box css={headerCss}>
           <Box mb={3}>
             <Year>{film.year}</Year>
             <Title>{film.title}</Title>
           </Box>
-        </div>
+        </Box>
       </Flipped>
       <Flex as="ul" mx={-2} flexWrap="wrap">
         {scenes}

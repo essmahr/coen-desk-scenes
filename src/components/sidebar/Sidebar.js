@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import styled from 'styled-components';
 import { Box } from '@rebass/grid';
 import { linearGradient } from 'polished';
 
@@ -24,6 +25,27 @@ const gradient = linearGradient({
   fallback: 'transparent',
 });
 
+const SidebarParent = styled(Box)`
+  position: fixed;
+  zindex: 1;
+
+  @media screen and (max-width: calc(40em - 1px)) {
+    ${gradient};
+    height: ${mobileSidebarHeight};
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  @media screen and (min-width: 40em) {
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    zindex: 1;
+    backgroundcolor: ${background};
+  }
+`;
+
 function Sidebar(props: Props) {
   const {
     films,
@@ -36,30 +58,7 @@ function Sidebar(props: Props) {
   const className = headingsVisible ? 'show-headings' : '';
 
   return (
-    <Box
-      className={className}
-      css={{
-        position: 'fixed',
-        zIndex: 1,
-
-        '@media screen and (max-width: calc(40em - 1px))': {
-          ...gradient,
-          height: mobileSidebarHeight,
-          right: 0,
-          bottom: 0,
-          left: 0,
-        },
-
-        '@media screen and (min-width: 40em)': {
-          height: '100%',
-          right: 0,
-          bottom: 0,
-          zIndex: 1,
-          backgroundColor: background,
-        },
-      }}
-      width={widths.sidebar}
-    >
+    <SidebarParent className={className} width={widths.sidebar}>
       <Box
         py={[3, 4]}
         pr={[0, 2, 4, 4]}
@@ -77,7 +76,7 @@ function Sidebar(props: Props) {
         />
       </Box>
       <ToggleButton onClick={onModeToggle} filmsMode={filmsMode} />
-    </Box>
+    </SidebarParent>
   );
 }
 

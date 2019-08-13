@@ -22,36 +22,6 @@ class SidebarContainer extends PureComponent<Props, State> {
     filmHeadingsVisible: false,
   };
 
-  enableFilmsMode = (): void => {
-    this.setState(
-      {
-        filmsMode: true,
-      },
-      () => {
-        setTimeout(() => {
-          this.setState({
-            filmHeadingsVisible: true,
-          });
-        }, 50);
-      }
-    );
-  };
-
-  disableFilmsMode = (): void => {
-    this.setState(
-      {
-        filmHeadingsVisible: false,
-      },
-      () => {
-        setTimeout(() => {
-          this.setState({
-            filmsMode: false,
-          });
-        }, 200);
-      }
-    );
-  };
-
   toggleMode = (): void => {
     this.setState({
       filmsMode: !this.state.filmsMode,
