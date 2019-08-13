@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Flex, Box } from '@rebass/grid';
-import { Flipped } from 'react-flip-toolkit';
+// import { Flipped } from 'react-flip-toolkit';
 import { mobileSidebarImageWidth } from '../../lib/styles';
 
 import { type Film } from '../../types';
@@ -31,9 +31,6 @@ const ScenesWithoutFilms = (props: {
       mb={[0, 2]}
       pr={[2, 0]}
     >
-      <Flipped>
-        <div />
-      </Flipped>
       {scenes.map(scene => (
         <Box
           as="li"

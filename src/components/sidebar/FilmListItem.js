@@ -45,10 +45,6 @@ const handleAppear = element => {
   }, 50);
 };
 
-const handleExit = (element, index, removeElement) => {
-  setTimeout(removeElement, 500);
-};
-
 const FilmListItem = ({
   film,
   currentScene,
@@ -76,12 +72,7 @@ const FilmListItem = ({
 
   return (
     <Box as="li" mb={4} px={3} key={film.slug}>
-      <Flipped
-        flipId={film.title}
-        key={film.title}
-        onAppear={handleAppear}
-        onExit={handleExit}
-      >
+      <Flipped flipId={film.title} key={film.title} onAppear={handleAppear}>
         <Box css={headerCss}>
           <Box mb={3}>
             <Year>{film.year}</Year>

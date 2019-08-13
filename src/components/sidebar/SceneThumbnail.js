@@ -25,7 +25,7 @@ export default function SceneThumbnail({ scene, isCurrent }: Props) {
           <Img
             style={{ transition: `opacity 200ms ${eases.easeInOutSine}` }}
             fluid={src}
-            critical
+            loading="eager"
             alt={scene.timestamp}
           />
         </Link>
@@ -42,7 +42,7 @@ export const sceneThumbnailFragment = graphql`
       thumbnail: image {
         childImageSharp {
           color: fluid(maxWidth: 300, maxHeight: 160, quality: 80) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
