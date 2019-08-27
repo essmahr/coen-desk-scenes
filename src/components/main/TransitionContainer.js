@@ -39,7 +39,7 @@ type State = {
   transitionType: string,
 };
 
-class TransitionContainer extends React.Component<Props, State> {
+class TransitionContainer extends React.PureComponent<Props, State> {
   state = {
     currentSceneIndex: null,
     transitionType: TRANSITIONS.ROOT_ROOT,

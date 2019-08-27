@@ -1,5 +1,5 @@
 // @flow
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Flipper } from 'react-flip-toolkit';
 
 import { type Film } from '../../types';
@@ -16,11 +16,22 @@ type State = {
   filmHeadingsVisible: boolean,
 };
 
-class SidebarContainer extends PureComponent<Props, State> {
+class SidebarContainer extends Component<Props, State> {
   state = {
     filmsMode: false,
-    filmHeadingsVisible: false,
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.sceneId !== this.props.sceneId) {
+      return true;
+    }
+
+    if (nextState.filmsMode !== this.state.filmsMode) {
+      return true;
+    }
+
+    return false;
+  }
 
   toggleMode = (): void => {
     this.setState({
@@ -34,7 +45,6 @@ class SidebarContainer extends PureComponent<Props, State> {
         <Sidebar
           onModeToggle={this.toggleMode}
           filmsMode={this.state.filmsMode}
-          headingsVisible={this.state.filmHeadingsVisible}
           films={this.props.films}
           currentScene={this.props.sceneId}
         />

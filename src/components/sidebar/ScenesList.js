@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Flex, Box } from '@rebass/grid';
-// import { Flipped } from 'react-flip-toolkit';
+import dumbMemoize from '../../lib/dumbMemoize';
 import { mobileSidebarImageWidth } from '../../lib/styles';
 
 import { type Film } from '../../types';
@@ -9,14 +9,16 @@ import { type Film } from '../../types';
 import FilmListItem from './FilmListItem';
 import SceneThumbnail from './SceneThumbnail';
 
+const gatherScenes = films =>
+  films.reduce((scenes, film) => [...scenes, ...film.scenes], []);
+
+const gatherScenesOnce = dumbMemoize(gatherScenes);
+
 const ScenesWithoutFilms = (props: {
   films: Array<Film>,
   currentScene: ?string,
 }) => {
-  const scenes = props.films.reduce(
-    (scenes, film) => [...scenes, ...film.scenes],
-    []
-  );
+  const scenes = gatherScenesOnce(props.films);
 
   // images 300 / 160
   // ratio 1.875
