@@ -10,7 +10,7 @@ type Props = {
 
 const ScenePage = (props: Props) => {
   const { scenesJson, filmsJson } = props.data;
-
+  console.log('scene');
   return <ScenePanel scene={scenesJson} film={filmsJson} />;
 };
 
