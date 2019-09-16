@@ -5,10 +5,10 @@ import Img from 'gatsby-image';
 import ContentPanel from '../ContentPanel';
 import SceneDetails from './SceneDetails';
 
-import { type Scene, type Film } from '../../../types';
+import { type Scene } from '../../../types';
 
-const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
-  const img = scene.fields.image.childImageSharp.fluid;
+const ScenePanel = function({ scene }: { scene: Scene }) {
+  const img = scene.image.childImageSharp.fluid;
   return (
     <ContentPanel>
       <Img
@@ -18,7 +18,7 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
           borderRadius: 3,
         }}
       />
-      <SceneDetails scene={scene} film={film} />
+      <SceneDetails scene={scene} />
     </ContentPanel>
   );
 };

@@ -1,5 +1,16 @@
 // @flow
 
+export type PageContext = {
+  id: String,
+  timestamp: String,
+  film: String,
+  index: Number,
+  pagination: {
+    previous: String,
+    next: String,
+  },
+};
+
 export type Thumbnail = {
   childImageSharp: {
     small: {
@@ -10,30 +21,9 @@ export type Thumbnail = {
 
 export type Film = {
   title: string,
-
   slug: string,
-
   year: number,
-
   scenes: Array<Scene>,
-};
-
-export type FilmsJson = {
-  edges: Array<{
-    node: Film,
-  }>,
-};
-
-export type SceneGroup = {
-  fieldValue: string,
-
-  edges: Array<{
-    node: Scene,
-  }>,
-};
-
-export type ScenesJson = {
-  group: Array<SceneGroup>,
 };
 
 export type Scene = {
@@ -43,8 +33,4 @@ export type Scene = {
   quote: string,
   actor: string,
   imdbId: string,
-  fields: {
-    image: Object,
-    thumbnail: Thumbnail,
-  },
 };

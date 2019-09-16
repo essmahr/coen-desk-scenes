@@ -3,7 +3,7 @@
 import React, { type Node } from 'react';
 import { Text } from 'rebass';
 
-import { type Scene, type Film } from '../../../types';
+import { type Scene } from '../../../types';
 
 const imdbLink = (actor: string, imdbId: string) => (
   <a
@@ -56,9 +56,9 @@ const detailItem = ({
   </span>
 );
 
-const Details = ({ film, scene }: { film: Film, scene: Scene }) => {
+const Details = ({ scene }: { scene: Scene }) => {
+  const { actor, imdbId, film } = scene;
   const { title, year } = film;
-  const { actor, imdbId } = scene;
 
   const details = [
     {
@@ -118,13 +118,13 @@ const Quote = ({ quote }: { quote: string }) => {
   );
 };
 
-export default ({ scene, film }: { scene: Scene, film: Film }) => (
+export default ({ scene }: { scene: Scene }) => (
   <div
     css={`
       padding-top: 1.5rem;
     `}
   >
-    <Quote quote={scene.fields.formattedQuote} />
-    <Details film={film} scene={scene} />
+    <Quote quote={scene.formattedQuote} />
+    <Details scene={scene} />
   </div>
 );

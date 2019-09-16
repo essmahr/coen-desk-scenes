@@ -16,7 +16,7 @@ type Props = {
   filmsMode: boolean,
   headingsVisible: boolean,
   onModeToggle: Function,
-  currentScene: ?string,
+  currentSceneId: ?string,
 };
 
 const gradient = linearGradient({
@@ -47,18 +47,10 @@ const SidebarParent = styled(Box)`
 `;
 
 function Sidebar(props: Props) {
-  const {
-    films,
-    onModeToggle,
-    filmsMode,
-    currentScene,
-    headingsVisible,
-  } = props;
-
-  const className = headingsVisible ? 'show-headings' : '';
+  const { films, onModeToggle, filmsMode, currentSceneId } = props;
 
   return (
-    <SidebarParent className={className} width={widths.sidebar}>
+    <SidebarParent width={widths.sidebar}>
       <Box
         py={[3, 4]}
         pr={[0, 2, 4, 4]}
@@ -72,7 +64,7 @@ function Sidebar(props: Props) {
         <ScenesList
           films={films}
           filmsMode={filmsMode}
-          currentScene={currentScene}
+          currentSceneId={currentSceneId}
         />
       </Box>
       <ToggleButton onClick={onModeToggle} filmsMode={filmsMode} />

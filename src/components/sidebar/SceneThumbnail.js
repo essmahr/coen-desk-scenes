@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react';
+import React, { memo } from 'react';
 import { Flipped } from 'react-flip-toolkit';
 import styled from 'styled-components';
 import { graphql, Link } from 'gatsby';
@@ -20,8 +20,10 @@ const SceneLink = styled(Link)`
   display: inline-block;
 `;
 
-export default function SceneThumbnail({ scene, isCurrent }: Props) {
-  const { src } = scene.fields.thumbnail.childImageSharp.color;
+const SceneThumbnail = ({ scene, isCurrent }: Props) => {
+  console.log('SceneThumbnail render');
+
+  const { src } = scene.thumbnail.childImageSharp.color;
 
   return (
     <Flipped flipId={scene.id}>
@@ -36,18 +38,24 @@ export default function SceneThumbnail({ scene, isCurrent }: Props) {
       </ImageContainer>
     </Flipped>
   );
-}
+};
+
+const shouldCache = (prevProps, nextProps) =>
+  prevProps.isCurrent === nextProps.isCurrent;
+
+export default memo(SceneThumbnail, shouldCache);
 
 export const sceneThumbnailFragment = graphql`
-  fragment Scene_thumbnail on ScenesJson {
+  fragment Scene_thumbnail on scene {
     id
     timestamp
-    fields {
-      thumbnail: image {
-        childImageSharp {
-          color: fluid(maxWidth: 300, maxHeight: 160, quality: 80) {
-            src
-          }
+    film {
+      slug
+    }
+    thumbnail: image {
+      childImageSharp {
+        color: fluid(maxWidth: 300, maxHeight: 160, quality: 80) {
+          src
         }
       }
     }

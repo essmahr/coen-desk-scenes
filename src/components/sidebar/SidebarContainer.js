@@ -1,5 +1,6 @@
 // @flow
-import React, { Component } from 'react';
+import React, { useState, memo } from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 import { Flipper } from 'react-flip-toolkit';
 
 import { type Film } from '../../types';
@@ -8,49 +9,45 @@ import Sidebar from './Sidebar';
 
 type Props = {
   films: Array<Film>,
-  sceneId: ?string,
+  currentSceneId: ?string,
 };
 
-type State = {
-  filmsMode: boolean,
-  filmHeadingsVisible: boolean,
+const query = graphql`
+  {
+    allFilm(sort: { fields: year }) {
+      nodes {
+        title
+        slug
+        scenes {
+          ...Scene_thumbnail
+        }
+      }
+    }
+  }
+`;
+
+const SidebarContainer = (props: Props) => {
+  console.log('SidebarContainer render');
+  const [filmsMode, setFilmsMode] = useState(false);
+
+  return (
+    <StaticQuery
+      query={query}
+      render={data => (
+        <Flipper flipKey={filmsMode}>
+          <Sidebar
+            onModeToggle={() => setFilmsMode(fm => !fm)}
+            filmsMode={filmsMode}
+            films={data.allFilm.nodes}
+            currentSceneId={props.currentSceneId}
+          />
+        </Flipper>
+      )}
+    />
+  );
 };
 
-class SidebarContainer extends Component<Props, State> {
-  state = {
-    filmsMode: false,
-  };
+const shouldUpdate = (prevProps, nextProps) =>
+  prevProps.currentSceneId === nextProps.currentSceneId;
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.sceneId !== this.props.sceneId) {
-      return true;
-    }
-
-    if (nextState.filmsMode !== this.state.filmsMode) {
-      return true;
-    }
-
-    return false;
-  }
-
-  toggleMode = (): void => {
-    this.setState({
-      filmsMode: !this.state.filmsMode,
-    });
-  };
-
-  render() {
-    return (
-      <Flipper flipKey={this.state.filmsMode}>
-        <Sidebar
-          onModeToggle={this.toggleMode}
-          filmsMode={this.state.filmsMode}
-          films={this.props.films}
-          currentScene={this.props.sceneId}
-        />
-      </Flipper>
-    );
-  }
-}
-
-export default SidebarContainer;
+export default memo(SidebarContainer, shouldUpdate);

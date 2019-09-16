@@ -1,37 +1,106 @@
+const crypto = require('crypto');
 const path = require('path');
 const fs = require('fs');
 const smartypants = require('smartypants').smartypants;
 
+const filmsJson = require('./src/data/films');
+const scenesJson = require('./src/data/scenes');
+
 const { sceneRoute, filmRoute } = require('./src/lib/routes');
 const { getNextScene, getPreviousScene } = require('./src/lib/pagination');
 
-exports.onCreateNode = ({ node, actions }) => {
-  if (node.internal.type !== 'ScenesJson') {
+const createHash = string =>
+  crypto
+    .createHash('md5')
+    .update(string)
+    .digest('hex');
+
+const createContentDigest = data =>
+  crypto
+    .createHash('md5')
+    .update(JSON.stringify(data))
+    .digest('hex');
+
+const getImageName = (film, scene) => {
+  const { timestamp } = scene;
+  const { slug } = film;
+  const timestampKey = timestamp.split(':').join('.');
+
+  return `${slug}_${timestampKey}`;
+};
+
+const getImageIDForScene = (images, imageName) => {
+  const image = images.find(({ name }) => name === imageName);
+
+  if (!image) {
+    console.warn('image node not found', imageName);
     return;
   }
 
-  const { film, timestamp, quote } = node;
-  const { createNodeField } = actions;
+  return image.id;
+};
 
-  createNodeField({
-    node,
-    name: 'formattedQuote',
-    value: smartypants(quote, 1),
-  });
+const getScenesForFilm = (scenes, film) =>
+  scenes.filter(scene => scene.film === film.slug);
 
-  const timestampKey = timestamp.split(':').join('.');
-  const imagePath = `/images/${film}_${timestampKey}.jpeg`;
-  const imageExists = fs.existsSync(path.join(__dirname, 'src', imagePath));
+const makeSceneNode = (scene, filmNode) => {
+  const { timestamp, quote, actor, film, imdbId, multiple } = scene;
+  return {
+    id: createHash(`${filmNode.slug}${timestamp}`),
+    timestamp,
+    quote,
+    formattedQuote: smartypants(quote, 1),
+    actor,
+    imdbId,
+    multiple,
+    film___NODE: filmNode.id,
+    internal: {
+      type: 'scene',
+      contentDigest: createContentDigest(scene),
+      mediaType: 'application/json',
+    },
+  };
+};
 
-  if (imageExists) {
-    createNodeField({
-      node,
-      name: 'image',
-      value: path.join('..', imagePath),
+const makeFilmNode = film => {
+  const { title, slug, year } = film;
+  return {
+    id: createHash(slug),
+    title,
+    slug,
+    year,
+    scenes___NODE: [],
+    internal: {
+      type: 'film',
+      contentDigest: createContentDigest(film),
+      mediaType: 'application/json',
+    },
+  };
+};
+
+const byTimestamp = (a, b) => (a.timestamp > b.timestamp ? 1 : -1);
+
+exports.sourceNodes = ({ actions, getNodesByType }) => {
+  const { createNode } = actions;
+
+  const images = getNodesByType('File');
+
+  filmsJson.forEach(film => {
+    const filmNode = makeFilmNode(film);
+    const filmScenes = getScenesForFilm(scenesJson, film);
+
+    filmScenes.sort(byTimestamp).forEach(scene => {
+      const sceneNode = makeSceneNode(scene, filmNode);
+
+      const imageName = getImageName(filmNode, sceneNode);
+      sceneNode.image___NODE = getImageIDForScene(images, imageName);
+
+      filmNode.scenes___NODE.push(sceneNode.id);
+      createNode(sceneNode);
     });
-  } else {
-    console.error(`\nimage not found at ${imagePath}`);
-  }
+
+    createNode(filmNode);
+  });
 };
 
 exports.onCreatePage = ({ page, actions }) => {
@@ -42,24 +111,14 @@ exports.onCreatePage = ({ page, actions }) => {
 
 const query = `
   {
-    allFilmsJson(sort: { fields: year }) {
-      edges {
-        node {
-          slug
-        }
-      }
-    }
-    allScenesJson(sort:{ fields: timestamp, order: ASC }) {
-      group(field: film) {
-        fieldValue
-        edges {
-          node {
-            id
-            timestamp
-            quote
-            actor
-            imdbId
-            multiple
+    allFilm(sort: { fields: year }) {
+      nodes {
+        slug
+        scenes {
+          id
+          timestamp
+          film {
+            slug
           }
         }
       }
@@ -75,34 +134,19 @@ exports.createPages = async ({ graphql, actions }) => {
     component: path.resolve(`./src/pages/home.js`),
   });
 
-  const pages = await graphql(query);
+  const results = await graphql(query);
 
-  const { allScenesJson, allFilmsJson } = pages.data;
-
-  const orderedScenes = allFilmsJson.edges.reduce((scenes, { node: film }) => {
-    const { slug } = film;
-
-    const filmSceneGroup = allScenesJson.group.find(
-      sceneGroup => sceneGroup.fieldValue === slug
-    );
-
-    const scenesArray = filmSceneGroup
-      ? filmSceneGroup.edges.map(({ node: scene }) => {
-          return {
-            ...scene,
-            film: slug,
-          };
-        })
-      : [];
-    return [...scenes, ...scenesArray];
-  }, []);
+  const orderedScenes = results.data.allFilm.nodes.reduce(
+    (acc, { scenes }) => acc.concat(scenes),
+    []
+  );
 
   for (let index = 0; index < orderedScenes.length; index++) {
     const currentScene = orderedScenes[index];
     const nextScene = getNextScene(orderedScenes, index);
     const previousScene = getPreviousScene(orderedScenes, index);
 
-    const { timestamp, film, id } = currentScene;
+    const { timestamp, film, id, image } = currentScene;
 
     createPage({
       path: sceneRoute(currentScene),
@@ -110,7 +154,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id,
         timestamp,
-        film,
+        film: film.slug,
         index,
         pagination: {
           previous: sceneRoute(previousScene),

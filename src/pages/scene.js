@@ -1,5 +1,5 @@
 // @flow
-import React, { memo } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import ScenePanel from '../components/main/ScenePanel/ScenePanel';
@@ -9,20 +9,19 @@ type Props = {
 };
 
 const ScenePage = (props: Props) => {
-  const { scenesJson, filmsJson } = props.data;
-  return <ScenePanel scene={scenesJson} film={filmsJson} />;
+  return <ScenePanel scene={props.data.scene} />;
 };
 
-export default memo(ScenePage);
+export default ScenePage;
 
 export const query = graphql`
-  fragment SceneMain on ScenesJson {
-    timestamp
-    film
-    actor
-    imdbId
-    multiple
-    fields {
+  query($film: String!, $timestamp: String!) {
+    scene(film: { slug: { eq: $film } }, timestamp: { eq: $timestamp }) {
+      timestamp
+      actor
+      imdbId
+      multiple
+      formattedQuote
       image {
         childImageSharp {
           fluid(maxWidth: 540, quality: 90) {
@@ -30,17 +29,11 @@ export const query = graphql`
           }
         }
       }
-      formattedQuote
-    }
-  }
-
-  query($film: String!, $timestamp: String!) {
-    scenesJson(film: { eq: $film }, timestamp: { eq: $timestamp }) {
-      ...SceneMain
-    }
-    filmsJson(slug: { eq: $film }) {
-      title
-      year
+      film {
+        slug
+        year
+        title
+      }
     }
   }
 `;
