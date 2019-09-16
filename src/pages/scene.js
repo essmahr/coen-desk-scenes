@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { memo } from 'react';
 import { graphql } from 'gatsby';
 
 import ScenePanel from '../components/main/ScenePanel/ScenePanel';
@@ -10,11 +10,10 @@ type Props = {
 
 const ScenePage = (props: Props) => {
   const { scenesJson, filmsJson } = props.data;
-  console.log('scene');
   return <ScenePanel scene={scenesJson} film={filmsJson} />;
 };
 
-export default ScenePage;
+export default memo(ScenePage);
 
 export const query = graphql`
   fragment SceneMain on ScenesJson {
@@ -27,7 +26,7 @@ export const query = graphql`
       image {
         childImageSharp {
           fluid(maxWidth: 540, quality: 90) {
-            ...GatsbyImageSharpFluid_noBase64
+            ...GatsbyImageSharpFluid
           }
         }
       }
