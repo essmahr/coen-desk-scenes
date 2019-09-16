@@ -38,18 +38,18 @@ export default function SceneThumbnail({ scene, isCurrent }: Props) {
   );
 }
 
-export const sceneThumbnailFragment = graphql`
-  fragment Scene_thumbnail on ScenesJson {
-    id
-    timestamp
-    fields {
-      thumbnail: image {
-        childImageSharp {
-          color: fluid(maxWidth: 300, maxHeight: 160, quality: 80) {
-            src
-          }
-        }
-      }
-    }
-  }
-`;
+// export const sceneThumbnailFragment = graphql`
+//   fragment Scene_thumbnail on Scene {
+//     id
+//     timestamp
+//     fields {
+//       thumbnail: image {
+//         childImageSharp {
+//           color: fluid(maxWidth: 300, maxHeight: 160, quality: 80) {
+//             src
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;

@@ -1,23 +1,94 @@
+const crypto = require('crypto');
 const path = require('path');
 const fs = require('fs');
 const smartypants = require('smartypants').smartypants;
 
+console.log('welcome');
+
+const filmsJson = require('./src/data/films');
+const scenesJson = require('./src/data/films');
+
 const { sceneRoute, filmRoute } = require('./src/lib/routes');
 const { getNextScene, getPreviousScene } = require('./src/lib/pagination');
 
-exports.onCreateNode = ({ node, actions }) => {
-  if (node.internal.type !== 'ScenesJson') {
+const createHash = string =>
+  crypto
+    .createHash('md5')
+    .update(string)
+    .digest('hex');
+
+const createContentDigest = data =>
+  crypto
+    .createHash('md5')
+    .update(JSON.stringify(data))
+    .digest('hex');
+
+const getScenesForFilm = (scenes, film) =>
+  scenes.filter(scene => scene.film === film.slug);
+
+const makeSceneNode = (scene, filmNode) => {
+  const { timestamp, quote, actor, imdbId, multiple } = scene;
+  return {
+    id: createHash(`${filmNode.slug}${timestamp}`),
+    timestamp,
+    quote,
+    formattedQuote: smartypants(quote, 1),
+    actor,
+    imdbId,
+    multiple,
+    film__NODE: filmNode.id,
+    internal: {
+      type: 'scene',
+      contentDigest: createContentDigest(scene),
+      mediaType: 'application/json',
+    },
+  };
+};
+
+const makeFilmNode = film => {
+  const { title, slug, year } = film;
+  return {
+    id: createHash(slug),
+    title,
+    slug,
+    year,
+    scenes__NODE: [],
+    internal: {
+      type: 'film',
+      contentDigest: createContentDigest(film),
+      mediaType: 'application/json',
+    },
+  };
+};
+
+exports.sourceNodes = ({ actions }) => {
+  console.log('HELP');
+
+  const { createNode } = actions;
+
+  filmsJson.forEach(film => {
+    const filmNode = makeFilmNode(film);
+    const filmScenes = getScenesForFilm(scenesJson, film);
+
+    filmScenes.forEach(scene => {
+      const sceneNode = makeSceneNode(scene, filmNode);
+      filmNode.scenes__NODE.push(sceneNode.id);
+      createNode(sceneNode);
+    });
+
+    createNode(filmNode);
+  });
+};
+
+exports.onCreateNode = ({ node, actions }, done) => {
+  console.log('HELLO');
+
+  if (node.internal.type !== 'scene') {
     return;
   }
 
   const { film, timestamp, quote } = node;
   const { createNodeField } = actions;
-
-  createNodeField({
-    node,
-    name: 'formattedQuote',
-    value: smartypants(quote, 1),
-  });
 
   const timestampKey = timestamp.split(':').join('.');
   const imagePath = `/images/${film}_${timestampKey}.jpeg`;
@@ -35,6 +106,8 @@ exports.onCreateNode = ({ node, actions }) => {
 };
 
 exports.onCreatePage = ({ page, actions }) => {
+  console.log('create page');
+
   if (page.path === '/scene/') {
     actions.deletePage(page);
   }
@@ -42,14 +115,14 @@ exports.onCreatePage = ({ page, actions }) => {
 
 const query = `
   {
-    allFilmsJson(sort: { fields: year }) {
+    films(sort: { fields: year }) {
       edges {
         node {
           slug
         }
       }
     }
-    allScenesJson(sort:{ fields: timestamp, order: ASC }) {
+    scenes(sort:{ fields: timestamp, order: ASC }) {
       group(field: film) {
         fieldValue
         edges {

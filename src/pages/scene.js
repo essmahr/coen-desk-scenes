@@ -10,37 +10,38 @@ type Props = {
 
 const ScenePage = (props: Props) => {
   const { scenesJson, filmsJson } = props.data;
-  return <ScenePanel scene={scenesJson} film={filmsJson} />;
+  // return <ScenePanel scene={scenesJson} film={filmsJson} />;
+  return 'hello';
 };
 
 export default memo(ScenePage);
 
-export const query = graphql`
-  fragment SceneMain on ScenesJson {
-    timestamp
-    film
-    actor
-    imdbId
-    multiple
-    fields {
-      image {
-        childImageSharp {
-          fluid(maxWidth: 540, quality: 90) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      formattedQuote
-    }
-  }
+// export const query = graphql`
+//   fragment SceneMain on ScenesJson {
+//     timestamp
+//     film
+//     actor
+//     imdbId
+//     multiple
+//     fields {
+//       image {
+//         childImageSharp {
+//           fluid(maxWidth: 540, quality: 90) {
+//             ...GatsbyImageSharpFluid
+//           }
+//         }
+//       }
+//       formattedQuote
+//     }
+//   }
 
-  query($film: String!, $timestamp: String!) {
-    scenesJson(film: { eq: $film }, timestamp: { eq: $timestamp }) {
-      ...SceneMain
-    }
-    filmsJson(slug: { eq: $film }) {
-      title
-      year
-    }
-  }
-`;
+//   query($film: String!, $timestamp: String!) {
+//     scenesJson(film: { eq: $film }, timestamp: { eq: $timestamp }) {
+//       ...SceneMain
+//     }
+//     filmsJson(slug: { eq: $film }) {
+//       title
+//       year
+//     }
+//   }
+// `;
