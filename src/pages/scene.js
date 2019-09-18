@@ -9,39 +9,30 @@ type Props = {
 };
 
 const ScenePage = (props: Props) => {
-  const { scenesJson, filmsJson } = props.data;
-  // return <ScenePanel scene={scenesJson} film={filmsJson} />;
-  return 'hello';
+  const { scene } = props.data;
+  return <ScenePanel scene={scene} />;
 };
 
 export default memo(ScenePage);
 
-// export const query = graphql`
-//   fragment SceneMain on ScenesJson {
-//     timestamp
-//     film
-//     actor
-//     imdbId
-//     multiple
-//     fields {
-//       image {
-//         childImageSharp {
-//           fluid(maxWidth: 540, quality: 90) {
-//             ...GatsbyImageSharpFluid
-//           }
-//         }
-//       }
-//       formattedQuote
-//     }
-//   }
-
-//   query($film: String!, $timestamp: String!) {
-//     scenesJson(film: { eq: $film }, timestamp: { eq: $timestamp }) {
-//       ...SceneMain
-//     }
-//     filmsJson(slug: { eq: $film }) {
-//       title
-//       year
-//     }
-//   }
-// `;
+export const query = graphql`
+  query($film: String!, $timestamp: String!) {
+    scene(film: { eq: $film }, timestamp: { eq: $timestamp }) {
+      timestamp
+      film
+      actor
+      imdbId
+      multiple
+      formattedQuote
+      fields {
+        image {
+          childImageSharp {
+            fluid(maxWidth: 540, quality: 90) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+  }
+`;

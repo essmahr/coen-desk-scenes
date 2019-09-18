@@ -57,8 +57,8 @@ const detailItem = ({
 );
 
 const Details = ({ film, scene }: { film: Film, scene: Scene }) => {
+  const { actor, imdbId, film } = scene;
   const { title, year } = film;
-  const { actor, imdbId } = scene;
 
   const details = [
     {
@@ -118,13 +118,13 @@ const Quote = ({ quote }: { quote: string }) => {
   );
 };
 
-export default ({ scene, film }: { scene: Scene, film: Film }) => (
+export default ({ scene }: { scene: Scene }) => (
   <div
     css={`
       padding-top: 1.5rem;
     `}
   >
     <Quote quote={scene.fields.formattedQuote} />
-    <Details film={film} scene={scene} />
+    <Details scene={scene} />
   </div>
 );

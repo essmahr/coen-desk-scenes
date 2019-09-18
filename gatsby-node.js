@@ -6,7 +6,7 @@ const smartypants = require('smartypants').smartypants;
 console.log('welcome');
 
 const filmsJson = require('./src/data/films');
-const scenesJson = require('./src/data/films');
+const scenesJson = require('./src/data/scenes');
 
 const { sceneRoute, filmRoute } = require('./src/lib/routes');
 const { getNextScene, getPreviousScene } = require('./src/lib/pagination');
@@ -27,7 +27,7 @@ const getScenesForFilm = (scenes, film) =>
   scenes.filter(scene => scene.film === film.slug);
 
 const makeSceneNode = (scene, filmNode) => {
-  const { timestamp, quote, actor, imdbId, multiple } = scene;
+  const { timestamp, quote, actor, film, imdbId, multiple } = scene;
   return {
     id: createHash(`${filmNode.slug}${timestamp}`),
     timestamp,
@@ -36,7 +36,7 @@ const makeSceneNode = (scene, filmNode) => {
     actor,
     imdbId,
     multiple,
-    film__NODE: filmNode.id,
+    film___NODE: filmNode.id,
     internal: {
       type: 'scene',
       contentDigest: createContentDigest(scene),
@@ -52,7 +52,7 @@ const makeFilmNode = film => {
     title,
     slug,
     year,
-    scenes__NODE: [],
+    scenes___NODE: [],
     internal: {
       type: 'film',
       contentDigest: createContentDigest(film),
@@ -61,18 +61,19 @@ const makeFilmNode = film => {
   };
 };
 
-exports.sourceNodes = ({ actions }) => {
-  console.log('HELP');
+const byTimestamp = (a, b) => (a.timestamp > b.timestamp ? 1 : -1);
 
+exports.sourceNodes = ({ actions }) => {
   const { createNode } = actions;
 
   filmsJson.forEach(film => {
     const filmNode = makeFilmNode(film);
     const filmScenes = getScenesForFilm(scenesJson, film);
 
-    filmScenes.forEach(scene => {
+    filmScenes.sort(byTimestamp).forEach(scene => {
       const sceneNode = makeSceneNode(scene, filmNode);
-      filmNode.scenes__NODE.push(sceneNode.id);
+
+      filmNode.scenes___NODE.push(sceneNode.id);
       createNode(sceneNode);
     });
 
@@ -80,21 +81,19 @@ exports.sourceNodes = ({ actions }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions }, done) => {
-  console.log('HELLO');
-
+exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type !== 'scene') {
     return;
   }
-
   const { film, timestamp, quote } = node;
+
   const { createNodeField } = actions;
-
   const timestampKey = timestamp.split(':').join('.');
-  const imagePath = `/images/${film}_${timestampKey}.jpeg`;
+  const imagePath = `/images/${node.internal.filmSlug}_${timestampKey}.jpeg`;
   const imageExists = fs.existsSync(path.join(__dirname, 'src', imagePath));
-
   if (imageExists) {
+    console.log('creating field');
+
     createNodeField({
       node,
       name: 'image',
@@ -106,8 +105,6 @@ exports.onCreateNode = ({ node, actions }, done) => {
 };
 
 exports.onCreatePage = ({ page, actions }) => {
-  console.log('create page');
-
   if (page.path === '/scene/') {
     actions.deletePage(page);
   }
@@ -115,25 +112,11 @@ exports.onCreatePage = ({ page, actions }) => {
 
 const query = `
   {
-    films(sort: { fields: year }) {
-      edges {
-        node {
-          slug
-        }
-      }
-    }
-    scenes(sort:{ fields: timestamp, order: ASC }) {
-      group(field: film) {
-        fieldValue
-        edges {
-          node {
-            id
-            timestamp
-            quote
-            actor
-            imdbId
-            multiple
-          }
+    allFilm(sort: { fields: year }) {
+      nodes {
+        slug
+        scenes {
+          timestamp
         }
       }
     }
@@ -150,25 +133,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pages = await graphql(query);
 
-  const { allScenesJson, allFilmsJson } = pages.data;
+  const { allFilm } = pages.data;
 
-  const orderedScenes = allFilmsJson.edges.reduce((scenes, { node: film }) => {
-    const { slug } = film;
-
-    const filmSceneGroup = allScenesJson.group.find(
-      sceneGroup => sceneGroup.fieldValue === slug
-    );
-
-    const scenesArray = filmSceneGroup
-      ? filmSceneGroup.edges.map(({ node: scene }) => {
-          return {
-            ...scene,
-            film: slug,
-          };
-        })
-      : [];
-    return [...scenes, ...scenesArray];
-  }, []);
+  const orderedScenes = allFilm.nodes.reduce(
+    (acc, { scenes }) => acc.concat(scenes),
+    []
+  );
 
   for (let index = 0; index < orderedScenes.length; index++) {
     const currentScene = orderedScenes[index];

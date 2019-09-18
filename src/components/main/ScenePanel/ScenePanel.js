@@ -7,7 +7,7 @@ import SceneDetails from './SceneDetails';
 
 import { type Scene, type Film } from '../../../types';
 
-const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
+const ScenePanel = function({ scene }: { scene: Scene }) {
   const img = scene.fields.image.childImageSharp.fluid;
   return (
     <ContentPanel>
@@ -18,7 +18,7 @@ const ScenePanel = function({ scene, film }: { scene: Scene, film: Film }) {
           borderRadius: 3,
         }}
       />
-      <SceneDetails scene={scene} film={film} />
+      <SceneDetails scene={scene} />
     </ContentPanel>
   );
 };
