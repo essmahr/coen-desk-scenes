@@ -38,6 +38,7 @@ const makeSceneNode = (scene, filmNode) => {
     multiple,
     film___NODE: filmNode.id,
     internal: {
+      filmSlug: filmNode.slug,
       type: 'scene',
       contentDigest: createContentDigest(scene),
       mediaType: 'application/json',
@@ -85,11 +86,12 @@ exports.onCreateNode = ({ node, actions }) => {
   if (node.internal.type !== 'scene') {
     return;
   }
-  const { film, timestamp, quote } = node;
+
+  const { timestamp, quote, internal } = node;
 
   const { createNodeField } = actions;
   const timestampKey = timestamp.split(':').join('.');
-  const imagePath = `/images/${node.internal.filmSlug}_${timestampKey}.jpeg`;
+  const imagePath = `/images/${internal.filmSlug}_${timestampKey}.jpeg`;
   const imageExists = fs.existsSync(path.join(__dirname, 'src', imagePath));
   if (imageExists) {
     console.log('creating field');
@@ -99,6 +101,8 @@ exports.onCreateNode = ({ node, actions }) => {
       name: 'image',
       value: path.join('..', imagePath),
     });
+
+    return true;
   } else {
     console.error(`\nimage not found at ${imagePath}`);
   }

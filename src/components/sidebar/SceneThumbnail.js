@@ -42,14 +42,5 @@ export const sceneThumbnailFragment = graphql`
   fragment Scene_thumbnail on scene {
     id
     timestamp
-    fields {
-      thumbnail: image {
-        childImageSharp {
-          color: fluid(maxWidth: 300, maxHeight: 160, quality: 80) {
-            src
-          }
-        }
-      }
-    }
   }
 `;

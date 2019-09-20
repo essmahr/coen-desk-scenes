@@ -56,7 +56,7 @@ const detailItem = ({
   </span>
 );
 
-const Details = ({ film, scene }: { film: Film, scene: Scene }) => {
+const Details = ({ scene }: { scene: Scene }) => {
   const { actor, imdbId, film } = scene;
   const { title, year } = film;
 

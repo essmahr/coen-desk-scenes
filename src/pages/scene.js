@@ -15,24 +15,19 @@ const ScenePage = (props: Props) => {
 
 export default memo(ScenePage);
 
-export const query = graphql`
-  query($film: String!, $timestamp: String!) {
-    scene(film: { eq: $film }, timestamp: { eq: $timestamp }) {
-      timestamp
-      film
-      actor
-      imdbId
-      multiple
-      formattedQuote
-      fields {
-        image {
-          childImageSharp {
-            fluid(maxWidth: 540, quality: 90) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query($film: String!, $timestamp: String!) {
+//     scene(film: { slug: { eq: $film } }, timestamp: { eq: $timestamp }) {
+//       timestamp
+//       actor
+//       imdbId
+//       multiple
+//       formattedQuote
+//       film {
+//         slug
+//         year
+//         title
+//       }
+//     }
+//   }
+// `;
