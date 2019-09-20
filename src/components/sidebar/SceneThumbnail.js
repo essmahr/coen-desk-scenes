@@ -21,7 +21,7 @@ const SceneLink = styled(Link)`
 `;
 
 export default function SceneThumbnail({ scene, isCurrent }: Props) {
-  const { src } = scene.fields.thumbnail.childImageSharp.color;
+  // const { src } = scene.fields.thumbnail.childImageSharp.color;
 
   return (
     <Flipped flipId={scene.id}>
@@ -29,7 +29,7 @@ export default function SceneThumbnail({ scene, isCurrent }: Props) {
         <SceneLink to={sceneRoute(scene)}>
           <img
             style={{ transition: `opacity 200ms ${eases.easeInOutSine}` }}
-            src={src}
+            src={''}
             alt={scene.timestamp}
           />
         </SceneLink>

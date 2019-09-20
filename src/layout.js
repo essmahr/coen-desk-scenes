@@ -40,14 +40,14 @@ const Layout = ({ children, location, pageContext }: Props) => {
 
         <html lang="en" />
       </Helmet>
-      {/* <KeyboardNav pagination={pageContext.pagination} />
+      <KeyboardNav pagination={pageContext.pagination} />
       <MiniHeader visible={location.pathname !== '/'} />
       <Main location={location.pathname} sceneIndex={index}>
         {children}
       </Main>
       <SidebarQuery
         render={films => <SidebarContainer films={films} sceneId={id} />}
-      /> */}
+      />
     </>
   );
 };

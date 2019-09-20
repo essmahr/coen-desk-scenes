@@ -8,13 +8,16 @@ import type { Film } from '../../types';
 
 const query = graphql`
   {
-    allScene(sort: { fields: [film___year], order: ASC }) {
+    allFilm(sort: { fields: year }) {
       nodes {
-        timestamp
-        film {
-          title
+        title
+        slug
+        scenes {
           id
-          year
+          timestamp
+          film {
+            slug
+          }
         }
       }
     }
@@ -25,14 +28,11 @@ type Props = {
   render: (films: Array<Film>) => Node,
 };
 
-const assembleDataOnce = dumbMemoize(assembleData);
-
 export default (props: Props) => (
   <StaticQuery
     query={query}
     render={data => {
-      const { films } = assembleDataOnce(data);
-      return props.render(films);
+      return props.render(data.allFilm.nodes);
     }}
   />
 );
