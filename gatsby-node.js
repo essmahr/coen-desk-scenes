@@ -93,9 +93,8 @@ exports.onCreateNode = ({ node, actions }) => {
   const timestampKey = timestamp.split(':').join('.');
   const imagePath = `/images/${internal.filmSlug}_${timestampKey}.jpeg`;
   const imageExists = fs.existsSync(path.join(__dirname, 'src', imagePath));
-  if (imageExists) {
-    console.log('creating field');
 
+  if (imageExists) {
     createNodeField({
       node,
       name: 'image',
@@ -121,6 +120,9 @@ const query = `
         slug
         scenes {
           timestamp
+          film {
+            slug
+          }
         }
       }
     }
@@ -135,11 +137,9 @@ exports.createPages = async ({ graphql, actions }) => {
     component: path.resolve(`./src/pages/home.js`),
   });
 
-  const pages = await graphql(query);
+  const { data } = await graphql(query);
 
-  const { allFilm } = pages.data;
-
-  const orderedScenes = allFilm.nodes.reduce(
+  const orderedScenes = data.allFilm.nodes.reduce(
     (acc, { scenes }) => acc.concat(scenes),
     []
   );
@@ -157,7 +157,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id,
         timestamp,
-        film,
+        film: film.slug,
         index,
         pagination: {
           previous: sceneRoute(previousScene),
