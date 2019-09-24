@@ -23,6 +23,14 @@ const createContentDigest = data =>
     .update(JSON.stringify(data))
     .digest('hex');
 
+const getImageName = (film, scene) => {
+  const { timestamp } = scene;
+  const { slug } = film;
+  const timestampKey = timestamp.split(':').join('.');
+
+  return [slug, timestampKey].join('_');
+};
+
 const getScenesForFilm = (scenes, film) =>
   scenes.filter(scene => scene.film === film.slug);
 
@@ -37,8 +45,8 @@ const makeSceneNode = (scene, filmNode) => {
     imdbId,
     multiple,
     film___NODE: filmNode.id,
+    image: getImageName(filmNode, scene),
     internal: {
-      filmSlug: filmNode.slug,
       type: 'scene',
       contentDigest: createContentDigest(scene),
       mediaType: 'application/json',
@@ -82,31 +90,6 @@ exports.sourceNodes = ({ actions }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions }) => {
-  if (node.internal.type !== 'scene') {
-    return;
-  }
-
-  const { timestamp, quote, internal } = node;
-
-  const { createNodeField } = actions;
-  const timestampKey = timestamp.split(':').join('.');
-  const imagePath = `/images/${internal.filmSlug}_${timestampKey}.jpeg`;
-  const imageExists = fs.existsSync(path.join(__dirname, 'src', imagePath));
-
-  if (imageExists) {
-    createNodeField({
-      node,
-      name: 'image',
-      value: path.join('..', imagePath),
-    });
-
-    return true;
-  } else {
-    console.error(`\nimage not found at ${imagePath}`);
-  }
-};
-
 exports.onCreatePage = ({ page, actions }) => {
   if (page.path === '/scene/') {
     actions.deletePage(page);
@@ -120,6 +103,7 @@ const query = `
         slug
         scenes {
           timestamp
+          image
           film {
             slug
           }
@@ -149,7 +133,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const nextScene = getNextScene(orderedScenes, index);
     const previousScene = getPreviousScene(orderedScenes, index);
 
-    const { timestamp, film, id } = currentScene;
+    const { timestamp, film, id, image } = currentScene;
 
     createPage({
       path: sceneRoute(currentScene),
@@ -159,6 +143,7 @@ exports.createPages = async ({ graphql, actions }) => {
         timestamp,
         film: film.slug,
         index,
+        image,
         pagination: {
           previous: sceneRoute(previousScene),
           next: sceneRoute(nextScene),

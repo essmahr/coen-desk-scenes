@@ -124,7 +124,7 @@ export default ({ scene }: { scene: Scene }) => (
       padding-top: 1.5rem;
     `}
   >
-    <Quote quote={scene.fields.formattedQuote} />
+    <Quote quote={scene.formattedQuote} />
     <Details scene={scene} />
   </div>
 );
