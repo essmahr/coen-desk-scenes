@@ -27,6 +27,15 @@ export const query = graphql`
         year
         title
       }
+      fields {
+        image {
+          childImageSharp {
+            fluid(maxWidth: 540, quality: 90) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
     }
   }
 `;
