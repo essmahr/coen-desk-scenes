@@ -7,8 +7,8 @@ import SceneDetails from './SceneDetails';
 
 import { type Scene, type Film } from '../../../types';
 
-const ScenePanel = function({ scene, image }: { scene: Scene }) {
-  const img = image.childImageSharp.fluid;
+const ScenePanel = function({ scene }: { scene: Scene }) {
+  const img = scene.image.childImageSharp.fluid;
   return (
     <ContentPanel>
       <Img

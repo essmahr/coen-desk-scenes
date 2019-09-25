@@ -3,8 +3,6 @@ const path = require('path');
 const fs = require('fs');
 const smartypants = require('smartypants').smartypants;
 
-console.log('welcome');
-
 const filmsJson = require('./src/data/films');
 const scenesJson = require('./src/data/scenes');
 
@@ -28,7 +26,18 @@ const getImageName = (film, scene) => {
   const { slug } = film;
   const timestampKey = timestamp.split(':').join('.');
 
-  return [slug, timestampKey].join('_');
+  return `${slug}_${timestampKey}`;
+};
+
+const getImageIDForScene = (images, imageName) => {
+  const image = images.find(({ name }) => name === imageName);
+
+  if (!image) {
+    console.warn('image node not found', imageName);
+    return;
+  }
+
+  return image.id;
 };
 
 const getScenesForFilm = (scenes, film) =>
@@ -45,7 +54,6 @@ const makeSceneNode = (scene, filmNode) => {
     imdbId,
     multiple,
     film___NODE: filmNode.id,
-    image: getImageName(filmNode, scene),
     internal: {
       type: 'scene',
       contentDigest: createContentDigest(scene),
@@ -72,8 +80,10 @@ const makeFilmNode = film => {
 
 const byTimestamp = (a, b) => (a.timestamp > b.timestamp ? 1 : -1);
 
-exports.sourceNodes = ({ actions }) => {
+exports.sourceNodes = ({ actions, getNodesByType }) => {
   const { createNode } = actions;
+
+  const images = getNodesByType('File');
 
   filmsJson.forEach(film => {
     const filmNode = makeFilmNode(film);
@@ -81,6 +91,9 @@ exports.sourceNodes = ({ actions }) => {
 
     filmScenes.sort(byTimestamp).forEach(scene => {
       const sceneNode = makeSceneNode(scene, filmNode);
+
+      const imageName = getImageName(filmNode, sceneNode);
+      sceneNode.image___NODE = getImageIDForScene(images, imageName);
 
       filmNode.scenes___NODE.push(sceneNode.id);
       createNode(sceneNode);
@@ -103,7 +116,6 @@ const query = `
         slug
         scenes {
           timestamp
-          image
           film {
             slug
           }
@@ -121,9 +133,9 @@ exports.createPages = async ({ graphql, actions }) => {
     component: path.resolve(`./src/pages/home.js`),
   });
 
-  const { data } = await graphql(query);
+  const something = await graphql(query);
 
-  const orderedScenes = data.allFilm.nodes.reduce(
+  const orderedScenes = something.data.allFilm.nodes.reduce(
     (acc, { scenes }) => acc.concat(scenes),
     []
   );
@@ -143,7 +155,6 @@ exports.createPages = async ({ graphql, actions }) => {
         timestamp,
         film: film.slug,
         index,
-        image,
         pagination: {
           previous: sceneRoute(previousScene),
           next: sceneRoute(nextScene),

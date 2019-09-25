@@ -9,32 +9,30 @@ type Props = {
 };
 
 const ScenePage = (props: Props) => {
-  console.log(props);
-  const { scene, image } = props.data;
-  return <ScenePanel scene={scene} image={image} />;
+  return <ScenePanel scene={props.data.scene} />;
 };
 
 export default ScenePage;
 
 export const query = graphql`
-  query($film: String!, $timestamp: String!, $image: String!) {
+  query($film: String!, $timestamp: String!) {
     scene(film: { slug: { eq: $film } }, timestamp: { eq: $timestamp }) {
       timestamp
       actor
       imdbId
       multiple
       formattedQuote
+      image {
+        childImageSharp {
+          fluid(maxWidth: 540, quality: 90) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
       film {
         slug
         year
         title
-      }
-    }
-    image: file(name: { eq: $image }) {
-      childImageSharp {
-        fluid(maxWidth: 540, quality: 90) {
-          ...GatsbyImageSharpFluid
-        }
       }
     }
   }

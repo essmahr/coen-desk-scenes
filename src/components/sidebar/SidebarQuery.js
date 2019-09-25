@@ -13,11 +13,7 @@ const query = graphql`
         title
         slug
         scenes {
-          id
-          timestamp
-          film {
-            slug
-          }
+          ...Scene_thumbnail
         }
       }
     }
