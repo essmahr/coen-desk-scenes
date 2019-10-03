@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { Box } from '@rebass/grid';
 import { linearGradient } from 'polished';
@@ -16,7 +16,7 @@ type Props = {
   filmsMode: boolean,
   headingsVisible: boolean,
   onModeToggle: Function,
-  currentScene: ?string,
+  currentSceneId: ?string,
 };
 
 const gradient = linearGradient({
@@ -51,7 +51,7 @@ function Sidebar(props: Props) {
     films,
     onModeToggle,
     filmsMode,
-    currentScene,
+    currentSceneId,
     headingsVisible,
   } = props;
 
@@ -72,7 +72,7 @@ function Sidebar(props: Props) {
         <ScenesList
           films={films}
           filmsMode={filmsMode}
-          currentScene={currentScene}
+          currentSceneId={currentSceneId}
         />
       </Box>
       <ToggleButton onClick={onModeToggle} filmsMode={filmsMode} />

@@ -5,7 +5,6 @@ import Helmet from 'react-helmet';
 import Main from './components/main/Main';
 import MiniHeader from './components/MiniHeader';
 import KeyboardNav from './components/KeyboardNav';
-import SidebarQuery from './components/sidebar/SidebarQuery';
 import SidebarContainer from './components/sidebar/SidebarContainer';
 
 import './app.css';
@@ -45,9 +44,7 @@ const Layout = ({ children, location, pageContext }: Props) => {
       <Main location={location.pathname} sceneIndex={index}>
         {children}
       </Main>
-      <SidebarQuery
-        render={films => <SidebarContainer films={films} sceneId={id} />}
-      />
+      <SidebarContainer currentSceneId={id} />
     </>
   );
 };

@@ -16,7 +16,7 @@ const gatherScenesOnce = dumbMemoize(gatherScenes);
 
 const ScenesWithoutFilms = (props: {
   films: Array<Film>,
-  currentScene: ?string,
+  currentSceneId: ?string,
 }) => {
   const scenes = gatherScenesOnce(props.films);
 
@@ -44,7 +44,7 @@ const ScenesWithoutFilms = (props: {
         >
           <SceneThumbnail
             scene={scene}
-            isCurrent={props.currentScene === scene.id}
+            isCurrent={props.currentSceneId === scene.id}
           />
         </Box>
       ))}
@@ -62,7 +62,7 @@ const ScenesWithFilms = (props: {
         <FilmListItem
           key={film.slug}
           film={film}
-          currentScene={props.currentScene}
+          currentSceneId={props.currentSceneId}
         />
       ))}
     </Box>
@@ -72,15 +72,13 @@ const ScenesWithFilms = (props: {
 export default function ScenesList({
   filmsMode,
   films,
-  currentScene,
+  currentSceneId,
 }: {
   filmsMode: boolean,
   films: Array<Film>,
-  currentScene: ?string,
+  currentSceneId: ?string,
 }) {
-  return filmsMode ? (
-    <ScenesWithFilms films={films} currentScene={currentScene} />
-  ) : (
-    <ScenesWithoutFilms films={films} currentScene={currentScene} />
-  );
+  const ScenesComponent = filmsMode ? ScenesWithFilms : ScenesWithoutFilms;
+
+  return <ScenesComponent films={films} currentSceneId={currentSceneId} />;
 }

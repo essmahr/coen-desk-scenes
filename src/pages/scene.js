@@ -1,5 +1,5 @@
 // @flow
-import React, { memo } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import ScenePanel from '../components/main/ScenePanel/ScenePanel';

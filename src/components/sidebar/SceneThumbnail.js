@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react';
+import React, { memo } from 'react';
 import { Flipped } from 'react-flip-toolkit';
 import styled from 'styled-components';
 import { graphql, Link } from 'gatsby';
@@ -20,7 +20,9 @@ const SceneLink = styled(Link)`
   display: inline-block;
 `;
 
-export default function SceneThumbnail({ scene, isCurrent }: Props) {
+const SceneThumbnail = ({ scene, isCurrent }: Props) => {
+  console.log('render');
+
   const { src } = scene.thumbnail.childImageSharp.color;
 
   return (
@@ -36,7 +38,12 @@ export default function SceneThumbnail({ scene, isCurrent }: Props) {
       </ImageContainer>
     </Flipped>
   );
-}
+};
+
+const shouldUpdate = (prevProps, nextProps) =>
+  prevProps.isCurrent === nextProps.isCurrent;
+
+export default memo(SceneThumbnail, shouldUpdate);
 
 export const sceneThumbnailFragment = graphql`
   fragment Scene_thumbnail on scene {

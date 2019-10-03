@@ -115,6 +115,7 @@ const query = `
       nodes {
         slug
         scenes {
+          id
           timestamp
           film {
             slug
@@ -133,9 +134,9 @@ exports.createPages = async ({ graphql, actions }) => {
     component: path.resolve(`./src/pages/home.js`),
   });
 
-  const something = await graphql(query);
+  const results = await graphql(query);
 
-  const orderedScenes = something.data.allFilm.nodes.reduce(
+  const orderedScenes = results.data.allFilm.nodes.reduce(
     (acc, { scenes }) => acc.concat(scenes),
     []
   );
