@@ -47,10 +47,10 @@ const handleAppear = element => {
 
 const FilmListItem = ({
   film,
-  currentScene,
+  currentSceneId,
 }: {
   film: Film,
-  currentScene: ?string,
+  currentSceneId: ?string,
 }) => {
   const scenes =
     film.scenes.length > 0 ? (
@@ -63,7 +63,10 @@ const FilmListItem = ({
           pb={3}
           key={scene.id}
         >
-          <SceneThumbnail scene={scene} isCurrent={scene.id === currentScene} />
+          <SceneThumbnail
+            scene={scene}
+            isCurrent={scene.id === currentSceneId}
+          />
         </Box>
       ))
     ) : (

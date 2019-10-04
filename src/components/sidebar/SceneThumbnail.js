@@ -21,7 +21,7 @@ const SceneLink = styled(Link)`
 `;
 
 const SceneThumbnail = ({ scene, isCurrent }: Props) => {
-  console.log('render');
+  console.log('SceneThumbnail render');
 
   const { src } = scene.thumbnail.childImageSharp.color;
 
@@ -40,10 +40,10 @@ const SceneThumbnail = ({ scene, isCurrent }: Props) => {
   );
 };
 
-const shouldUpdate = (prevProps, nextProps) =>
+const shouldCache = (prevProps, nextProps) =>
   prevProps.isCurrent === nextProps.isCurrent;
 
-export default memo(SceneThumbnail, shouldUpdate);
+export default memo(SceneThumbnail, shouldCache);
 
 export const sceneThumbnailFragment = graphql`
   fragment Scene_thumbnail on scene {

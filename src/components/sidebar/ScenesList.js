@@ -54,7 +54,7 @@ const ScenesWithoutFilms = (props: {
 
 const ScenesWithFilms = (props: {
   films: Array<Film>,
-  currentScene: ?string,
+  currentSceneId: ?string,
 }) => {
   return (
     <Box as="ul" mx={-2}>

@@ -3,7 +3,7 @@
 import React, { type Node } from 'react';
 import { Text } from 'rebass';
 
-import { type Scene, type Film } from '../../../types';
+import { type Scene } from '../../../types';
 
 const imdbLink = (actor: string, imdbId: string) => (
   <a

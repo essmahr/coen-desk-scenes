@@ -27,6 +27,7 @@ const query = graphql`
 `;
 
 const SidebarContainer = (props: Props) => {
+  console.log('SidebarContainer render');
   const [filmsMode, setFilmsMode] = useState(false);
 
   return (
@@ -35,7 +36,7 @@ const SidebarContainer = (props: Props) => {
       render={data => (
         <Flipper flipKey={filmsMode}>
           <Sidebar
-            onModeToggle={() => setFilmsMode(state => !state)}
+            onModeToggle={() => setFilmsMode(fm => !fm)}
             filmsMode={filmsMode}
             films={data.allFilm.nodes}
             currentSceneId={props.currentSceneId}
@@ -46,8 +47,7 @@ const SidebarContainer = (props: Props) => {
   );
 };
 
-const shouldUpdate = (prevProps, nextProps) => {
-  return prevProps.currentSceneId === nextProps.currentSceneId;
-};
+const shouldUpdate = (prevProps, nextProps) =>
+  prevProps.currentSceneId === nextProps.currentSceneId;
 
 export default memo(SidebarContainer, shouldUpdate);

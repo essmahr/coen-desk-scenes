@@ -1,5 +1,5 @@
 // @flow
-import React, { memo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Box } from '@rebass/grid';
 import { linearGradient } from 'polished';
@@ -47,18 +47,10 @@ const SidebarParent = styled(Box)`
 `;
 
 function Sidebar(props: Props) {
-  const {
-    films,
-    onModeToggle,
-    filmsMode,
-    currentSceneId,
-    headingsVisible,
-  } = props;
-
-  const className = headingsVisible ? 'show-headings' : '';
+  const { films, onModeToggle, filmsMode, currentSceneId } = props;
 
   return (
-    <SidebarParent className={className} width={widths.sidebar}>
+    <SidebarParent width={widths.sidebar}>
       <Box
         py={[3, 4]}
         pr={[0, 2, 4, 4]}
