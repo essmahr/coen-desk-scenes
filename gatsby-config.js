@@ -5,15 +5,10 @@ module.exports = {
   plugins: [
     'gatsby-plugin-flow',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-offline',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
       resolve: `gatsby-plugin-styled-components`,
-      options: {
-        displayName: true,
-        fileName: true,
-      },
     },
     {
       resolve: `gatsby-plugin-layout`,
