@@ -1,6 +1,7 @@
 // @flow
 
 import React, { type Node } from 'react';
+import { css } from '@emotion/core';
 import { Text } from 'rebass';
 
 import { type Scene } from '../../../types';
@@ -24,32 +25,32 @@ const detailItem = ({
 }) => (
   <span
     key={label}
-    css={`
-      margin-right: 1.5rem;
-      font-size: 9px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-family: 'IBM Plex Sans';
+    sx={{
+      marginRight: '1.5rem',
+      fontSize: '9px',
+      letterSpacing: '0.05em',
+      textTransform: 'uppercase',
+      fontFamily: 'IBM Plex Sans',
 
-      @media screen and (max-width: 40em) {
-        display: block;
-        margin-bottom: 1em;
-      }
-    `}
+      '@media screen and (max-width: 40em)': {
+        display: 'block',
+        marginBottom: '1em',
+      },
+    }}
   >
     <span
-      css={`
-        display: inline-block;
-        margin-right: 0.33rem;
-        opacity: 0.8;
-      `}
+      sx={{
+        display: 'inline-block',
+        marginRight: '0.33rem',
+        opacity: 0.8,
+      }}
     >
       {label}:
     </span>
     <span
-      css={`
-        opacity: 0.9;
-      `}
+      sx={{
+        opacity: 0.9,
+      }}
     >
       {value}
     </span>
@@ -77,7 +78,7 @@ const Details = ({ scene }: { scene: Scene }) => {
 
   return (
     <div
-      css={`
+      css={css`
         a {
           display: inline-block;
           padding-bottom: 0.05em;
@@ -106,7 +107,7 @@ const Quote = ({ quote }: { quote: string }) => {
       fontSize={2}
       fontWeight={400}
       mb={1}
-      css={`
+      css={css`
         font-style: italic;
         text-indent: -0.5em;
       `}
@@ -120,9 +121,9 @@ const Quote = ({ quote }: { quote: string }) => {
 
 export default ({ scene }: { scene: Scene }) => (
   <div
-    css={`
-      padding-top: 1.5rem;
-    `}
+    sx={{
+      paddingTop: '1.5rem',
+    }}
   >
     <Quote quote={scene.formattedQuote} />
     <Details scene={scene} />

@@ -8,7 +8,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: `gatsby-plugin-styled-components`,
+      resolve: `gatsby-plugin-emotion`,
     },
     {
       resolve: `gatsby-plugin-layout`,

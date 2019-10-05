@@ -1,8 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Flex } from '@rebass/grid';
-import { Heading } from 'rebass';
+import { Flex, Heading } from 'rebass';
 import * as eases from '../../lib/easings';
 import { TRANSITIONS } from '../../lib/transition-helpers';
 const { SCENE_ROOT, ROOT_ROOT, ROOT_SCENE } = TRANSITIONS;
@@ -84,14 +83,14 @@ const Lander = () => (
     justifyContent="center"
     p={4}
     pl={[4, 5]}
-    css={'height: 100%'}
+    sx={{ height: '100%' }}
   >
     <Heading
       fontSize={[4, 5]}
       lineHeight="1.3"
       fontWeight={600}
       fontFamily="IBM Plex Serif"
-      css={{ maxWidth: '18em' }}
+      sx={{ maxWidth: '18em' }}
     >
       Every character actor behind a desk in a Coen Brothers film
     </Heading>

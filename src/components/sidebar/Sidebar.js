@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
-import styled from 'styled-components';
-import { Box } from '@rebass/grid';
+import styled from '@emotion/styled';
+import { Box } from 'rebass';
 import { linearGradient } from 'polished';
 
 import ToggleButton from './ToggleButton';
@@ -55,11 +55,11 @@ function Sidebar(props: Props) {
         py={[3, 4]}
         pr={[0, 2, 4, 4]}
         pl={[2, 0, 0, 0]}
-        css={`
-          height: 100%;
-          overflow: auto;
-          -webkit-overflow-scrolling: touch;
-        `}
+        sx={{
+          height: '100%',
+          overflow: 'auto',
+          '-webkit-overflow-scrolling': 'touch',
+        }}
       >
         <ScenesList
           films={films}

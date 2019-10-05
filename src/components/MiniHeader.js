@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
 import { Link } from 'gatsby';
-import { Box } from '@rebass/grid';
-import styled from 'styled-components';
+import { Box } from 'rebass';
+import styled from '@emotion/styled';
 import Transition from 'react-transition-group/Transition';
 
 const duration = 500;
