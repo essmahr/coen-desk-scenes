@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import {

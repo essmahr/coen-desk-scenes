@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Flex, Box } from '@rebass/grid';
+import { Flex, Box } from 'rebass';
 import dumbMemoize from '../../lib/dumbMemoize';
 import { mobileSidebarImageWidth } from '../../lib/styles';
 

@@ -1,7 +1,7 @@
 // @flow
 import React, { memo } from 'react';
 import { Flipped } from 'react-flip-toolkit';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { graphql, Link } from 'gatsby';
 
 import { type Scene } from '../../types';

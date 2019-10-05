@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
 import { Flipped } from 'react-flip-toolkit';
-import { Flex, Box } from '@rebass/grid';
-import styled from 'styled-components';
+import { Flex, Box } from 'rebass';
+import styled from '@emotion/styled';
 
 import { type Film } from '../../types';
 
@@ -24,10 +24,10 @@ const Year = styled.h3`
 const EmptyFilm = () => (
   <Box flex="0 1 auto" width={1} px={1} pb={2}>
     <div
-      css={`
-        font-size: 10px;
-        opacity: 0.8;
-      `}
+      sx={{
+        fontSize: '10px',
+        opacity: '0.8',
+      }}
     >
       No people at desks in this film.
     </div>
@@ -76,7 +76,7 @@ const FilmListItem = ({
   return (
     <Box as="li" mb={4} px={3} key={film.slug}>
       <Flipped flipId={film.title} key={film.title} onAppear={handleAppear}>
-        <Box css={headerCss}>
+        <Box sx={headerCss}>
           <Box mb={3}>
             <Year>{film.year}</Year>
             <Title>{film.title}</Title>

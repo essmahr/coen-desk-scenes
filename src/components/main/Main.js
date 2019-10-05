@@ -1,6 +1,6 @@
 // @flow
-import * as React from 'react';
-import { Box } from '@rebass/grid';
+import React from 'react';
+import { Box } from 'rebass';
 import AboutLink from '../AboutLink';
 import TransitionContainer from './TransitionContainer';
 import { widths } from '../../lib/styles';
@@ -16,12 +16,12 @@ function Main({
 }) {
   return (
     <Box
-      css={`
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-      `}
+      sx={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        bottom: 0,
+      }}
       width={widths.main}
     >
       <TransitionContainer location={location} sceneIndex={sceneIndex}>
