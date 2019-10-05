@@ -7,17 +7,17 @@ const ContentPanel = ({ children }) => {
     <Flex
       flexDirection="column"
       justifyContent="center"
-      sx={{ height: '100%' }}
+      css={{ height: '100%' }}
     >
       <div
-        sx={{
+        css={{
           overflowY: 'auto',
-          '-webkit-overflow-scrolling': 'touch',
+          WebkitOverflowScrolling: 'touch',
         }}
       >
         <Box px={[4, 4, 5, 6]} py={[5, 4]}>
           <div
-            sx={{
+            css={{
               '@media screen and (max-width: calc(40em - 1px))': {
                 marginBottom: mobileSidebarHeight,
               },

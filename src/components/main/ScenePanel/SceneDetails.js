@@ -2,7 +2,7 @@
 
 import React, { type Node } from 'react';
 import { css } from '@emotion/core';
-import { Text } from 'rebass';
+import { Box, Text } from 'rebass';
 
 import { type Scene } from '../../../types';
 
@@ -23,8 +23,9 @@ const detailItem = ({
   label: string,
   value: string | Node,
 }) => (
-  <span
+  <Box
     key={label}
+    display="inline-block"
     sx={{
       marginRight: '1.5rem',
       fontSize: '9px',
@@ -38,23 +39,24 @@ const detailItem = ({
       },
     }}
   >
-    <span
+    <Box
+      display="inline-block"
       sx={{
-        display: 'inline-block',
         marginRight: '0.33rem',
         opacity: 0.8,
       }}
     >
       {label}:
-    </span>
-    <span
+    </Box>
+    <Box
+      display="inline-block"
       sx={{
         opacity: 0.9,
       }}
     >
       {value}
-    </span>
-  </span>
+    </Box>
+  </Box>
 );
 
 const Details = ({ scene }: { scene: Scene }) => {
@@ -121,7 +123,7 @@ const Quote = ({ quote }: { quote: string }) => {
 
 export default ({ scene }: { scene: Scene }) => (
   <div
-    sx={{
+    css={{
       paddingTop: '1.5rem',
     }}
   >
