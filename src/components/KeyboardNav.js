@@ -1,7 +1,7 @@
 // @flow
 import { Component } from 'react';
 import { navigate } from 'gatsby-link';
-import throttle from 'lodash.throttle';
+import rateLimit from '../lib/rateLimit';
 
 type Props = {
   pagination: {
@@ -13,18 +13,15 @@ type Props = {
 class KeyboardNav extends Component<Props> {
   constructor(props) {
     super(props);
-    this.debouncedKeyDown = throttle(this.handleKeyDown, 500, {
-      leading: true,
-      trailing: false,
-    });
+    this.throttledKeyDown = rateLimit(this.handleKeyDown, 500);
   }
 
   componentDidMount = () => {
-    document.addEventListener('keydown', this.debouncedKeyDown);
+    document.addEventListener('keydown', this.throttledKeyDown);
   };
 
   componentWillUnmount = () => {
-    document.removeEventListener('keydown', this.debouncedKeyDown);
+    document.removeEventListener('keydown', this.throttledKeyDown);
   };
 
   handleKeyDown = (event: Object) => {
