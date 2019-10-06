@@ -1,9 +1,9 @@
 // @flow
-import React from 'react';
+import React, { memo, useContext } from 'react';
 import { Flex, Box } from 'rebass';
 import dumbMemoize from '../../lib/dumbMemoize';
 import { mobileSidebarImageWidth } from '../../lib/styles';
-
+import Context from '../../lib/context';
 import { type Film } from '../../types';
 
 import FilmListItem from './FilmListItem';
@@ -69,16 +69,17 @@ const ScenesWithFilms = (props: {
   );
 };
 
-export default function ScenesList({
+const ScenesList = ({
   filmsMode,
   films,
-  currentSceneId,
 }: {
   filmsMode: boolean,
   films: Array<Film>,
-  currentSceneId: ?string,
-}) {
+}) => {
   const ScenesComponent = filmsMode ? ScenesWithFilms : ScenesWithoutFilms;
+  const currentSceneId = useContext(Context);
 
   return <ScenesComponent films={films} currentSceneId={currentSceneId} />;
-}
+};
+
+export default memo(ScenesList);

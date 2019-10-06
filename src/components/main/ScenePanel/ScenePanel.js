@@ -14,7 +14,7 @@ const ScenePanel = function({ scene }: { scene: Scene }) {
       <Img
         fluid={img}
         alt="alt"
-        sx={{
+        css={{
           borderRadius: 3,
         }}
       />

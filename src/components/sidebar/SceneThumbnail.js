@@ -20,9 +20,8 @@ const SceneLink = styled(Link)`
   display: inline-block;
 `;
 
-const SceneThumbnail = ({ scene, isCurrent }: Props) => {
-  console.log('SceneThumbnail render');
-
+const SceneThumbnail = (props: Props) => {
+  const { scene, isCurrent } = props;
   const { src } = scene.thumbnail.childImageSharp.color;
 
   return (
@@ -40,10 +39,11 @@ const SceneThumbnail = ({ scene, isCurrent }: Props) => {
   );
 };
 
-const shouldCache = (prevProps, nextProps) =>
-  prevProps.isCurrent === nextProps.isCurrent;
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.isCurrent === nextProps.isCurrent;
+};
 
-export default memo(SceneThumbnail, shouldCache);
+export default memo(SceneThumbnail, areEqual);
 
 export const sceneThumbnailFragment = graphql`
   fragment Scene_thumbnail on scene {

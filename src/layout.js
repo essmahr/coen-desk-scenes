@@ -6,7 +6,7 @@ import Main from './components/main/Main';
 import MiniHeader from './components/MiniHeader';
 import KeyboardNav from './components/KeyboardNav';
 import SidebarContainer from './components/sidebar/SidebarContainer';
-
+import Context from './lib/context';
 import './app.css';
 
 type Props = {
@@ -44,7 +44,9 @@ const Layout = ({ children, location, pageContext }: Props) => {
       <Main location={location.pathname} sceneIndex={index}>
         {children}
       </Main>
-      <SidebarContainer currentSceneId={id} />
+      <Context.Provider value={id}>
+        <SidebarContainer />
+      </Context.Provider>
     </>
   );
 };

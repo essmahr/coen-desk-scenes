@@ -1,5 +1,5 @@
 // @flow
-import React, { useState, memo } from 'react';
+import React, { useState } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Flipper } from 'react-flip-toolkit';
 
@@ -27,7 +27,6 @@ const query = graphql`
 `;
 
 const SidebarContainer = (props: Props) => {
-  console.log('SidebarContainer render');
   const [filmsMode, setFilmsMode] = useState(false);
 
   return (
@@ -39,7 +38,6 @@ const SidebarContainer = (props: Props) => {
             onModeToggle={() => setFilmsMode(fm => !fm)}
             filmsMode={filmsMode}
             films={data.allFilm.nodes}
-            currentSceneId={props.currentSceneId}
           />
         </Flipper>
       )}
@@ -47,7 +45,4 @@ const SidebarContainer = (props: Props) => {
   );
 };
 
-const shouldUpdate = (prevProps, nextProps) =>
-  prevProps.currentSceneId === nextProps.currentSceneId;
-
-export default memo(SidebarContainer, shouldUpdate);
+export default SidebarContainer;

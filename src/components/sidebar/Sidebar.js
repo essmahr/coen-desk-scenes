@@ -47,7 +47,7 @@ const SidebarParent = styled(Box)`
 `;
 
 function Sidebar(props: Props) {
-  const { films, onModeToggle, filmsMode, currentSceneId } = props;
+  const { films, onModeToggle, filmsMode } = props;
 
   return (
     <SidebarParent width={widths.sidebar}>
@@ -58,14 +58,10 @@ function Sidebar(props: Props) {
         sx={{
           height: '100%',
           overflow: 'auto',
-          '-webkit-overflow-scrolling': 'touch',
+          WebkitOverflowScrolling: 'touch',
         }}
       >
-        <ScenesList
-          films={films}
-          filmsMode={filmsMode}
-          currentSceneId={currentSceneId}
-        />
+        <ScenesList films={films} filmsMode={filmsMode} />
       </Box>
       <ToggleButton onClick={onModeToggle} filmsMode={filmsMode} />
     </SidebarParent>
