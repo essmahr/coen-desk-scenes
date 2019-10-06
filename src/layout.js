@@ -33,7 +33,7 @@ const Layout = ({ children, location, pageContext }: Props) => {
         ]}
       >
         <link
-          href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400|IBM+Plex+Sans+Condensed:300,400,500,600,700|IBM+Plex+Sans:300,400,500,600|IBM+Plex+Serif:300,400,500,600,700,300i,400i,500i,600i,700i"
+          href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400|IBM+Plex+Sans+Condensed:500,600|IBM+Plex+Sans:400,500,600|IBM+Plex+Serif:600,400i"
           rel="stylesheet"
         />
 

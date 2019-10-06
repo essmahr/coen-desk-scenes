@@ -56,14 +56,14 @@ const AboutPage = () => (
       </p>
       <Text fontFamily="IBM Plex Serif" color={textSecondary}>
         <p>
-          <small sx={{ fontStyle: 'italic' }}>
+          <small css={{ fontStyle: 'italic' }}>
             <strong>Disclaimer:</strong> some of these actors are perhaps not
             actually character actors, and some of these desks are perhaps not
             actually desks. Please forgive me.
           </small>
         </p>
         <p>
-          <small sx={{ fontStyle: 'italic' }}>
+          <small css={{ fontStyle: 'italic' }}>
             <strong>Also:</strong> I am happy to go on and on to anyone who will
             listen about the rest of the Coen Brothers character-actor scenes
             that do NOT involve desks. Who can forget the{' '}

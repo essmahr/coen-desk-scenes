@@ -7,7 +7,7 @@ import Context from '../../lib/context';
 
 import { type Scene } from '../../types';
 
-import * as eases from '../../lib/easings';
+import { easeInOutSine } from '../../lib/easings';
 import { sceneRoute } from '../../lib/routes';
 import ImageContainer from './ImageContainer';
 
@@ -21,6 +21,10 @@ const SceneLink = styled(Link)`
   display: inline-block;
 `;
 
+const SceneImg = styled.img`
+  transition: opacity 200ms ${easeInOutSine};
+`;
+
 const SceneThumbnail = memo(
   (props: Props) => {
     const { scene, isCurrent } = props;
@@ -30,11 +34,7 @@ const SceneThumbnail = memo(
       <Flipped flipId={scene.id}>
         <ImageContainer isCurrent={isCurrent}>
           <SceneLink to={sceneRoute(scene)}>
-            <img
-              style={{ transition: `opacity 200ms ${eases.easeInOutSine}` }}
-              src={src}
-              alt={scene.timestamp}
-            />
+            <SceneImg src={src} alt={scene.timestamp} />
           </SceneLink>
         </ImageContainer>
       </Flipped>
