@@ -1,9 +1,8 @@
 // @flow
-import React, { memo, useContext } from 'react';
+import React from 'react';
 import { Flex, Box } from 'rebass';
 import dumbMemoize from '../../lib/dumbMemoize';
 import { mobileSidebarImageWidth } from '../../lib/styles';
-import Context from '../../lib/context';
 import { type Film } from '../../types';
 
 import FilmListItem from './FilmListItem';
@@ -42,10 +41,7 @@ const ScenesWithoutFilms = (props: {
           py={[0, 2]}
           key={scene.id}
         >
-          <SceneThumbnail
-            scene={scene}
-            isCurrent={props.currentSceneId === scene.id}
-          />
+          <SceneThumbnail scene={scene} />
         </Box>
       ))}
     </Flex>
@@ -59,11 +55,7 @@ const ScenesWithFilms = (props: {
   return (
     <Box as="ul" mx={-2}>
       {props.films.map(film => (
-        <FilmListItem
-          key={film.slug}
-          film={film}
-          currentSceneId={props.currentSceneId}
-        />
+        <FilmListItem key={film.slug} film={film} />
       ))}
     </Box>
   );
@@ -77,9 +69,8 @@ const ScenesList = ({
   films: Array<Film>,
 }) => {
   const ScenesComponent = filmsMode ? ScenesWithFilms : ScenesWithoutFilms;
-  const currentSceneId = useContext(Context);
 
-  return <ScenesComponent films={films} currentSceneId={currentSceneId} />;
+  return <ScenesComponent films={films} />;
 };
 
-export default memo(ScenesList);
+export default ScenesList;

@@ -1,8 +1,9 @@
 // @flow
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import { Flipped } from 'react-flip-toolkit';
 import styled from '@emotion/styled';
 import { graphql, Link } from 'gatsby';
+import Context from '../../lib/context';
 
 import { type Scene } from '../../types';
 
@@ -20,30 +21,40 @@ const SceneLink = styled(Link)`
   display: inline-block;
 `;
 
-const SceneThumbnail = (props: Props) => {
-  const { scene, isCurrent } = props;
-  const { src } = scene.thumbnail.childImageSharp.color;
+const SceneThumbnail = memo(
+  (props: Props) => {
+    const { scene, isCurrent } = props;
+    const { src } = scene.thumbnail.childImageSharp.color;
+
+    return (
+      <Flipped flipId={scene.id}>
+        <ImageContainer isCurrent={isCurrent}>
+          <SceneLink to={sceneRoute(scene)}>
+            <img
+              style={{ transition: `opacity 200ms ${eases.easeInOutSine}` }}
+              src={src}
+              alt={scene.timestamp}
+            />
+          </SceneLink>
+        </ImageContainer>
+      </Flipped>
+    );
+  },
+  (prevProps, nextProps) => prevProps.isCurrent === nextProps.isCurrent
+);
+
+const ConnectedSceneThumbnail = (props: Props) => {
+  const currentSceneId = useContext(Context);
 
   return (
-    <Flipped flipId={scene.id}>
-      <ImageContainer isCurrent={isCurrent}>
-        <SceneLink to={sceneRoute(scene)}>
-          <img
-            style={{ transition: `opacity 200ms ${eases.easeInOutSine}` }}
-            src={src}
-            alt={scene.timestamp}
-          />
-        </SceneLink>
-      </ImageContainer>
-    </Flipped>
+    <SceneThumbnail
+      scene={props.scene}
+      isCurrent={currentSceneId === props.scene.id}
+    />
   );
 };
 
-const areEqual = (prevProps, nextProps) => {
-  return prevProps.isCurrent === nextProps.isCurrent;
-};
-
-export default memo(SceneThumbnail, areEqual);
+export default ConnectedSceneThumbnail;
 
 export const sceneThumbnailFragment = graphql`
   fragment Scene_thumbnail on scene {
