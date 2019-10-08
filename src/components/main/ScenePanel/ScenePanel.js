@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { memo } from 'react';
 import Img from 'gatsby-image';
 
 import ContentPanel from '../ContentPanel';
@@ -23,4 +23,4 @@ const ScenePanel = function({ scene }: { scene: Scene }) {
   );
 };
 
-export default ScenePanel;
+export default memo(ScenePanel);
