@@ -24,11 +24,15 @@ const TransitionContainer = (props: Props) => {
 
   const transitions = useTransition(children, location, {
     from: {
-      transform: 'translateY(20%)',
+      transform: 'translateY(10%)',
       opacity: 0,
     },
-    enter: { opacity: 1, transform: 'translateY(0)' },
-    leave: { opacity: 0, transform: 'translateY(-20%)' },
+    enter: () => async next => {
+      setTimeout(() => {
+        next({ opacity: 1, transform: 'translateY(0)' });
+      }, 600);
+    },
+    leave: { opacity: 0, transform: 'translateY(-10%)' },
     config: config.stiff,
   });
 
