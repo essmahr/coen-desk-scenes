@@ -1,20 +1,10 @@
 // @flow
-import * as React from 'react';
+
+import React from 'react';
 import styled from '@emotion/styled';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { useTransition, animated } from 'react-spring';
 
-import {
-  getTransitionTypeForRender,
-  TRANSITIONS,
-} from '../../lib/transition-helpers';
-
-import sceneTransitions from './ScenePanel/transitions';
-import { landerTransitions } from './Lander';
-
-export const transitions = `
-  ${sceneTransitions}
-  ${landerTransitions}
-`;
+import usePrevious from '../../lib/usePrevious';
 
 const TransitionParent = styled('div')`
   position: absolute;
@@ -24,9 +14,7 @@ const TransitionParent = styled('div')`
   bottom: 0;
 `;
 
-const TransitionPanel = styled(TransitionParent)`
-  ${transitions};
-`;
+const TransitionPanel = animated(TransitionParent);
 
 type Props = {
   children: React.ChildrenArray<React.Node>,
@@ -34,33 +22,74 @@ type Props = {
   sceneIndex: ?number,
 };
 
-type State = {
-  currentSceneIndex: ?number,
-  transitionType: string,
+const isRoot = index => {
+  return index === null || typeof index === 'undefined';
 };
 
-class TransitionContainer extends React.PureComponent<Props, State> {
-  state = {
-    currentSceneIndex: null,
-    transitionType: TRANSITIONS.ROOT_ROOT,
-  };
+const getTranslateForItem = ({ index }, lastIndex, mode) => {
+  const comingFromRoot = isRoot(lastIndex);
+  const goingToRoot = isRoot(index);
 
-  static getDerivedStateFromProps(props: Props, state: State) {
-    return getTransitionTypeForRender(props, state);
+  if (comingFromRoot && goingToRoot) {
+    return 'translate3d(0px, 0px, 0px)';
   }
 
-  render() {
-    const { children, location } = this.props;
-    const { transitionType } = this.state;
-
-    return (
-      <TransitionGroup className={transitionType} component={TransitionParent}>
-        <CSSTransition timeout={1200} key={location} classNames="panel">
-          <TransitionPanel>{children}</TransitionPanel>
-        </CSSTransition>
-      </TransitionGroup>
-    );
+  if (comingFromRoot) {
+    return 'translate3d(20px, 0px, 0px)';
   }
-}
 
-export default TransitionContainer;
+  if (goingToRoot) {
+    return 'translate3d(-20px, 0px, 0px)';
+  }
+
+  if (index > lastIndex) {
+    return 'translate3d(0px, 20px, 0px)';
+  }
+
+  if (index < lastIndex) {
+    return 'translate3d(0px, -20px, 0px)';
+  }
+};
+
+const TransitionContainer = (props: Props) => {
+  const { children, location, sceneIndex } = props;
+  const previousIndex = usePrevious(sceneIndex);
+
+  const items = React.Children.map(children, child => {
+    return {
+      index: child.props.pageContext.index,
+      element: child,
+    };
+  });
+
+  const transitions = useTransition(items, location, {
+    from: item => ({
+      opacity: 0,
+      transform: getTranslateForItem(item, previousIndex, 'from'),
+    }),
+    enter: () => async next => {
+      setTimeout(async () => {
+        await next({
+          opacity: 1,
+          transform: 'translate3d(0px, 0px, 0px)',
+        });
+      }, 400);
+    },
+    leave: item => ({
+      opacity: 0,
+      transform: getTranslateForItem(item, sceneIndex, 'leave'),
+    }),
+  });
+
+  return (
+    <TransitionParent>
+      {transitions.map(({ item, key, props }) => (
+        <TransitionPanel key={key} style={props}>
+          {item.element}
+        </TransitionPanel>
+      ))}
+    </TransitionParent>
+  );
+};
+
+export default React.memo(TransitionContainer);
