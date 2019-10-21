@@ -24,7 +24,7 @@ const Year = styled.h3`
 const EmptyFilm = () => (
   <Box flex="0 1 auto" width={1} px={1} pb={2}>
     <div
-      sx={{
+      css={{
         fontSize: '10px',
         opacity: '0.8',
       }}
