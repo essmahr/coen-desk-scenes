@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import Helmet from 'react-helmet';
 import { Text } from 'rebass';
 import ContentPanel from '../components/main/ContentPanel';
 import { textSecondary } from '../colors';
@@ -10,6 +11,7 @@ const andersonLink = 'https://vimeo.com/89302848';
 
 const AboutPage = () => (
   <ContentPanel>
+    <Helmet title="About | E.C.A.B. a D. in a C.B.F." />
     <Text
       fontSize={[1, 1]}
       lineHeight={1.6}

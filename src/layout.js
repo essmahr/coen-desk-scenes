@@ -6,7 +6,7 @@ import Main from './components/main/Main';
 import MiniHeader from './components/MiniHeader';
 import KeyboardNav from './components/KeyboardNav';
 import SidebarContainer from './components/sidebar/SidebarContainer';
-import Context from './lib/context';
+import SceneContext from './lib/context';
 import './app.css';
 
 type Props = {
@@ -28,12 +28,15 @@ const Layout = ({ children, location, pageContext }: Props) => {
       <Helmet
         title="Every character actor behind a desk in a Coen Brothers film"
         meta={[
-          { name: 'description', content: '' },
-          { name: 'keywords', content: '' },
+          {
+            name: 'description',
+            content:
+              'Every character actor behind a desk in a Coen Brothers film. Dot com.',
+          },
         ]}
       >
         <link
-          href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400|IBM+Plex+Sans+Condensed:500,600|IBM+Plex+Sans:400,500,600|IBM+Plex+Serif:600,400i"
+          href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400|IBM+Plex+Sans+Condensed:500,600|IBM+Plex+Sans:400,500,600|IBM+Plex+Serif:600,400,400i"
           rel="stylesheet"
         />
 
@@ -44,9 +47,9 @@ const Layout = ({ children, location, pageContext }: Props) => {
       <Main location={location.pathname} sceneIndex={index}>
         {children}
       </Main>
-      <Context.Provider value={id}>
+      <SceneContext.Provider value={id}>
         <SidebarContainer />
-      </Context.Provider>
+      </SceneContext.Provider>
     </>
   );
 };
