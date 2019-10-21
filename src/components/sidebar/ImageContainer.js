@@ -3,8 +3,25 @@ import { background } from '../../colors';
 
 const ImageContainer = styled.div(
   {
+    position: 'relative',
     backgroundColor: background,
     filter: 'grayscale(40%)',
+
+    '&::before': {
+      display: 'block',
+      content: '""',
+      position: 'absolute',
+      zIndex: 1,
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      border: '2px solid white;',
+      opacity: 0,
+      borderRadius: 3,
+      pointerEvents: 'none',
+      transition: 'opacity 0.2s ease',
+    },
 
     img: {
       opacity: 0.5,
@@ -15,6 +32,10 @@ const ImageContainer = styled.div(
     if (isCurrent) {
       return {
         filter: 'grayscale(0%)',
+
+        '&::before': {
+          opacity: 0.3,
+        },
 
         img: {
           opacity: 0.9,
