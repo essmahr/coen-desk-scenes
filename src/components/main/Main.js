@@ -1,9 +1,25 @@
 // @flow
 import React from 'react';
+import styled from '@emotion/styled';
 import { Box } from 'rebass';
-import AboutLink from '../AboutLink';
+import BorderedLink from '../BorderedLink';
 import TransitionContainer from './TransitionContainer';
-import { widths } from '../../lib/styles';
+import { widths, mobileSidebarVW } from '../../lib/styles';
+
+const AboutLink = styled(BorderedLink)`
+  position: absolute;
+  z-index: 2;
+
+  @media screen and (max-width: 40em) {
+    bottom: calc(${mobileSidebarVW} + 1.5rem);
+    right: 1rem;
+  }
+
+  @media screen and (min-width: 40em) {
+    bottom: 1rem;
+    left: 1rem;
+  }
+`;
 
 function Main({
   children,
@@ -27,7 +43,7 @@ function Main({
       <TransitionContainer location={location} sceneIndex={sceneIndex}>
         {children}
       </TransitionContainer>
-      <AboutLink />
+      <AboutLink to="/about">About</AboutLink>
     </Box>
   );
 }
