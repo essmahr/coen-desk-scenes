@@ -20,13 +20,16 @@ type Props = {
   },
 };
 
+const TITLE = 'Every character actor behind a desk in a Coen Brothers film';
+
 const Layout = ({ children, location, pageContext }: Props) => {
   const { index = null, id = null } = pageContext;
 
   return (
     <>
       <Helmet
-        title="Every character actor behind a desk in a Coen Brothers film"
+        titleTemplate={`%s | ${TITLE}`}
+        defaultTitle={TITLE}
         meta={[
           {
             name: 'description',

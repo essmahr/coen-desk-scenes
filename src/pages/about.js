@@ -11,7 +11,7 @@ const andersonLink = 'https://vimeo.com/89302848';
 
 const AboutPage = () => (
   <ContentPanel>
-    <Helmet title="About | E.C.A.B. a D. in a C.B.F." />
+    <Helmet title="About" />
     <Text
       fontSize={[1, 1]}
       lineHeight={1.6}

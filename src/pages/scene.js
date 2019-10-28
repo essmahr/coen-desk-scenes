@@ -14,9 +14,7 @@ const ScenePage = (props: Props) => {
   const { film, timestamp } = scene;
   return (
     <>
-      <Helmet
-        title={`${film.title} at ${timestamp} | E.C.A.B. a D. in a C.B.F.`}
-      />
+      <Helmet title={`${film.title} at ${timestamp}`} />
       <ScenePanel scene={props.data.scene} />
     </>
   );
