@@ -25,7 +25,6 @@ const ImageContainer = styled.div(
 
     img: {
       opacity: 0.5,
-      borderRadius: 3,
     },
   },
   ({ isCurrent }) => {

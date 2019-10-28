@@ -17,11 +17,17 @@ type Props = {
 };
 
 const SceneLink = styled(Link)`
+  position: relative;
+  display: block;
   border: 0;
-  display: inline-block;
+  padding-bottom: ${(160 / 300) * 100}%;
+  background-color: #171412;
+  border-radius: 3px;
 `;
 
 const SceneImg = styled.img`
+  position: absolute;
+  border-radius: 3px;
   transition: opacity 200ms ${easeInOutSine};
 `;
 
