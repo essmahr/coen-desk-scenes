@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Link } from 'gatsby';
 import { Text, Heading } from 'rebass';
 import ContentPanel from '../components/main/ContentPanel';
 import TextPane from '../components/main/TextPane';

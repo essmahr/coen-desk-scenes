@@ -1,12 +1,12 @@
 // @flow
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Text, Heading } from 'rebass';
+import { Text } from 'rebass';
 import ContentPanel from '../components/main/ContentPanel';
 import TextPane from '../components/main/TextPane';
-import { textSecondary } from '../colors';
 
 const Tblank = props => (
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
   <a target="_blank" rel="noopener noreferrer" {...props} />
 );
 
