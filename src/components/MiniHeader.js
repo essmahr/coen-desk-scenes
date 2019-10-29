@@ -3,14 +3,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Box } from 'rebass';
 import styled from '@emotion/styled';
-import Transition from 'react-transition-group/Transition';
-
-const transitionStyles = {
-  entering: { transform: `translate(0, -100%)` },
-  entered: { transform: `translate(0, 0)`, transitionDelay: '300ms' },
-  exiting: { transform: `translate(0, 0)` },
-  exited: { transform: `translate(0, -100%)` },
-};
+import { useTransition, animated } from 'react-spring';
 
 const Header = styled.header`
   position: absolute;
@@ -25,20 +18,30 @@ const Header = styled.header`
   letter-spacing: 0.02em;
   justify-content: center;
   z-index: 1;
-  transition: transform 500ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  ${props => transitionStyles[props.state]}
 `;
 
+const AnimatedHeader = animated(Header);
+
 export default function MiniHeader({ visible }: { visible: boolean }) {
-  return (
-    <Transition in={visible} timeout={0}>
-      {state => (
-        <Header state={state}>
+  const transitions = useTransition(visible, null, {
+    from: { transform: 'translateY(-100%)', opacity: 0 },
+    enter: () => next =>
+      setTimeout(() => next({ transform: 'translateY(0%)', opacity: 1 }), 500),
+    leave: () => next =>
+      setTimeout(
+        () => next({ transform: 'translateY(-110%)', opacity: 0 }),
+        500
+      ),
+  });
+
+  return transitions.map(
+    ({ item, key, props }) =>
+      item && (
+        <AnimatedHeader key={key} style={props}>
           <Box p={4}>
             <Link to="/">E. C. A. B. a D. in a C. B. F.</Link>
           </Box>
-        </Header>
-      )}
-    </Transition>
+        </AnimatedHeader>
+      )
   );
 }

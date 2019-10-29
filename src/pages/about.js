@@ -4,7 +4,6 @@ import Helmet from 'react-helmet';
 import { Text, Heading } from 'rebass';
 import ContentPanel from '../components/main/ContentPanel';
 import TextPane from '../components/main/TextPane';
-import { textSecondary } from '../colors';
 import BorderedLink from '../components/BorderedLink';
 
 const tarantinoLink = 'https://www.youtube.com/watch?v=V_whQnqwEYk';
@@ -63,7 +62,7 @@ const AboutPage = () => (
           ), I would argue that the character actor behind a desk is a Coen
           Brothers signature. This is my attempt to document them all.
         </p>
-        <Text fontFamily="IBM Plex Serif" color={textSecondary}>
+        <Text fontFamily="serif" color="textSecondary">
           <p>
             <small css={{ fontStyle: 'italic' }}>
               <strong>Disclaimer:</strong> some of these actors are perhaps not

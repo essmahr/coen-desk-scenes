@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
-import { background } from '../../colors';
 
 const ImageContainer = styled.div(
   {
     position: 'relative',
-    backgroundColor: background,
+    backgroundColor: ({ theme }) => theme.colors.background,
     filter: 'grayscale(40%)',
 
     '&::before': {
