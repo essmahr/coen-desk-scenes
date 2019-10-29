@@ -2,12 +2,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { border, textPrimary } from '../../colors';
-
 const Button = styled.button`
   display: block;
   background-color: transparent;
-  color: ${textPrimary};
+  color: ${({ theme }) => theme.colors.textPrimary};
   position: absolute;
   bottom: 0;
   height: 2rem;
@@ -22,7 +20,7 @@ const Button = styled.button`
   font-size: 9px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  font-family: 'IBM Plex Sans';
+  font-family: ${({ theme }) => theme.fonts.sans};
 
   &::before {
     content: '';
@@ -32,7 +30,7 @@ const Button = styled.button`
     top: calc(50% - 0.5px);
     width: 2rem;
     height: 1px;
-    background: ${border};
+    background: ${({ theme }) => theme.colors.border};
   }
 
   &:hover {

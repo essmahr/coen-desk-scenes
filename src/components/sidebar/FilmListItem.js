@@ -9,14 +9,14 @@ import { type Film } from '../../types';
 import SceneThumbnail from './SceneThumbnail';
 
 const Title = styled.h2`
-  font-family: 'IBM Plex Serif';
+  font-family: ${({ theme }) => theme.fonts.serif};
   font-size: 16px;
   font-weight: 400;
 `;
 
 const Year = styled.h3`
   font-size: 11px;
-  font-family: 'IBM Plex Sans Condensed';
+  font-family: ${({ theme }) => theme.fonts.sans};
   font-weight: 500;
   letter-spacing: 0.05em;
 `;

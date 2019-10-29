@@ -26,12 +26,12 @@ const detailItem = ({
   <Box
     key={label}
     display="inline-block"
+    fontFamily="sans"
     sx={{
       marginRight: '1.5rem',
       fontSize: '9px',
       letterSpacing: '0.05em',
       textTransform: 'uppercase',
-      fontFamily: 'IBM Plex Sans',
 
       '@media screen and (max-width: 40em)': {
         display: 'block',
@@ -105,7 +105,7 @@ const Quote = ({ quote }: { quote: string }) => {
   return (
     <Text
       as="blockquote"
-      fontFamily="IBM Plex Serif"
+      fontFamily="serif"
       fontSize={2}
       fontWeight={400}
       mb={1}

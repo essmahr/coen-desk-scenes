@@ -6,7 +6,6 @@ import { linearGradient } from 'polished';
 
 import ToggleButton from './ToggleButton';
 import { widths, mobileSidebarHeight } from '../../lib/styles';
-import { background } from '../../colors';
 import { type Film } from '../../types';
 
 import ScenesList from './ScenesList';
@@ -19,18 +18,19 @@ type Props = {
   currentSceneId: ?string,
 };
 
-const gradient = linearGradient({
-  colorStops: [`${background} 70%`, 'rgba(0,0,0,0) 99%'],
-  toDirection: 'to top',
-  fallback: 'transparent',
-});
+const gradient = color =>
+  linearGradient({
+    colorStops: [`${color} 70%`, 'rgba(0,0,0,0) 99%'],
+    toDirection: 'to top',
+    fallback: 'transparent',
+  });
 
 const SidebarParent = styled(Box)`
   position: fixed;
   zindex: 1;
 
   @media screen and (max-width: calc(40em - 1px)) {
-    ${gradient};
+    ${({ theme }) => gradient(theme.colors.background)};
     height: ${mobileSidebarHeight};
     right: 0;
     bottom: 0;
@@ -42,7 +42,7 @@ const SidebarParent = styled(Box)`
     right: 0;
     bottom: 0;
     zindex: 1;
-    backgroundcolor: ${background};
+    backgroundcolor: ${({ theme }) => theme.colors.background};
   }
 `;
 

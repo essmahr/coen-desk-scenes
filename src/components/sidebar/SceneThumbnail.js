@@ -7,7 +7,6 @@ import Context from '../../lib/context';
 
 import { type Scene } from '../../types';
 
-import { easeInOutSine } from '../../lib/easings';
 import { sceneRoute } from '../../lib/routes';
 import ImageContainer from './ImageContainer';
 
@@ -28,7 +27,7 @@ const SceneLink = styled(Link)`
 const SceneImg = styled.img`
   position: absolute;
   border-radius: 3px;
-  transition: opacity 200ms ${easeInOutSine};
+  transition: opacity 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 `;
 
 const SceneThumbnail = memo(

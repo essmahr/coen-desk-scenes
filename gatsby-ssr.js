@@ -1,8 +1,7 @@
-// import React from 'react';
-// import { Provider } from 'unstated';
-// import { renderToString } from 'react-dom/server';
+import React from 'react';
+import { ThemeProvider } from 'emotion-theming';
+import theme from './src/theme';
 
-// export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
-//   const ConnectedBody = () => <Provider>{bodyComponent}</Provider>;
-//   replaceBodyHTMLString(renderToString(<ConnectedBody />));
-// };
+export const wrapRootElement = ({ element }) => {
+  return <ThemeProvider theme={theme}>{element}</ThemeProvider>;
+};

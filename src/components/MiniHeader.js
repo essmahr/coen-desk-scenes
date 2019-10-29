@@ -5,8 +5,6 @@ import { Box } from 'rebass';
 import styled from '@emotion/styled';
 import Transition from 'react-transition-group/Transition';
 
-const duration = 500;
-
 const transitionStyles = {
   entering: { transform: `translate(0, -100%)` },
   entered: { transform: `translate(0, 0)`, transitionDelay: '300ms' },
@@ -20,14 +18,14 @@ const Header = styled.header`
   left: 0;
   font-size: 0.6rem;
   font-weight: 600;
-  font-family: IBM Plex Sans Condensed;
+  font-family: ${({ theme }) => theme.fonts.sans};
   display: flex;
   line-height: 1;
   flex-direction: column;
   letter-spacing: 0.02em;
   justify-content: center;
   z-index: 1;
-  transition: transform ${duration}ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: transform 500ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
   ${props => transitionStyles[props.state]}
 `;
 

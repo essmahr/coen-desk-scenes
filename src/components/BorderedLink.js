@@ -1,18 +1,17 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { border, textSecondary } from '../colors';
 
 const BorderedLink = styled(Link)`
   display: inline-flex;
   color: #dbdbd3;
-  border: 1px solid ${border};
+  border: 1px solid ${({ theme }) => theme.colors.border};
   text-align: center;
   justify-content: center;
   align-items: center;
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-family: 'IBM Plex Sans';
+  font-family: ${({ theme }) => theme.fonts.sans};
 
   @media screen and (max-width: 40em) {
     height: 36px;
@@ -27,7 +26,7 @@ const BorderedLink = styled(Link)`
   }
 
   &:hover {
-    border-color: ${textSecondary};
+    border-color: ${({ theme }) => theme.colors.textSecondary};
   }
 `;
 
