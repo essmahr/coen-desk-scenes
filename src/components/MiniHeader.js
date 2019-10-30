@@ -25,11 +25,14 @@ const AnimatedHeader = animated(Header);
 export default function MiniHeader({ visible }: { visible: boolean }) {
   const transitions = useTransition(visible, null, {
     from: { transform: 'translateY(-100%)', opacity: 0 },
-    enter: () => next =>
-      setTimeout(() => next({ transform: 'translateY(0%)', opacity: 1 }), 500),
-    leave: () => next =>
+    enter: () => async next =>
       setTimeout(
-        () => next({ transform: 'translateY(-110%)', opacity: 0 }),
+        async () => await next({ transform: 'translateY(0%)', opacity: 1 }),
+        500
+      ),
+    leave: () => async next =>
+      setTimeout(
+        async () => await next({ transform: 'translateY(-110%)', opacity: 0 }),
         500
       ),
   });
