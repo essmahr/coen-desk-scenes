@@ -25,8 +25,6 @@ const TITLE = 'Every character actor behind a desk in a Coen Brothers film';
 const Layout = ({ children, location, pageContext }: Props) => {
   const { index = null, id = null } = pageContext;
 
-  console.log(location);
-
   const url = `https://${process.env.GATSBY_BASE_URL}${location.pathname}`;
 
   return (
