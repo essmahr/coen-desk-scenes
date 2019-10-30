@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "coen-desk-scenes",
+  "description": "Every character actor behind a desk in a Coen Brothers film",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Scott Mahr",
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@emotion/core": "^10.0.20",
@@ -19,8 +19,6 @@
     "gatsby-plugin-sharp": "^2.0.6",
     "gatsby-source-filesystem": "^2.0.1",
     "gatsby-transformer-sharp": "^2.1.3",
-    "jest": "^24.1.0",
-    "lodash.throttle": "^4.1.1",
     "polished": "^3.4.1",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
@@ -39,6 +37,7 @@
     "scenes:build": "node build-scenes.js"
   },
   "devDependencies": {
+    "jest": "^24.1.0",
     "flow-bin": "^0.109.0",
     "flow-typed": "^2.5.1",
     "gatsby-plugin-flow": "^1.0.2",
