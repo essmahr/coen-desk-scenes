@@ -3,7 +3,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 
-import ImageSeo from '../components/ImageSeo';
+import makeImageMeta from '../lib/makeImageMeta';
 import ScenePanel from '../components/main/ScenePanel/ScenePanel';
 
 type Props = {
@@ -16,9 +16,10 @@ const ScenePage = (props: Props) => {
   const socialImage = image.meta.fixed;
   return (
     <>
-      <Helmet title={`${film.title} at ${timestamp}`}>
-        <ImageSeo image={socialImage} />
-      </Helmet>
+      <Helmet
+        title={`${film.title} at ${timestamp}`}
+        meta={makeImageMeta(socialImage)}
+      ></Helmet>
       <ScenePanel scene={props.data.scene} />
     </>
   );

@@ -38,10 +38,10 @@ const Layout = ({ children, location, pageContext }: Props) => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content="essmahr" />
 
-        <meta name="og:url" content={url} />
-        <meta name="og:type" content="website" />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="website" />
 
-        <link rel="canonical" href={url} />
+        <link rel="canonical" href={`${url}/`} />
 
         <link
           href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400|IBM+Plex+Sans+Condensed:500,600|IBM+Plex+Sans:400,500,600|IBM+Plex+Serif:600,400,400i"
