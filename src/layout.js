@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
-import Helmet from 'react-helmet';
 
+import Helmet from 'react-helmet';
 import Main from './components/main/Main';
 import MiniHeader from './components/MiniHeader';
 import KeyboardNav from './components/KeyboardNav';
@@ -25,19 +25,26 @@ const TITLE = 'Every character actor behind a desk in a Coen Brothers film';
 const Layout = ({ children, location, pageContext }: Props) => {
   const { index = null, id = null } = pageContext;
 
+  console.log(location);
+
+  const url = `https://${process.env.GATSBY_BASE_URL}${location.pathname}`;
+
   return (
     <>
-      <Helmet
-        titleTemplate={`%s | ${TITLE}`}
-        defaultTitle={TITLE}
-        meta={[
-          {
-            name: 'description',
-            content:
-              'Every character actor behind a desk in a Coen Brothers film. Dot com.',
-          },
-        ]}
-      >
+      <Helmet titleTemplate={`%s | ${TITLE}`} defaultTitle={TITLE}>
+        <meta
+          name="description"
+          content="Every character actor behind a desk in a Coen Brothers film. Dot com."
+        />
+        <meta name="twitter:url" content={url} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="essmahr" />
+
+        <meta name="og:url" content={url} />
+        <meta name="og:type" content="website" />
+
+        <link rel="canonical" href={url} />
+
         <link
           href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400|IBM+Plex+Sans+Condensed:500,600|IBM+Plex+Sans:400,500,600|IBM+Plex+Serif:600,400,400i"
           rel="stylesheet"

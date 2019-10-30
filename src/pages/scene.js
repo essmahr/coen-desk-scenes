@@ -11,10 +11,17 @@ type Props = {
 
 const ScenePage = (props: Props) => {
   const { scene } = props.data;
-  const { film, timestamp } = scene;
+  const { film, timestamp, image } = scene;
+  const socialImage = image.meta.fixed;
   return (
     <>
-      <Helmet title={`${film.title} at ${timestamp}`} />
+      <Helmet title={`${film.title} at ${timestamp}`}>
+        <meta name="og:image" content={socialImage.src} />
+        <meta name="og:image:width" content={socialImage.width} />
+        <meta name="og:image:height" content={socialImage.height} />
+
+        <meta name="twitter:image" content={socialImage.src} />
+      </Helmet>
       <ScenePanel scene={props.data.scene} />
     </>
   );
@@ -31,6 +38,13 @@ export const query = graphql`
       multiple
       formattedQuote
       image {
+        meta: childImageSharp {
+          fixed(width: 1200) {
+            src
+            width
+            height
+          }
+        }
         childImageSharp {
           fluid(maxWidth: 540, quality: 90) {
             ...GatsbyImageSharpFluid
