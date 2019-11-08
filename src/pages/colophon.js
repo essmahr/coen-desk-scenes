@@ -31,6 +31,7 @@ const ColophonPage = () => (
         <p>
           The UI is built with the help of{' '}
           <Tblank href="https://www.react-spring.io/">React-Spring</Tblank> by{' '}
+          <Tblank href="https://twitter.com/0xca0a">Paul Henschel</Tblank> &amp;{' '}
           <Tblank href="https://www.patreon.com/aleclarson">Alec Larson</Tblank>
           ,{' '}
           <Tblank href="https://github.com/aholachek/react-flip-toolkit">
