@@ -1,10 +1,16 @@
 import React from 'react';
+import ContentPanel from '../components/main/ContentPanel';
+import { Heading, Box } from 'rebass';
 
 const NotFoundPage = () => (
-  <>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </>
+  <ContentPanel>
+    <Box textAlign="center">
+      <Heading fontSize={4} lineHeight="1.3" fontWeight={600} fontFamily="sans">
+        404
+      </Heading>
+      <p>Page not found.</p>
+    </Box>
+  </ContentPanel>
 );
 
 export default NotFoundPage;

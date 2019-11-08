@@ -18,8 +18,8 @@ const AboutPage = () => (
       <Heading
         fontSize={4}
         lineHeight="1.3"
-        fontWeight={600}
-        fontFamily="IBM Plex Serif"
+        fontWeight={400}
+        fontFamily="serif"
       >
         About
       </Heading>

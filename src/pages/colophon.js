@@ -11,7 +11,7 @@ const Tblank = props => (
   <a target="_blank" rel="noopener noreferrer" {...props} />
 );
 
-const ColophonPate = () => (
+const ColophonPage = () => (
   <ContentPanel>
     <Helmet title="Colophon" meta={makeImageMeta()} />
     <TextPane>
@@ -26,11 +26,13 @@ const ColophonPate = () => (
           <Tblank href="https://fonts.google.com/specimen/IBM+Plex+Sans">
             IBM Plex
           </Tblank>{' '}
-          family of fonts, designed by IBM.
+          family of fonts, designed by, you guessed it, IBM.
         </p>
         <p>
           The UI is built with the help of{' '}
-          <Tblank href="https://www.react-spring.io/">React-Spring</Tblank>,{' '}
+          <Tblank href="https://www.react-spring.io/">React-Spring</Tblank> by{' '}
+          <Tblank href="https://www.patreon.com/aleclarson">Alec Larson</Tblank>
+          ,{' '}
           <Tblank href="https://github.com/aholachek/react-flip-toolkit">
             React Flip Toolkit
           </Tblank>{' '}
@@ -59,4 +61,4 @@ const ColophonPate = () => (
   </ContentPanel>
 );
 
-export default ColophonPate;
+export default ColophonPage;
