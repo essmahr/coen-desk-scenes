@@ -5,6 +5,7 @@ import { Text, Heading } from 'rebass';
 import ContentPanel from '../components/main/ContentPanel';
 import TextPane from '../components/main/TextPane';
 import BorderedLink from '../components/BorderedLink';
+import makeImageMeta from '../lib/makeImageMeta';
 
 const tarantinoLink = 'https://www.youtube.com/watch?v=V_whQnqwEYk';
 const bayLink = 'https://www.youtube.com/watch?v=2THVvshvq0Q';
@@ -12,7 +13,7 @@ const andersonLink = 'https://vimeo.com/89302848';
 
 const AboutPage = () => (
   <ContentPanel>
-    <Helmet title="About" />
+    <Helmet title="About" meta={makeImageMeta()} />
     <TextPane>
       <Heading
         fontSize={4}

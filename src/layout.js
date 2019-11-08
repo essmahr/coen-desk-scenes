@@ -7,6 +7,7 @@ import MiniHeader from './components/MiniHeader';
 import KeyboardNav from './components/KeyboardNav';
 import SidebarContainer from './components/sidebar/SidebarContainer';
 import SceneContext from './lib/context';
+
 import './app.css';
 
 type Props = {

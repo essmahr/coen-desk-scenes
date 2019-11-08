@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { Text } from 'rebass';
 import ContentPanel from '../components/main/ContentPanel';
 import TextPane from '../components/main/TextPane';
+import makeImageMeta from '../lib/makeImageMeta';
 
 const Tblank = props => (
   // eslint-disable-next-line jsx-a11y/anchor-has-content
@@ -12,7 +13,7 @@ const Tblank = props => (
 
 const ColophonPate = () => (
   <ContentPanel>
-    <Helmet title="Colophon" />
+    <Helmet title="Colophon" meta={makeImageMeta()} />
     <TextPane>
       <Text fontSize={[1, 1]}>
         <p>
