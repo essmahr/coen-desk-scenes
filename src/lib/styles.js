@@ -13,3 +13,4 @@ export const mobileSidebarVW = `${(imageHeight / (imageWidth * imagesVisible)) *
   100}vw`;
 
 export const mobileSidebarHeight = `calc(${mobileSidebarVW} + 24px)`;
+export const mobileContentHeight = `calc(100% - ${mobileSidebarVW} - 24px)`;

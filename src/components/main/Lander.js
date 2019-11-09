@@ -1,7 +1,8 @@
 // @flow
-
 import React from 'react';
 import { Flex, Heading } from 'rebass';
+
+import { mobileContentHeight } from '../../lib/styles';
 
 const Lander = () => (
   <Flex
@@ -10,7 +11,7 @@ const Lander = () => (
     justifyContent="center"
     p={4}
     pl={[4, 5]}
-    sx={{ height: '100%' }}
+    height={[mobileContentHeight, '100%']}
   >
     <Heading
       fontSize={[4, 5]}

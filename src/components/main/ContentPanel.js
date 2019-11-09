@@ -4,18 +4,14 @@ import { mobileSidebarHeight } from '../../lib/styles';
 
 const ContentPanel = ({ children }) => {
   return (
-    <Flex
-      flexDirection="column"
-      justifyContent="center"
-      css={{ height: '100%' }}
-    >
+    <Flex flexDirection="column" justifyContent="center" height="100%">
       <div
         css={{
           overflowY: 'auto',
           WebkitOverflowScrolling: 'touch',
         }}
       >
-        <Box px={[4, 4, 5, 6]} py={[5, 4]}>
+        <Box px={[4, 4, 5, 6]} pt={[5, 4]} pb={[1, 4]}>
           <div
             css={{
               '@media screen and (max-width: calc(40em - 1px))': {
