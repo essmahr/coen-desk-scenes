@@ -7,8 +7,13 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-plugin-emotion',
     {
-      resolve: `gatsby-plugin-emotion`,
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.ANALYTICS_ID,
+        pageTransitionDelay: 100,
+      },
     },
     {
       resolve: `gatsby-plugin-layout`,
