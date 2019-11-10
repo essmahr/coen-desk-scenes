@@ -17,6 +17,7 @@ const Title = styled.h2`
 const Year = styled.h3`
   font-size: 11px;
   font-family: ${({ theme }) => theme.fonts.sans};
+  color: ${({ theme }) => theme.colors.textSecondary};
   font-weight: 500;
   letter-spacing: 0.05em;
 `;
@@ -53,8 +54,8 @@ const FilmListItem = ({ film }: { film: Film }) => {
           as="li"
           flex="0 1 auto"
           width={[1 / 3]}
-          px={2}
-          pb={3}
+          px={1}
+          pb={2}
           key={scene.id}
         >
           <SceneThumbnail scene={scene} />
@@ -68,13 +69,13 @@ const FilmListItem = ({ film }: { film: Film }) => {
     <Box as="li" mb={4} px={3} key={film.slug}>
       <Flipped flipId={film.title} key={film.title} onAppear={handleAppear}>
         <Box sx={headerCss}>
-          <Box mb={3}>
+          <Box mb={2}>
             <Year>{film.year}</Year>
             <Title>{film.title}</Title>
           </Box>
         </Box>
       </Flipped>
-      <Flex as="ul" mx={-2} flexWrap="wrap">
+      <Flex as="ul" mx={-1} flexWrap="wrap">
         {scenes}
       </Flex>
     </Box>

@@ -18,6 +18,7 @@ const query = graphql`
       nodes {
         title
         slug
+        year
         scenes {
           ...Scene_thumbnail
         }
