@@ -45,6 +45,11 @@ const Layout = ({ children, location, pageContext }: Props) => {
         <link rel="canonical" href={`${url}/`} />
 
         <link
+          rel="icon"
+          href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/232/clapper-board_1f3ac.png"
+        />
+
+        <link
           href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400|IBM+Plex+Sans+Condensed:500,600|IBM+Plex+Sans:400,500,600|IBM+Plex+Serif:600,400,400i"
           rel="stylesheet"
         />
