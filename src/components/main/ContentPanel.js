@@ -11,7 +11,7 @@ const ContentPanel = ({ children }) => {
           WebkitOverflowScrolling: 'touch',
         }}
       >
-        <Box px={[4, 4, 5, 6]} pt={[5, 4]} pb={[1, 4]}>
+        <Box px={[4, 4, 5, 6]} pt={[5, 5, 5, 5]} pb={[0, 5, 5]}>
           <div
             css={{
               '@media screen and (max-width: calc(40em - 1px))': {

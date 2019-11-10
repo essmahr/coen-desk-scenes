@@ -15,7 +15,7 @@ const BorderedLink = styled(Link)`
 
   @media screen and (max-width: 40em) {
     height: 36px;
-    padding: 4px 10px;
+    padding: 4px 16px;
     border-radius: 18px;
   }
 

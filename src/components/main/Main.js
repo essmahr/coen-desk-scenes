@@ -4,15 +4,15 @@ import styled from '@emotion/styled';
 import { Box } from 'rebass';
 import BorderedLink from '../BorderedLink';
 import TransitionContainer from './TransitionContainer';
-import { widths, mobileSidebarVW } from '../../lib/styles';
+import { widths, mobileSidebarHeight } from '../../lib/styles';
 
 const AboutLink = styled(BorderedLink)`
   position: absolute;
   z-index: 2;
 
   @media screen and (max-width: 40em) {
-    bottom: calc(${mobileSidebarVW} + 1.5rem);
-    right: 1rem;
+    bottom: ${mobileSidebarHeight};
+    right: 32px;
   }
 
   @media screen and (min-width: 40em) {
