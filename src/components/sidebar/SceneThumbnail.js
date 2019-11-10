@@ -27,7 +27,7 @@ const SceneLink = styled(Link)`
 const SceneImg = styled.img`
   position: absolute;
   border-radius: 3px;
-  transition: opacity 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: opacity 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 `;
 
 const SceneThumbnail = memo(

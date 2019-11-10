@@ -15,10 +15,10 @@ const Title = styled.h2`
 `;
 
 const Year = styled.h3`
-  font-size: 11px;
+  font-size: 10px;
   font-family: ${({ theme }) => theme.fonts.sans};
   color: ${({ theme }) => theme.colors.textSecondary};
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.05em;
 `;
 
@@ -66,7 +66,7 @@ const FilmListItem = ({ film }: { film: Film }) => {
     );
 
   return (
-    <Box as="li" mb={4} px={3} key={film.slug}>
+    <Box as="li" mb={3} px={3} key={film.slug}>
       <Flipped flipId={film.title} key={film.title} onAppear={handleAppear}>
         <Box sx={headerCss}>
           <Box mb={2}>

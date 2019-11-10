@@ -4,7 +4,7 @@ const ImageContainer = styled.div(
   {
     position: 'relative',
     backgroundColor: ({ theme }) => theme.colors.background,
-    filter: 'grayscale(40%)',
+    filter: 'grayscale(20%)',
 
     '&::before': {
       display: 'block',
@@ -21,18 +21,12 @@ const ImageContainer = styled.div(
       pointerEvents: 'none',
       transition: 'opacity 0.2s ease',
     },
-
-    img: {
-      opacity: 0.5,
-    },
   },
   ({ isCurrent }) => {
     if (isCurrent) {
       return {
-        filter: 'grayscale(0%)',
-
         '&::before': {
-          opacity: 0.3,
+          opacity: 0.4,
         },
 
         img: {
@@ -42,11 +36,11 @@ const ImageContainer = styled.div(
     } else {
       return {
         img: {
-          opacity: 0.4,
+          opacity: 0.5,
         },
         '&:hover': {
           img: {
-            opacity: 0.5,
+            opacity: 0.7,
           },
         },
       };
