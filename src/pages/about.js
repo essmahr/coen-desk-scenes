@@ -25,6 +25,14 @@ const AboutPage = () => (
       </Heading>
       <Text fontSize={[1, 1]}>
         <p>
+          This is a project by{' '}
+          <a href="https://smahr.net" target="_blank" rel="noopener noreferrer">
+            Scott Mahr
+          </a>
+          , a software developer and designer from Victoria, BC, Canada.
+        </p>
+
+        <p>
           Like many, I'm a big fan of the films of the Coen Brothers. I love the
           ease with which they bounce between weighty cinematic masterpieces,
           arty slow-burners, and frivolous comedies. They play within and
